@@ -10,7 +10,7 @@ type NewsTickerProps = {
 export default function NewsTicker({
   text = "BLACK DRAGON JEET KUNE DO",
   repeat = 10,
-  durationSeconds = 24,
+  durationSeconds = 44,
   className = "",
 }: NewsTickerProps) {
   const items = Array.from({ length: repeat }, (_, i) => i);
@@ -35,7 +35,7 @@ export default function NewsTicker({
               {items.map((i) => (
                 <span
                   key={`${row}-${i}`}
-                  className="inline-flex items-center gap-3 px-3 py-2 text-[11px] font-black tracking-[0.22em] text-white uppercase sm:text-xs"
+                  className="inline-flex items-center gap-3 px-3 py-[14.5px] text-[11px] font-black tracking-[0.22em] text-white uppercase sm:text-2xl"
                 >
                   <span className="transition-colors group-hover:text-primary">
                     {text}

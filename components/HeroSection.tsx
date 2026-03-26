@@ -2,7 +2,7 @@ import NewsTicker from "@/components/NewsTicker";
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-24 text-white lg:pt-0">
+    <section className="relative pt-24 text-white lg:pt-0 bg-[#000000]">
       <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-start gap-12 px-6 py-8 lg:grid-cols-2 lg:py-10">
         <div className="flex flex-col items-center gap-5 text-center lg:items-center lg:text-center lg:pt-18">
           <div className="space-y-4">
@@ -53,17 +53,17 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-30 flex justify-center lg:justify-end">
+        <div className="bg-black  flex justify-center lg:justify-end max-h-[580px]">
           <img
             src="/martial-art-sri-lanka (2).png"
             alt="Martial arts in Sri Lanka"
-            className="w-full max-w-sm rounded-xl object-cover shadow-2xl sm:max-w-xl"
+            className="w-full max-w-sm rounded-xl object-cover  sm:max-w-xl 0 relative z-30 top-20"
           />
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-[190px] z-20">
-        <div className="pointer-events-auto">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[1px] z-20">
+        <div className="pointer-events-auto mx-auto max-w-7xl overflow-hidden px-6">
           <NewsTicker className="border-t border-primary/90" />
         </div>
       </div>
