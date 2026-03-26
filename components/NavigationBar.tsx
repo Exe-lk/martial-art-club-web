@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NavigationBar() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-background-dark/95 px-6 py-4 backdrop-blur-md lg:px-20">
+    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#000000] px-6 py-4 backdrop-blur-md lg:px-20">
       <nav className="mx-auto flex max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <span className="material-symbols-outlined text-3xl text-primary">
@@ -28,9 +28,9 @@ export default function NavigationBar() {
           </a>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="#achievements"
+            href="contact"
           >
-            Achievements
+            Conatct us
           </a>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"

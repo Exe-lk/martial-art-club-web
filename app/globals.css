@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #d62929;
+  --color-secondary: #1e3a8a;
+  --color-accent-blue: #1e3a8a;
+  --color-background-light: #f8f6f6;
+  --color-background-dark: #0d0d0d;
+  --color-neutral-gray: #f3f4f6;
+}
+
 body {
   min-height: 100%;
 }

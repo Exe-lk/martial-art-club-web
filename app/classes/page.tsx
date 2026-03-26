@@ -45,6 +45,12 @@ const weeklySchedule = [
   { day: "Saturday", cls: "Mixed Styles", time: "9:00AM - 11:00AM", accent: "secondary" },
 ];
 
+const classSlugByTitle: Record<string, string> = {
+  "Kung Fu": "kung-fu",
+  "Jeet Kune Do": "jeet-kune-do",
+  Wushu: "wushu",
+};
+
 export default function ClassesPage() {
   return (
     
@@ -129,6 +135,12 @@ export default function ClassesPage() {
                       <span className="text-[#1E3A8A]">{card.bestFor}</span>
                     </div>
                   </div>
+                  <a
+                    href={`/classes/${classSlugByTitle[card.title]}`}
+                    className="mt-8 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#d62929] transition-transform group-hover:translate-x-1"
+                  >
+                    View details <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </a>
                 </div>
               ))}
             </div>
