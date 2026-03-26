@@ -1,4 +1,3 @@
-import NavigationBar from "@/components/NavigationBar";
 import HeroSection from "@/components/HeroSection";
 import ChooseArtSection from "@/components/ChooseArtSection";
 import TrainingGallerySection from "@/components/TrainingGallerySection";
@@ -12,20 +11,17 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
-    <>
-      <NavigationBar />
-      <main className="flex-1 overflow-x-hidden">
-        <HeroSection />
-        <ChooseArtSection />
-        <NotJustFightingClassSection />
-        <ClassesSection />
-        <FacilitiesSection />
-        <MeetOurInstructorsSection />
-        <AchievementsCounterSection />
-        <TestimonialsSection />
-        <TrainingGallerySection />
-        <CtaSection />
-      </main>
-    </>
+    <main className="flex-1 overflow-x-hidden">
+      <HeroSection />
+      <ChooseArtSection />
+      <NotJustFightingClassSection />
+      <ClassesSection />
+      <FacilitiesSection />
+      <MeetOurInstructorsSection />
+      <AchievementsCounterSection />
+      <TestimonialsSection />
+      <TrainingGallerySection />
+      <CtaSection />
+    </main>
   );
 }

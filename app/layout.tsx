@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -16,22 +18,20 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
-        />
+        {/* Material Symbols (used as icon font in pages) */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <body className={`${inter.variable} flex min-h-full flex-col`}>
-        {children}
+      <body className={`${inter.className} min-h-full flex flex-col`}>
+        <NavigationBar />
+        <div className="flex-1 pt-20">{children}</div>
         <Footer />
       </body>
     </html>

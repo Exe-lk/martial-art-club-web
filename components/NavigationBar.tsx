@@ -16,13 +16,13 @@ export default function NavigationBar() {
         <div className="hidden items-center gap-8 md:flex">
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="#about"
+            href="about"
           >
             About
           </a>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="#classes"
+            href="classes"
           >
             Classes
           </a>

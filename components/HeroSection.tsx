@@ -2,9 +2,9 @@ import NewsTicker from "@/components/NewsTicker";
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-24 text-white lg:pt-0 bg-[#000000]">
-      <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-start gap-12 px-6 py-8 lg:grid-cols-2 lg:py-10">
-        <div className="flex flex-col items-center gap-5 text-center lg:items-center lg:text-center lg:pt-18">
+    <section className="relative pt-5 text-white lg:pt-0 bg-[#000000]">
+      <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-start gap-12 px-6 py-2 lg:grid-cols-2 lg:py-1">
+        <div className="flex flex-col items-center gap-5 text-center lg:items-center lg:text-center lg:pt-10">
           <div className="space-y-4">
             <span className="inline-block border border-primary/30 bg-primary/20 px-3 py-1 text-xs font-bold tracking-[0.2em] text-primary uppercase">
               Elite Academy
@@ -62,7 +62,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-[1px] z-20">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[8px] z-20">
         <div className="pointer-events-auto mx-auto max-w-7xl overflow-hidden px-6">
           <NewsTicker className="border-t border-primary/90" />
         </div>
