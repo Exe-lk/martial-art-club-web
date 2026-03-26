@@ -9,29 +9,30 @@ export default function NavigationBar() {
             sports_martial_arts
           </span>
           <span className="text-xl font-bold tracking-tighter text-white uppercase">
-            Apex <span className="text-primary">Martial Arts</span>
+            <span className="text-primary">BLACK DRAGON</span> JEET KUNE DO
+
           </span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          <a
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="about"
+            href="/about"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="classes"
+            href="/classes"
           >
             Classes
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="contact"
+            href="/contact"
           >
-            Conatct us
-          </a>
+            Contact us
+          </Link>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="#gallery"
