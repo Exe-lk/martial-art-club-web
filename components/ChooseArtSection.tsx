@@ -1,7 +1,7 @@
 export default function ChooseArtSection() {
   return (
     <section className="bg-background-dark text-slate-100">
-      <main className="pt-18 pb-20">
+      <div className="pt-18 pb-20">
         <section className="mx-auto mb-8 max-w-7xl px-6">
           <div className="mb-12 text-center">
             <span className="mb-4 block text-xs font-bold tracking-[0.3em] text-primary uppercase">
@@ -148,7 +148,7 @@ export default function ChooseArtSection() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </section>
   );
 }
