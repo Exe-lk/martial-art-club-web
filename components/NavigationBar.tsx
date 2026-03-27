@@ -14,6 +14,12 @@ export default function NavigationBar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
+        <a
+            className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
+            href="/"
+          >
+            Home
+          </a>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/about"
@@ -34,10 +40,11 @@ export default function NavigationBar() {
           </a>
           <a
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
-            href="#gallery"
+            href="/blog"
           >
-            Gallery
+            Blog
           </a>
+          
           <button className="rounded bg-primary px-6 py-2 text-sm font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
             Join the Club
           </button>
