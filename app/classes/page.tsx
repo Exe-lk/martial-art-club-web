@@ -1,3 +1,7 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
 const styleCards = [
   {
     title: "Kung Fu",
@@ -51,29 +55,78 @@ const classSlugByTitle: Record<string, string> = {
   Wushu: "wushu",
 };
 
+type Goal = "fitness" | "defense" | "show";
+type Preference = "modern" | "traditional" | "mixed";
+type Experience = "beginner" | "intermediate" | "advanced";
+
+function suggestStyle(goal: Goal, preference: Preference): keyof typeof classSlugByTitle {
+  if (goal === "defense") return "Jeet Kune Do";
+  if (goal === "show") return "Wushu";
+
+  if (preference === "traditional") return "Kung Fu";
+  if (preference === "modern") return "Jeet Kune Do";
+  return "Wushu";
+}
+
 export default function ClassesPage() {
+  const [goal, setGoal] = useState<Goal>("fitness");
+  const [experience, setExperience] = useState<Experience>("beginner");
+  const [preference, setPreference] = useState<Preference>("mixed");
+  const [suggestedTitle, setSuggestedTitle] = useState<keyof typeof classSlugByTitle | null>(null);
+
+  const result = useMemo(() => {
+    if (!suggestedTitle) return null;
+
+    if (suggestedTitle === "Kung Fu") {
+      return {
+        badge: "Result: Traditional Mastery",
+        title: "Kung Fu",
+        description:
+          "Based on your fitness focus with a traditional aesthetic, Kung Fu is your path. Build discipline, balance, mobility, and technical depth with roots that last.",
+      };
+    }
+
+    if (suggestedTitle === "Wushu") {
+      return {
+        badge: "Result: Performance & Power",
+        title: "Wushu",
+        description:
+          "Based on your goal and preference mix, Wushu fits you best. Expect explosive athleticism, flexibility, and high-intensity training with dynamic forms.",
+      };
+    }
+
+    return {
+      badge: "Result: High Efficiency",
+      title: "Jeet Kune Do",
+      description:
+        "Based on your focus on self-defense and modern application, the way of the intercepting fist is your path. This style discards flowery movements for raw efficiency.",
+    };
+  }, [suggestedTitle]);
+
   return (
     
     <div className="bg-[#0D0D0D] text-gray-100 selection:bg-[#d62929] selection:text-white">
       <main>
         {/* Hero (no header/footer per request) */}
         <section className="relative flex h-[614px] items-center overflow-hidden">
-          <div className="absolute inset-0 z-10 bg-neutral-950/70" />
-          <img
-            className="absolute inset-0 h-full w-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuABElSbWIloh8gpflmn_ixeDvQHP-sMyho-rf5tZX84USUuGs5-NaGs-b4ZO8upqHNnET9itRy9RRPDm4VMJJWD7JAnRkDJ5QI2mt13wYuQLItSapEeged1FUkHBYoXlT2z925cAOA2s4GhDDwGQ-S30yla26iWy9cLQBjz6eJmsQXbuxfEwjznAIsl6u7G8cLtokUxRE9ggh6kDQlZBH8tgPMiPlywGHvXgW_AP55k4dXoX9OSpCUrlxdVw8Tma-yu5khk6Bfkaos"
-            alt="Intense martial arts training session in a dark industrial gym"
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/classs-martial-art.jpg')",
+            }}
+            aria-label="Martial arts professional in training stance"
           />
-          <div className="container relative z-20 mx-auto px-6 ml-30">
-            <div className="max-w-3xl">
+          <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
+          <div className="container relative z-20 mx-auto px-6">
+            <div className="mx-auto max-w-3xl text-center">
               <h1 className="mb-4 text-5xl leading-none font-black tracking-tight uppercase md:text-7xl">
                 Our Martial Arts <span className="text-[#d62929]">Classes</span>
               </h1>
-              <p className="mb-8 max-w-xl text-lg font-medium text-slate-300 md:text-xl">
+              <p className="mx-auto mb-8 max-w-xl text-lg font-medium text-slate-300 md:text-xl">
                 Choose your path, train with purpose, and master your discipline. Join the elite
                 practitioners at IRON OBSIDIAN.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <button className="bg-[#d62929] px-8 py-4 text-sm font-black tracking-widest uppercase transition-all hover:brightness-110">
                   View Schedule
                 </button>
@@ -163,13 +216,37 @@ export default function ClassesPage() {
                       01. What is your primary goal?
                     </label>
                     <div className="grid grid-cols-3 gap-3">
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setGoal("fitness")}
+                        className={
+                          goal === "fitness"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Fitness
                       </button>
-                      <button className="border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase">
+                      <button
+                        type="button"
+                        onClick={() => setGoal("defense")}
+                        className={
+                          goal === "defense"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Defense
                       </button>
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setGoal("show")}
+                        className={
+                          goal === "show"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Show
                       </button>
                     </div>
@@ -180,13 +257,37 @@ export default function ClassesPage() {
                       02. Current Experience Level?
                     </label>
                     <div className="grid grid-cols-3 gap-3">
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setExperience("beginner")}
+                        className={
+                          experience === "beginner"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Beginner
                       </button>
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setExperience("intermediate")}
+                        className={
+                          experience === "intermediate"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Intermed.
                       </button>
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setExperience("advanced")}
+                        className={
+                          experience === "advanced"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Advanced
                       </button>
                     </div>
@@ -197,17 +298,51 @@ export default function ClassesPage() {
                       03. Aesthetic Preference?
                     </label>
                     <div className="grid grid-cols-3 gap-3">
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setPreference("modern")}
+                        className={
+                          preference === "modern"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Modern
                       </button>
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setPreference("traditional")}
+                        className={
+                          preference === "traditional"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Traditional
                       </button>
-                      <button className="border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20">
+                      <button
+                        type="button"
+                        onClick={() => setPreference("mixed")}
+                        className={
+                          preference === "mixed"
+                            ? "border border-[#d62929] bg-[#d62929] p-3 text-[10px] font-bold tracking-widest uppercase"
+                            : "border border-slate-700 bg-[#292929] p-3 text-[10px] font-bold tracking-widest uppercase transition-all hover:bg-[#d62929]/20"
+                        }
+                      >
                         Mixed
                       </button>
                     </div>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSuggestedTitle(suggestStyle(goal, preference));
+                    }}
+                    className="w-full bg-[#1E3A8A] py-4 text-xs font-black tracking-widest uppercase transition-all hover:brightness-110 active:scale-95"
+                  >
+                    Suggest My Style
+                  </button>
                 </div>
               </div>
 
@@ -216,15 +351,30 @@ export default function ClassesPage() {
                   <span className="material-symbols-outlined text-[120px]">fitness_center</span>
                 </div>
                 <div className="relative z-10">
-                  <span className="mb-6 inline-block bg-[#d62929]/20 px-3 py-1 text-[10px] font-black tracking-widest text-[#d62929] uppercase">
-                    Result: High Efficiency
-                  </span>
-                  <h3 className="mb-4 text-3xl font-black tracking-tight uppercase">Jeet Kune Do</h3>
-                  <p className="mb-8 leading-relaxed text-slate-300">
-                    Based on your focus on self-defense and modern application, the way of the
-                    intercepting fist is your path. This style discards flowery movements for raw
-                    efficiency.
-                  </p>
+                  {result ? (
+                    <>
+                      <span className="mb-6 inline-block bg-[#d62929]/20 px-3 py-1 text-[10px] font-black tracking-widest text-[#d62929] uppercase">
+                        {result.badge}
+                      </span>
+                      <h3 className="mb-4 text-3xl font-black tracking-tight uppercase">
+                        {result.title}
+                      </h3>
+                      <p className="mb-8 leading-relaxed text-slate-300">{result.description}</p>
+                    </>
+                  ) : (
+                    <>
+                      <span className="mb-6 inline-block bg-[#d62929]/20 px-3 py-1 text-[10px] font-black tracking-widest text-[#d62929] uppercase">
+                        Answer the questions
+                      </span>
+                      <h3 className="mb-4 text-3xl font-black tracking-tight uppercase">
+                        Get your recommendation
+                      </h3>
+                      <p className="mb-8 leading-relaxed text-slate-300">
+                        Choose your goal and preference, then click <span className="font-bold">Suggest My Style</span>{" "}
+                        to see the best martial art style for you.
+                      </p>
+                    </>
+                  )}
                   <button className="w-full bg-[#d62929] py-4 font-black tracking-widest uppercase transition-all hover:bg-red-700 active:scale-95">
                     Claim Free Session
                   </button>

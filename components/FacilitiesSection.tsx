@@ -4,8 +4,7 @@ const FACILITIES = [
     title: "Standard Learning Environment",
     description:
       "Our curriculum is built on pedagogical excellence. We maintain strict student-to-coach ratios to ensure every movement is corrected and every technique is mastered with precision.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBtnoN5xZWmJK_SK0L1xG3OlodKgYNvvMNIRuqK4zQ8Q28V5rWa-hxzwBZ8CX9eChHI0KA2hJK1dxw5-iitUIj8Ihl9lY-KjYAfUU1lNv4x5l8HiB5DYYMOhZ3ZQuy80GKXncL_XmNZb3ZJL4BBbUcsKuI6sqC6b6iTECPnBGlPvm1FTDlUfhhnaSNH_shReP34zGzfQFmfOHEu2fXk8InjKh3ZGPKrVhIy0FPfUQvBC5-ccNnxUAFR8RcyfVbLCRDM2xmOyLXWL_s",
+    image: "/gym/fighting-safety.jpeg",
     alt: "Professional training space",
     accent: "primary" as const,
   },
@@ -14,8 +13,7 @@ const FACILITIES = [
     title: "Modern Gym",
     description:
       "Elite athletes require elite tools. From high-impact flooring to state-of-the-art recovery zones, our facility represents the pinnacle of martial arts infrastructure.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuACkYLpotfh27NKGgxZGtnBcKrQwrMIlqmOMRckuotDKLaJYH4S3w5Gk4nJfrakibjBxgahQlblL1DEuAUCQ3UnzrLbKg6PavmGgmx9K4ErIcJN3Uqxz_Zuyr_o-w_r2HEOrJstYkeIPzkqn7hXuk3CMwN5B-XfdCsrNcG6YAFIs2if7Qv3_rAXZeIx0aWGUJCgMjDT1TjVp0jkRRsWXAuJ6rYwsqpg_MVVJqRkhULekk5lWPvTTcj3vmGf-W_of6xMWyur5iUEJYo",
+    image: "/gym/gym.jpeg",
     alt: "Modern gym equipment",
     accent: "primary" as const,
     cta: "Virtual Tour",
@@ -25,8 +23,7 @@ const FACILITIES = [
     title: "Qualified Coaches",
     description:
       "Our mentors are not just practitioners; they are certified instructors with decades of competitive and teaching experience. We prioritize methodology over muscle.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDMCLnZ9l7bCfOWDytBboTNpuUtH-wDh75cwpW7qlkuo99GS1JdS6lIL-MDbwNOwGupk90ZV9gqQcN0V0Qo7hl_PBWC_M2MYJAdw77buh2lDtGjxzNTtnibe25HSr1CTEKynSot7c-uKP7_LcA7KeasJ9nDLOb6vONhKyz9FP6F931KUnGMgi9rbWh1mzIZKyVoKoPpRvmIf2vnj1ldmzEsS-U8HAY_Z8JwBQcU2NJEmRzmxK-4YYhBZWEKwH1ur9MrCkvCrOpv6Z4",
+    image: "/gym/coach.PNG",
     alt: "Qualified martial arts coach",
     accent: "secondary" as const,
   },
@@ -49,12 +46,12 @@ export default function FacilitiesSection() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:h-[1100px] kinetic-skew">
-          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:h-[1100px] kinetic-skew max-h-[1100px]">
+          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew md:-mt-12">
             <div className="group relative h-[380px] overflow-hidden bg-[#292929] border-l-4 border-primary/30 transition-all duration-500 hover:border-primary">
               <img
                 alt={FACILITIES[0].alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 src={FACILITIES[0].image}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
@@ -68,7 +65,7 @@ export default function FacilitiesSection() {
             </div>
           </div>
 
-          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew md:-mt-12">
+          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew">
             <div className="group relative h-[280px] overflow-hidden bg-[#292929]">
               <img
                 alt={FACILITIES[1].alt}
@@ -96,13 +93,13 @@ export default function FacilitiesSection() {
             <div className="group relative h-[330px] overflow-hidden bg-[#292929]">
               <img
                 alt="Premium boxing gloves"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8hYwLeaxDYV2-QJYkNleJ7fnyTakUC52dqU3p7YahYKb1aSP5MMg5bDWP_BIU7gAWuIQM6nndXyaL__i0C5HRFPOGSNomvcxdSHnlknYpDEsFeOXr_j-iWVNF0LGpy5GVgjidsUtwK2HDw88e0vAYyXnhstYusBtd4nj-jwfe2RrgWRL96q_lcwpzXzAOJAhUXMX_cWm8BAFdoS3m1yq1L-rTPM2_wB691xE9yA-cFatdqWCKyLUYIt6K0L1XvKksHfJSO7OTqVU"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/gym/gym%20accesories.jpeg"
               />
             </div>
           </div>
 
-          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew">
+          <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew md:mt-12">
             <div className="flex h-[380px] flex-col justify-center border-t-4 border-primary bg-[#1f1f1f] p-8">
               <span className="text-primary text-6xl font-black opacity-10">{FACILITIES[2].number}</span>
               <h3 className="mb-4 text-2xl font-black tracking-tight uppercase">

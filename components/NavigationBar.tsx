@@ -9,7 +9,7 @@ export default function NavigationBar() {
             sports_martial_arts
           </span>
           <span className="text-xl font-bold tracking-tighter text-white uppercase">
-            Apex <span className="text-primary">Martial Arts</span>
+          Black Dragon <span className="text-primary"> Jeet Kune Do</span>
           </span>
         </Link>
 

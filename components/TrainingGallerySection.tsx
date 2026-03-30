@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type GalleryItem = {
   title: string;
@@ -19,80 +19,132 @@ const CATEGORIES: { id: string; label: string }[] = [
   { id: "events", label: "Events" },
 ];
 
-const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    label: "Kung Fu",
-    title: "Iron Palm Mastery",
-    imageAlt: "Training",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDYvJyPTsxG5yALLzanm84RmV6QXEG-HupowFPMl2XdHcFYM3wD-FqYeMRhB24qrDZzzUNaSohLoOBm2Y8GcaRI8Dt7HDUjxIMbysQCfW5ypplDs6zliSy9aGgBujkAjPWrfAnS1y-ijdautvWgp67WUqdc-5jmica28db2mCNGQ0eJUslVHyzA03x7Svpg5ugq9L3ZhjdzlhNZiOSE9mExOYhGIJqwGay9JKz-xN2Ht20-42YldNiZMwyACiDOx49ljezwRrUBGZc",
-    categories: ["kung-fu", "training"],
-  },
-  {
-    label: "Jeet Kune Do",
-    title: "Direct Efficiency",
-    imageAlt: "Training",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA2JLQ7P8htsC0RozlFe5yjVF_LFrNvChKhyRei5y9v7mIQcndR-T5rxz3zG_5tLOiTmKaQ9VBV1RXD989aodolWtcpcAy-szTZ-r66gsjJIaA18RURV_cM6TCxMXaBGUXzW9vD7RMtkp25ggiLj6uzf0VcQ-GawILDwoRnnQ-stC5nyAWeUPF49SlCGALsyiCmxuadG0SSbOCTeya-_SCVOp5Oa3c6RahExYE_JYOhmNYrrxEVngHfxlW94VOKcPrYHKRUZcKLtOY",
-    categories: ["jeet-kune-do", "training"],
-  },
-  {
-    label: "Wushu",
-    title: "Aerial Precision",
-    imageAlt: "Performance",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuApIlex_Q3u1l-msRvECEzq3VYqGgvhkuY-lX7LjyT0pF07XCCDKO6RJVWwjpvLR7K1Fk80XTuUuJJ8XfGdnK40gloGiivXnHYG2Bi7EUbPF1fumW1-XdKJkWwJAKpRI_v0G_PlegwK3D9Iwf4DNUeeX3EYR6r-h7vpBh6jhaH6cxakeOQbOlpEK4c45FeHsQZBzktuLdz9q-2kuAaV-GdQsm0owph3laMjeHSsJPz05x8lYJdJosr5gjhxds0-RGPi4qvVcmyehJI",
-    categories: ["wushu", "performance"],
-  },
-  {
-    label: "Events",
-    title: "Annual Grading",
-    imageAlt: "Event",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDm2oQL6ogT5jqEag2fpb03MsgkkA41THdIFewIoaxz_xPHxktfO1VRqFZ7nLRAMcXju17aJvPBFSq1hOykr61oeFOwIBVVS5NeRCqiIxc0ETJQtOMtIRsJ103JYRFC3xFBGU6gwvk0R2KsK7NNSoi4ggiZobMbRUX8Pv9F4Fdi6Yesn37KOLpD6TxhOveT7Ls5hZAPZnvIVAQGoe_zLUyqv_3vhAjpcKBWrN_uQTx3eWok-ilQ8LAct6Ry7YJmBliZH5-q3rDvrGc",
-    categories: ["events"],
-  },
-  {
-    label: "Training",
-    title: "Night Sessions",
-    imageAlt: "Training",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDdJl9lCRy5U3ggNbyfKFT7t6OYoBQuQXM0fsxxjxNoLJjgdL8g6UU8JX658DNx8g_g3cqTBbVfjefwA6WcIpt-Fjx8N4c4UAhMHO9M0ijAtbXnBeMhfqW68I6vPUcL31FPmqU-SyQ4Ur3Vq69twIIK2JV8qHcUN5PqjHdNWQRFk1OjMXogZH8Wvk_ktqRMN7ejuKqNpnwXl_AUovdt9oZEnGvkQUbu6QkCfmCfmLVdBukpPVEPcMadqubVNoe6IV34HihN0B-moHk",
-    categories: ["training"],
-  },
-  {
-    label: "Kung Fu",
-    title: "Shaolin Flow",
-    imageAlt: "Training",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCizS3PD95tzpvKVK0-LsCg7hLqQ_r8Jh2hT7vspcAqzrswkUDZXXeYZF9KcvIezAD7hAHBytVCLKnnDLAd3TXAlrKScVZzENdsPAn4VkNwvUIGauWwEmUSdhxMmS3f04Hp0nTcyxHOp3Y6pk3ffqXJbMJLUJdDSQutPCuusglujbOF3jx_Dv6e5xDQUbwo10oFc856DIY7AokeTCmaMpVXIQG5YZJqHwK3ra6t3C_9qoQw23xaEUuUojy1Q4PBSLHZKq-l4N5FVKM",
-    categories: ["kung-fu", "training"],
-  },
-  {
-    label: "Jeet Kune Do",
-    title: "Rapid Sparring",
-    imageAlt: "Training",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBTdoLIhj3bKQ5EulJFSckbLP275RkmphySyc_pAchU8GDCBnRL8hTaUSri9k9JIZgUKtkziXZXnKYWE3EEcNuUlzuQfGYl2VvdirpFKmJjxRtzBFGXnTaSjgpTlW_krnp7MGU_nbn3znZFAYN_d4dj8byBccgXtTnmhZ3GLBLxNaVlEtkfY-tR7Ss2a0k2l7FpKUn0FTUR0jCV8fbFL9nNjjLN3Q27qKPJ-a2ApCbFtkKEZqCnugZrxMqE1rjUZxeZCYq43SnOYHc",
-    categories: ["jeet-kune-do", "training"],
-  },
-  {
-    label: "Events",
-    title: "Elite Workshop",
-    imageAlt: "Event",
-    imageSrc:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAiz7QM5zGDoRA_g77VFSWP-a1qN9-iYGd5GhvSiu9so031kHRfAEhwcpbztpWWTL5HcBVRX-o5_YauMtBUzFmGXnNn7n87UmgNhv8N3c2LppzlcM0A8HyMOmpdqx_fOg18jgsBJbyVcbq5Oq0e9bmi7Bo_cTs8LPwhHjsrp6jJo5_oZe2O3p6dBTYwrbxLtMKDsZreBHIjDXAImcch8YEf8iFkTuH-hr0m0Whp2c_X92P5GraB5FxCnhXrIbNbj4W1OXLOM1FBfNM",
-    categories: ["events", "training"],
-  },
-];
+const LOCAL_IMAGE_PATHS = [
+  "/gallery/486603328_2093109104489921_5617833811638459708_n.jpg",
+  "/gallery/events/480281407_596698423268086_8216583939379925773_n.jpg",
+  "/gallery/events/480326514_596697989934796_4121116657036155314_n.jpg",
+  "/gallery/events/480440785_596698313268097_8199364771232065174_n.jpg",
+  "/gallery/events/480520780_596698106601451_2159366204510021519_n.jpg",
+  "/gallery/events/480591409_596698273268101_8914357148270084608_n.jpg",
+  "/gallery/events/480615754_596698373268091_6113740060840275045_n.jpg",
+  "/gallery/events/480674438_596698093268119_2920696599622067516_n.jpg",
+  "/gallery/jeet-kun-do/172072943_1142707122863462_7609693121190601178_n.jpg",
+  "/gallery/jeet-kun-do/480671797_2068773616923470_3354075174883740120_n.jpg",
+  "/gallery/jeet-kun-do/480737562_2068773613590137_4184260622523094791_n.jpg",
+  "/gallery/jeet-kun-do/481216794_2068774033590095_6673438331088346098_n.jpg",
+  "/gallery/jeet-kun-do/481253854_2068773850256780_8036672655206718369_n.jpg",
+  "/gallery/jeet-kun-do/jeet-kun-so-class.jpg",
+  "/gallery/kun-fu/480659567_604273912510537_385981634691492231_n.jpg",
+  "/gallery/kun-fu/480784630_604272952510633_7677364397842933082_n.jpg",
+  "/gallery/kun-fu/480893548_604272685843993_7636090135948259871_n.jpg",
+  "/gallery/kun-fu/480928302_604273982510530_1377550972642963121_n.jpg",
+  "/gallery/kun-fu/480971840_604272585844003_1461938362512487838_n.jpg",
+  "/gallery/training/481258319_604272705843991_7772060579931745694_n.jpg",
+  "/gallery/training/481291835_604272849177310_6487048297748494752_n.jpg",
+  "/gallery/training/481769131_604272675843994_149680669691450545_n.jpg",
+  "/gallery/training/482002605_604272615844000_5475728776468286268_n.jpg",
+  "/gallery/training/482020411_604272919177303_3972575694414062918_n.jpg",
+  "/gallery/training/482209139_604272639177331_5670640147597652569_n.jpg",
+  "/gallery/wushu/481115393_604273762510552_269428111622660870_n.jpg",
+  "/gallery/wushu/481120677_604273679177227_922634369156765066_n.jpg",
+  "/gallery/wushu/481262174_604273949177200_2820651480742250467_n.jpg",
+  "/gallery/wushu/481465948_604273999177195_4221468156841016824_n.jpg",
+  "/gallery/wushu/481992167_604273692510559_1704114301242226740_n.jpg",
+  "/gym/75443010_764354024032109_2374786090537058304_n.jpg",
+  "/gym/75462284_764353914032120_9099130517156003840_n.jpg",
+  "/gym/83275503_815975425536635_4737246153215574016_n.jpg",
+  "/gym/Capture.PNG",
+  "/gym/coach.PNG",
+  "/gym/fighting-safety.jpeg",
+  "/gym/gym accesories.jpeg",
+  "/gym/gym.jpeg",
+  "/gym/gym3.jpeg",
+  "/gym/WhatsApp Image 2026-03-18 at 17.24.02 (1).jpeg",
+  "/gym/WhatsApp Image 2026-03-18 at 17.24.02 (2).jpeg",
+] as const;
+
+function titleFromPath(path: string) {
+  const filename = path.split("/").pop() ?? path;
+  const base = filename.replace(/\.[^.]+$/, "");
+  if (/^\d/.test(base)) return "Training Snapshot";
+  return base.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function getCategoriesForPath(path: string): string[] {
+  const normalized = path.toLowerCase();
+  const categories = new Set<string>();
+
+  if (normalized.includes("/gallery/events/")) categories.add("events");
+  if (normalized.includes("/gallery/training/")) categories.add("training");
+
+  if (normalized.includes("/gallery/kun-fu/")) categories.add("kung-fu");
+  if (normalized.includes("/gallery/jeet-kun-do/")) categories.add("jeet-kune-do");
+  if (normalized.includes("/gallery/wushu/")) categories.add("wushu");
+
+  if (normalized.startsWith("/gym/")) categories.add("training");
+
+  if (categories.size === 0) categories.add("training");
+  return [...categories];
+}
+
+function labelForCategories(categories: string[]) {
+  if (categories.includes("events")) return "Events";
+  if (categories.includes("kung-fu")) return "Kung Fu";
+  if (categories.includes("jeet-kune-do")) return "Jeet Kune Do";
+  if (categories.includes("wushu")) return "Wushu";
+  return "Training";
+}
+
+const GALLERY_ITEMS: GalleryItem[] = LOCAL_IMAGE_PATHS.map((path) => {
+  const categories = getCategoriesForPath(path);
+  return {
+    label: labelForCategories(categories),
+    title: titleFromPath(path),
+    imageAlt: labelForCategories(categories),
+    imageSrc: encodeURI(path),
+    categories,
+  };
+});
 
 export default function TrainingGallerySection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [expanded, setExpanded] = useState(false);
+  const [columns, setColumns] = useState(4);
 
   const visibleItems = useMemo(() => {
     if (activeCategory === "all") return GALLERY_ITEMS;
     return GALLERY_ITEMS.filter((item) => item.categories.includes(activeCategory));
   }, [activeCategory]);
+
+  useEffect(() => {
+    const updateColumns = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setColumns(4);
+        return;
+      }
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        setColumns(3);
+        return;
+      }
+      if (window.matchMedia("(min-width: 640px)").matches) {
+        setColumns(2);
+        return;
+      }
+      setColumns(1);
+    };
+
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
+  }, []);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [activeCategory]);
+
+  const initialVisibleCount = columns * 2;
+  const shouldShowToggle = visibleItems.length > initialVisibleCount;
+  const itemsToRender = expanded ? visibleItems : visibleItems.slice(0, initialVisibleCount);
 
   return (
     <section
@@ -131,18 +183,18 @@ export default function TrainingGallerySection() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {visibleItems.map((item) => (
+          {itemsToRender.map((item) => (
             <div
               key={`${item.title}-${item.imageSrc}`}
-              className="group relative aspect-square overflow-hidden rounded-lg bg-white/5"
+              className="relative aspect-square overflow-hidden rounded-lg bg-white/5"
             >
               <img
                 alt={item.imageAlt}
                 src={item.imageSrc}
-                className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0"
+                className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 flex flex-col justify-end bg-black/60 p-6 opacity-0 transition-opacity group-hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-6">
                 <span className="text-[10px] font-black tracking-widest text-primary uppercase">
                   {item.label}
                 </span>
@@ -153,6 +205,18 @@ export default function TrainingGallerySection() {
             </div>
           ))}
         </div>
+
+        {shouldShowToggle ? (
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className="border border-white/20 bg-white/5 px-10 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-white/10"
+            >
+              {expanded ? "See less" : "See more"}
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

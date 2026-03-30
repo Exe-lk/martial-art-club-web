@@ -8,16 +8,15 @@ export default function ContactPage() {
   return (
     <main className="overflow-x-hidden bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100">
       {/* Hero */}
-      <section className="relative flex h-[60vh] min-h-[400px] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-10 bg-black/60" />
+      <section className="relative flex h-[60vh] min-h-[600px] items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBaP7BRnw8z3ulg3dtM5l16qvWNm_2NMpUBinCrJGjAQ2_sHjujpZH_aNdDCJ3Otluty9Z4dHDuBRH74UxfBNyB4W0WaL-KIMe6Np2DT3wm2MbeFjNiGLwKYh5ks3Zcpah5xPrJHj1NdBakZAKSDtQ3iNjigQoxxWg2Hxl5SzEetix4DlbL-2D64rRwg9HDTVfXwGtICzkSjQBp6kvA_d1KtoXYAytHaq8IoKWemRbTRmpYLGIFL1mcK6d5Ho5O2_l1lTYz8gd5J-Y')",
+            backgroundImage: "url('/contact-martial-art-academy.jpg')",
           }}
-          aria-label="Martial arts professional training in a dark gym"
+          aria-label="Martial arts professional in training stance"
         />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
 
         <div className="relative z-20 max-w-4xl px-4 text-center">
           <h1 className="mb-6 text-5xl font-black tracking-tighter text-white uppercase md:text-7xl">
@@ -39,7 +38,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact methods */}
-      <section className="bg-background-light px-6 py-20 md:px-20">
+      <section className="bg-[#12110F] px-6 py-20 md:px-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
@@ -99,8 +98,11 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Smooth transition */}
+      <div className="h-16 bg-gradient-to-b from-background-dark to-background-light" />
+
       {/* Form + Map */}
-      <section className="bg-background-light px-6 pb-24 md:px-20">
+      <section className="bg-background-light px-6 pb-24 md:px-20 pt-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid items-start gap-12 lg:grid-cols-2">
             <div className="rounded-xl bg-white p-10 shadow-xl">

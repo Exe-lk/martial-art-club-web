@@ -44,15 +44,14 @@ export default function BlogPage() {
   return (
     <main className="bg-[#0D0D0D] text-[#f3f4f6]">
       <section className="relative flex h-[614px] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-10 bg-zinc-950/80" />
-        <Image
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZLTYY-934urNt4KdT0pTb-LLi_htRUAxGW3mLM1YXjM71eJd_ZoVqbumBp2uNxw966QIwJjTOoD7T9zH3eHxrs9MOvonc3lRQWmW3N23sNwU11gZKU0ATbFXpJELurHPRvpHx_tC9nX5bMiKCILRgx3uiKO70FG3xWBcyBEyhHpLZTh9mwdXfvpUlnPHREQ8lK3oiUkBFK1fZFBWYmxeq0Is06FAox242G-aGhaYA_n8l0b8X5gqOm3WX--E1dFwhxZ896rb_fQU"
-          alt="Martial arts action"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/blog-martial-art.jpeg')",
+          }}
+          aria-label="Martial arts professional in training stance"
         />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
         <div className="relative z-20 mx-auto max-w-4xl px-6 text-center">
           <h1 className="mb-4 text-5xl font-black tracking-tighter text-white uppercase italic md:text-7xl">
             Martial Arts <span className="text-primary">Blog &amp; Insights</span>

@@ -4,8 +4,7 @@ const BENEFIT_CARDS = [
     title: "Get Rid of Stress",
     description:
       "Training helps release tension and improves mental clarity through high-intensity explosive movements.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuApK-3bk_0SggzFCzzBZbFYcaLkfX8mh5t5XY32DAoD2u6jQH9fUfnLct3MibsoWOdEix_iC0Pt6lqSiaar9V2MM8jLpoQQvC-t0qpbn6IBwv7aV_L7T6Ug9BGz0sof0dZ_rgFTVX2lBh-PRHsXlLCR_LBb_b8rhoSViJgCA8g6mgpFvG3pjnX-ceIJJu0gIA7HY6yhct962-lTg9Sxo9S47SZ6B0C4Gbq_6d7t7eNqFZ3c_AwJUZcZvsSIVqetAhnJ2ayf7sL0hPM",
+    image: "/get-rid-of-stress.PNG",
     alt: "Dramatic black and white portrait of a focused martial artist exhaling deeply in a dark industrial gym setting",
     stagger: false,
   },
@@ -14,8 +13,7 @@ const BENEFIT_CARDS = [
     title: "Rebuild Your Strength",
     description:
       "Develop physical power and endurance through consistent practice and functional combat conditioning.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCYwl5OemAzflfg7xtKsMXIo2rE-mrzrOPhBrqIhpBmQ4RX7awfC0i_pRo79umkNWz_pgsWMnAeWLB4vQUOrS4KCryAD1boNV5ro3DXz5m48OftR0urGIEUQOYYlJv3NfVy2Eb8bNun4D8jeXSKpGXJyFqxYulB_oeuhmWDkIg00GT0HMhAJHwl5hnkgyZg_8dKwhsmfbdSYB4IQyWAO5LrCzvuh1C5JMhEQHVWldWDttozn_p8rt7Y0p2D2YkPGZj6qnquDJfSZZM",
+    image: "/rebuild-your-strenth.PNG",
     alt: "Close-up of muscular arms hitting a heavy bag in a dimly lit gym with dust particles in the air",
     stagger: true,
   },
@@ -24,8 +22,7 @@ const BENEFIT_CARDS = [
     title: "Improve Focus",
     description:
       "Enhance concentration and sharpen your mind. Learn to stay calm in the eye of the storm.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA4UUaHfT8Q-sI7YxCtDpj7VgcUuiB30nnbs4nu0kNSMjw6lqekpz62KLOt0zbcoQ8n60no2j65WJOaJOxnphsNfvXhen_SaoyXvNRCgOFy2kHoH1KUMSRFWTUMzDL9X0SX5Ddn7ACPGh3sL5zu7k1fBcwblvEbeO0CQSpIfeVbiPHDe-AoASCFpDhdrojgdRUd_pnneJDmAp8gFbH1j6Crx3W4kLOq4zYb2kbxZAgjsSkYghieIgByhs4xZdkrfNAJBoh_B-usWLo",
+    image: "/improve-focus.PNG",
     alt: "Intense close-up of a fighter's eyes focusing on a target with cinematic blue and red lighting",
     stagger: false,
   },
@@ -34,8 +31,7 @@ const BENEFIT_CARDS = [
     title: "Build Discipline",
     description:
       "Learn control, patience, and structured growth through a rigorous curriculum of elite martial arts.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCP-EOfJ4-OUoXvrjP2ftrCfbmiFAWk673YjITwvGwk18oAu6UicyAnv5e86cQyWJPgYjMEyruHlI5woq90AuxNY3VAxY2mwYNT67lqh7Za5ovU1p4NL5DntD9wRrYMZL_1DiorfuL3tIVL4E8PvGx5jWCoCeq4WEDvmN1YI2mw-8Iyhpy-7Jd219jQbLBAmZ4c_olRZSvjmZLShcPNg4O1QlZTHhippBdnlvQ08Kt2iSRa0DY-yFhA6bWe2gr1LUBr3BO1kF2lq_Y",
+    image: "/build-decipline.PNG",
     alt: "Martial artist bowing in a traditional dojo with harsh sunlight streaming through high windows",
     stagger: false,
   },
@@ -44,8 +40,7 @@ const BENEFIT_CARDS = [
     title: "Boost Confidence",
     description:
       "Gain self-belief through tangible skill progression and the hardening of your physical vessel.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAA-yujspxEf_o73l2qSspp1hEs0Ucm1YmaQ56jSbY-io_jQuLchbpP3L-ZmfjuY-ToCHGGaVmBVVs9d3QfjzrZ3FH88fMperHz5mwOJ_ZLJ_aFo6A7v2j0G6BrQN2I1VmzpDCkR3rrXkcwbiG1xLBnmItRrygVZwIdvvlYfc2VlKrAcTGphEB91-T0LT858jRy976dK_0h4NLTiyv2jjcLvHoj9QmauzRKuQ7ztfPb21yEBqvZ7V_gWpumo8cDBj3x0DkioOmb1ZI",
+    image: "/Boost-Confidence.PNG",
     alt: "Shadowy silhouette of a martial artist standing confidently in a ring with stadium lights",
     stagger: true,
   },
@@ -54,8 +49,7 @@ const BENEFIT_CARDS = [
     title: "Stay Active & Healthy",
     description:
       "Maintain an active lifestyle and improve overall metabolic fitness with explosive cardiovascular work.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAsAiSICT16tYMf74ZJ8LKKWKiz0OpeNh22TSIZXBi9_hwXf5sxX0mjPXQ5rWUH3SbUDd_SiG2AeB5dwgERWu-10j_lx80xyl5n7YRU6H1om8O4B3u9N4dg0tXTeaDHWfqPSCUJz7WsuWj37AWlNL1MSy7-ZVdCOSLJ_tqsoazeiQvS_qqOQn-XdQnOUQh74b_D8hTvoKvVN04no-UE_rRnrmzHV_x6KK1mkZxMhYjIZ0Bx5PSP-KT2EDsgiroszyn0-XkYlc9hdiQ",
+    image: "/stay-active-and-healthy.PNG",
     alt: "Sweaty athlete resting with a jump rope around their neck in a high-contrast gym environment",
     stagger: false,
   },
@@ -86,7 +80,7 @@ export default function NotJustFightingClassSection() {
             >
               <img
                 alt={card.alt}
-                className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform grayscale group-hover:grayscale-0"
+                className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform"
                 src={card.image}
               />
               {/* Darkens entire card on hover so title + reveal read over the image */}

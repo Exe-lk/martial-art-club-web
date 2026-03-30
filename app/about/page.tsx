@@ -3,18 +3,18 @@ export default function AboutPage() {
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
       {/* Hero Section */}
       <section className="relative flex h-[70vh] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-10 bg-black/80" />
+        <div className="absolute inset-0 z-10 bg-black/60" />
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuABDQeZDuPsB4qFGZ9YFoubs6I7sXegBsdQ_jyq0Rl5C1W0VGj6wrzsunQ3jbfYk16Z2PpXzYS8VjLOC-wUauwhKIfSG9mk5qp9wCRohjsHcEGXT3ZQmM03tA95psv60HCfpde5-igKw0-H23Bpaz7AgrkJ2lvnD3fjy2Vh78Qi59c3_GiR1y35PhDmBGuWrgx4iHFjJobWipUEpmlypNuj8q2MrHLJhGTrznYbxWlV5yQgUkwm_B6jCTRWo4lIEnIpuQrWbmgvcJM')",
+              "url('/blog-martial-art-academy.jpeg')",
           }}
           aria-label="Martial arts professional in training stance"
         />
 
         <div className="container relative z-20 mx-auto max-w-4xl px-6 text-center">
-          <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-white uppercase italic md:text-7xl">
+          <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-white uppercase md:text-7xl">
             About Our <span className="text-primary">Academy</span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg font-normal leading-relaxed text-slate-300 md:text-xl">

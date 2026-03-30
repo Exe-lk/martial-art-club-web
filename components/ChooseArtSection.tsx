@@ -295,7 +295,7 @@ export default function ChooseArtSection() {
                 </div> */}
               </div>
             ) : (
-              <div className="relative flex min-h-[500px] items-center overflow-hidden p-8 md:p-12">
+              <div className="relative flex min-h-[500px] items-center overflow-hidden p-5 sm:p-8 md:p-12">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   aria-hidden="true"
@@ -313,24 +313,24 @@ export default function ChooseArtSection() {
                         setShowCta(false);
                         setVideoReady(false);
                       }}
-                      className="group flex items-center gap-6 border border-white/10 bg-black/70 p-7 transition-all duration-300 hover:border-white/20 hover:bg-black/55 active:scale-[0.99] md:p-8"
+                      className="group flex flex-col items-start gap-4 border border-white/10 bg-black/70 p-5 transition-all duration-300 hover:border-white/20 hover:bg-black/55 active:scale-[0.99] sm:p-6 md:flex-row md:items-center md:gap-6 md:p-8"
                     >
-                      <div className="flex h-20 w-20 items-center justify-center bg-white/5 md:h-24 md:w-24">
+                      <div className="flex h-16 w-16 items-center justify-center bg-white/5 md:h-24 md:w-24">
                         <img
                           src={art.logoSrc}
                           alt={`${art.title} logo`}
-                          className="h-14 w-14 object-contain opacity-90 transition-opacity group-hover:opacity-100 md:h-16 md:w-16"
+                          className="h-12 w-12 object-contain opacity-90 transition-opacity group-hover:opacity-100 md:h-16 md:w-16"
                         />
                       </div>
                       <div className="text-left">
                         <div className="text-[10px] font-bold tracking-widest text-slate-400 uppercase group-hover:text-slate-200 md:text-xs">
                           {art.tag}
                         </div>
-                        <div className="text-2xl font-black tracking-tight text-white uppercase md:text-3xl">
+                        <div className="text-xl font-black tracking-tight text-white uppercase sm:text-2xl md:text-3xl">
                           {art.title}
                         </div>
                       </div>
-                      <span className="material-symbols-outlined ml-auto text-3xl text-slate-400 group-hover:text-white">
+                      <span className="material-symbols-outlined self-end text-3xl text-slate-400 group-hover:text-white md:ml-auto md:self-auto">
                         arrow_forward
                       </span>
                     </button>
