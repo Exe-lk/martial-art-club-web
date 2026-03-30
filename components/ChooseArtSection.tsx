@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type ArtKey = "kung-fu" | "jeet-kune-do" | "wushu";
 
@@ -14,6 +14,8 @@ type ArtItem = {
   logoSrc: string;
   videoSrc: string;
   alt: string;
+  quote: string;
+  philosopher: string;
 };
 
 export default function ChooseArtSection() {
@@ -27,6 +29,8 @@ export default function ChooseArtSection() {
         logoSrc: "/logos/kun-fu.png",
         videoSrc: "/videos/Kung_Fu_training.mp4",
         alt: "Kung Fu training preview",
+        quote: "“Be like water, making its way through cracks.”",
+        philosopher: "Bruce Lee",
       },
       {
         key: "jeet-kune-do",
@@ -36,6 +40,8 @@ export default function ChooseArtSection() {
         logoSrc: "/logos/JeetKuneDo.svg",
         videoSrc: "/videos/jeet_kun_do.mp4",
         alt: "Jeet Kune Do training preview",
+        quote: "“Absorb what is useful, discard what is not.”",
+        philosopher: "Bruce Lee",
       },
       {
         key: "wushu",
@@ -45,6 +51,8 @@ export default function ChooseArtSection() {
         logoSrc: "/logos/wushu.png",
         videoSrc: "/videos/Wushu.mp4",
         alt: "Wushu training preview",
+        quote: "“Excellence is an art won by training and habituation.”",
+        philosopher: "Aristotle",
       },
     ],
     []
@@ -52,8 +60,32 @@ export default function ChooseArtSection() {
 
   const [selected, setSelected] = useState<ArtKey | null>(null);
   const [showCta, setShowCta] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [quoteDelayDone, setQuoteDelayDone] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const selectedArt = selected ? arts.find((a) => a.key === selected) ?? null : null;
+  const overlayVisible = !videoReady || !quoteDelayDone;
+
+  useEffect(() => {
+    if (!selectedArt) return;
+    setQuoteDelayDone(false);
+
+    const t = window.setTimeout(() => {
+      setQuoteDelayDone(true);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(t);
+    };
+  }, [selectedArt?.key]);
+
+  useEffect(() => {
+    if (!selectedArt) return;
+    if (!videoReady) return;
+    if (!quoteDelayDone) return;
+    void videoRef.current?.play();
+  }, [selectedArt?.key, videoReady, quoteDelayDone]);
 
   return (
     <section className="bg-background-dark text-slate-100">
@@ -132,20 +164,80 @@ export default function ChooseArtSection() {
         <section className="mx-auto w-full max-w-7xl px-6 min-h-[500px]">
           <div className="relative w-full overflow-hidden rounded-sm border border-white/10 bg-black/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             {selectedArt ? (
-              <div className="relative">
+              <div className="relative transition-opacity duration-500">
                 <div className="relative aspect-video w-full lg:aspect-[21/9]">
                   <video
                     key={selectedArt.key}
-                    className="h-full w-full object-cover"
+                    ref={videoRef}
+                    className="h-full w-full object-cover pointer-events-none select-none"
                     src={selectedArt.videoSrc}
                     playsInline
-                    controls
+                    muted
+                    controls={false}
+                    disablePictureInPicture
+                    onLoadStart={() => {
+                      setVideoReady(false);
+                      setShowCta(false);
+                      setQuoteDelayDone(false);
+                      videoRef.current?.pause();
+                    }}
+                    onCanPlay={() => setVideoReady(true)}
                     onEnded={() => setShowCta(true)}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/85" />
+
+                  <div
+                    className={
+                      overlayVisible
+                        ? "absolute inset-0 flex items-center justify-center bg-black/90 opacity-100 transition-opacity duration-500"
+                        : "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500"
+                    }
+                    aria-hidden={!overlayVisible}
+                  >
+                    <div className="mx-auto max-w-2xl px-6 text-center">
+                      <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-black/60 backdrop-blur-sm md:h-28 md:w-28">
+                        <img
+                          src={selectedArt.logoSrc}
+                          alt={`${selectedArt.title} logo`}
+                          className="h-14 w-14 object-contain opacity-95 md:h-16 md:w-16"
+                        />
+                      </div>
+                      <div className="text-xs font-black tracking-[0.3em] text-slate-200 uppercase">
+                        Loading {selectedArt.title}
+                      </div>
+                      <blockquote className="mt-5 text-xl font-black tracking-tight text-white md:text-2xl">
+                        {selectedArt.quote}
+                      </blockquote>
+                      <div className="mt-3 text-xs font-bold tracking-widest text-secondary uppercase">
+                        {selectedArt.philosopher}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* End of video CTA */}
+                  <div
+                    className={
+                      showCta
+                        ? "absolute inset-0 flex items-center justify-center bg-black/70 opacity-100 transition-opacity duration-500"
+                        : "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500"
+                    }
+                    aria-hidden={!showCta}
+                  >
+                    <div className="flex flex-col items-center gap-6 px-6 text-center">
+                      <h2 className="text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
+                        Secure your position now !
+                      </h2>
+                      <Link
+                        href={`/classes/${selectedArt.key}`}
+                        className="inline-flex items-center justify-center bg-primary px-10 py-5 text-sm font-black tracking-widest text-white uppercase shadow-2xl shadow-primary/30 transition-all hover:bg-red-700 active:scale-95"
+                      >
+                        Show me the way !!
+                      </Link>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-12">
+                {/* <div className="absolute inset-x-0 bottom-0 p-6 md:p-12">
                   <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                     <div className="max-w-2xl">
                       <h4 className="text-3xl font-black tracking-tight text-white uppercase md:text-4xl">
@@ -161,6 +253,7 @@ export default function ChooseArtSection() {
                           onClick={() => {
                             setSelected(null);
                             setShowCta(false);
+                            setVideoReady(false);
                           }}
                           className="border border-white/20 bg-black/50 px-5 py-3 text-xs font-black tracking-widest text-white uppercase backdrop-blur-sm transition-all hover:bg-black/65 active:scale-95"
                         >
@@ -199,7 +292,7 @@ export default function ChooseArtSection() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             ) : (
               <div className="relative flex min-h-[500px] items-center overflow-hidden p-8 md:p-12">
@@ -218,8 +311,9 @@ export default function ChooseArtSection() {
                       onClick={() => {
                         setSelected(art.key);
                         setShowCta(false);
+                        setVideoReady(false);
                       }}
-                      className="group flex items-center gap-6 border border-white/10 bg-black/70 p-7 transition-all hover:border-white/20 hover:bg-black/55 active:scale-[0.99] md:p-8"
+                      className="group flex items-center gap-6 border border-white/10 bg-black/70 p-7 transition-all duration-300 hover:border-white/20 hover:bg-black/55 active:scale-[0.99] md:p-8"
                     >
                       <div className="flex h-20 w-20 items-center justify-center bg-white/5 md:h-24 md:w-24">
                         <img
