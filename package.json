@@ -26,5 +26,9 @@
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Exe-lk/martial-art-club-web.git",
+  "author": "Thilina Dilsha <avgthilinadilshan@gmail.com>",
+  "license": "MIT"
 }
