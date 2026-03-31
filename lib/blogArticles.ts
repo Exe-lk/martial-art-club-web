@@ -100,8 +100,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Oct 24, 2024",
     readTimeLabel: "5-Min Read",
     hero: {
-      url: "/globe.svg",
-      alt: "Article cover illustration.",
+      url: "/blog/build-decipline.PNG",
+      alt: "Martial artist training with discipline.",
     },
     introLead:
       "In an era of instant gratification and digital noise, the ancient principles of martial arts offer more than just physical combat techniques. They provide a blueprint for mental fortitude. Discipline is not a punishment; it is the ultimate form of self-respect. It is the quiet voice that demands excellence when no one is watching.",
@@ -205,8 +205,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Sep 12, 2024",
     readTimeLabel: "7-Min Read",
     hero: {
-      url: "/window.svg",
-      alt: "Article cover illustration.",
+      url: "/blog/Boost-Confidence.PNG",
+      alt: "Training that builds confidence.",
     },
     introLead:
       "Explosive striking is not about isolated arm speed—it is a full-body negotiation between mass, acceleration, and timing. When the chain is clean, force arrives in a compact window that is hard to read and harder to brace.",
@@ -246,8 +246,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Aug 3, 2024",
     readTimeLabel: "6-Min Read",
     hero: {
-      url: "/file.svg",
-      alt: "Article cover illustration.",
+      url: "/blog/blog-martial-art-academy.jpeg",
+      alt: "Martial arts academy training session.",
     },
     introLead:
       "Plateaus are not absence of ability—they are adaptation catching up with demand. The mind interprets flat lines as failure, but the body often consolidates in silence before the next jump.",

@@ -1,42 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getFeaturedArticlesForIndex } from "@/lib/blogArticles";
-
-const topics = [
-  "Karate",
-  "Taekwondo",
-  "Self Defense",
-  "Fitness",
-  "Competitions",
-  "Beginner Guides",
-];
-
-const galleryItems = [
-  {
-    title: "Sparring",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB7lPBmQtHD589s-ghyY0TKZuPn-R5zmv67ZzEyolLP7cVLoHweEQVke1UJVcjd06QhJYFxsq3JXi59lT87dLhsh9kfewUXS4wCNayqniC3Zc2V-wwOUXrvPE2WgJgucYyzxwOkwgsLO-Q9uh6U3sotSTjQ2v4vN7l0e_3MCBJOJ2Uk1Ssa6iZVC6obOXVALwN7ko8EcFD4tMpWtKdR1dHAwja76YUatgXKm2vxt9LGHgfDZ4vl8AYCaC7kTNQDy_RaFFiv_WcqYNc",
-    offset: false,
-  },
-  {
-    title: "Ceremony",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD4_NIWQsUuNvEtp3ek65ap6HZtYCyt-253258pV-OxypLLx0H4wuRaRBtxk6sS8GJB3J_fHtatO6GEgWeD32SXXjFLdx5N0fwZ-dh5Jp4RVKVyyvSBAJLiMEoD4rxGa9lBytiU27k5bDgX3i2ZROx8a5YQD1DVzZL1uja5YbulKxk5vm_UnJabGH1pI5RrEqUsp6TfPApEMU_89ClzLAIVE49yMGWPukt5lq8H-4SFk8mcSFouif3sWq_TLSCv5gmeTjV1Mt5R92M",
-    offset: true,
-  },
-  {
-    title: "Training",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBuUkfamgNuXJqwxNlca6su12lX0RGv-_Xta535rVqDoOtYleKt4dIrF1JSO3mdQK9wWRzePI9sVyMv6Kd0wnD-RRlshhyY_CWX11s-cohtye-3yojSyrl-3hehuzGw024qfe9zBADBOvZPcnXumNYSdJ0Uxo5VLQ5oLnZii-QAqksg9l45lKmGD10cabwOkePr7dkqY5WAY6bMt30V4q0kwEC3cihgHmdvwNf_xkfyLabhyIpSmiAunKi5rKDLL84qJv08l5tqn3E",
-    offset: false,
-  },
-  {
-    title: "Meditation",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBidhjCq_zU7S8EM6CfUle3ML34bY6IMDw3YMsI1uDviedYetH1teBh6x8CiDy3XUsKd30xAIcyeYJc0M2mjOmf6Rrl8XY0562KSqIJq08VzRQLcufLfPoJN9QMVeiLjeLKD4SmpaJJucJmzOQdelsW1fH-vant3wcDM-jxZysvZzJ-X2HlxZ9-A0kVKsZ1ziX_txYDw7GdIWpUddmZU_Z26dG6VAkBKW0B63BLqxJ9VevuaBJ8ZZrYdLLV7AmT2sh6uuWrrycDcLY",
-    offset: true,
-  },
-];
+import TrainingGallerySection from "@/components/TrainingGallerySection";
 
 export default function BlogPage() {
   const featuredArticles = getFeaturedArticlesForIndex();
@@ -47,9 +12,9 @@ export default function BlogPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/globe.svg')",
+            backgroundImage: "url('/blog-martial-art-academy.jpeg')",
           }}
-          aria-label="Martial arts professional in training stance"
+          aria-label="Martial arts academy training"
         />
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
         <div className="relative z-20 mx-auto max-w-4xl px-6 text-center">
@@ -126,53 +91,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-20">
-        <div className="mx-auto max-w-7xl text-center">
-          <h2 className="mb-12 text-3xl font-black tracking-tighter text-[#0D0D0D] uppercase italic">
-            Explore Topics
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {topics.map((topic) => (
-              <a
-                key={topic}
-                href="#"
-                className="bg-secondary px-8 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-primary"
-              >
-                {topic}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-100 px-6 py-24 md:px-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center md:text-left">
-            <span className="mb-2 block text-xs font-black tracking-widest text-primary uppercase">
-              Visual Discipline
-            </span>
-            <h2 className="text-4xl font-black tracking-tighter text-[#0D0D0D] uppercase italic md:text-5xl">
-              Training &amp; Events
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {galleryItems.map((item) => (
-              <div
-                key={item.title}
-                className={`relative aspect-square overflow-hidden bg-[#0D0D0D] ${item.offset ? "md:mt-8" : ""}`}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-110"
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrainingGallerySection />
 
       <section className="bg-primary px-6 py-24">
         <div className="mx-auto max-w-4xl text-center">
