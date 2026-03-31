@@ -57,7 +57,7 @@ export default function HeroSection() {
           <img
             src="/martial-art-sri-lanka (2).png"
             alt="Martial arts in Sri Lanka"
-            className="w-full max-w-sm rounded-xl object-cover  sm:max-w-xl 0 relative z-30 top-20"
+            className="zoom-out zoom-out--lg zoom-hover w-full max-w-sm rounded-xl object-cover sm:max-w-xl relative z-30 top-20"
           />
         </div>
       </div>
