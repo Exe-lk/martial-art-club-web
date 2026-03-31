@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BranchesSection from "@/components/BranchesSection";
 
 export const metadata: Metadata = {
   title: "Contact Us | Apex Martial Arts Academy",
@@ -208,6 +209,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <BranchesSection />
 
       {/* FAQ */}
       <section className="border-t border-slate-200 bg-background-light px-6 py-24 md:px-20">

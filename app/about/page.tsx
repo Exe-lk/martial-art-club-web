@@ -1,3 +1,5 @@
+import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
+
 export default function AboutPage() {
   return (
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
@@ -33,84 +35,7 @@ export default function AboutPage() {
       </section>
 
       {/* Meet Our Instructors */}
-      <section className="relative overflow-hidden bg-white py-24 dark:bg-[#0d0d0d]">
-        <div className="container mx-auto px-6">
-          <div className="mb-16 text-center">
-            <span className="mb-2 block text-sm font-black tracking-widest text-primary uppercase">
-              The Vanguard
-            </span>
-            <h2 className="text-4xl font-black text-slate-900 uppercase italic dark:text-white md:text-5xl">
-              Meet Our Instructors
-            </h2>
-          </div>
-
-          <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12">
-            {/* Instructor 1 */}
-            <div className="group w-full border border-slate-200 bg-slate-50 transition-all hover:-translate-y-2 dark:border-slate-800 dark:bg-slate-900 lg:w-1/4">
-              <div className="aspect-[4/5] overflow-hidden grayscale transition-all duration-500 group-hover:grayscale-0">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlL7Zvaieo36Y_Fcf_36VJ_fZZCk5QQQ_WW7VxDtd3e4VC_OSpi_aczNhLy7zkkl6Wkwb1nFMr9UZI42L0W4zz2KJpZOp3Sx5yR2ywv28eN6krbcgAgLlCai_hexK2xl_yZmUmItMJ7F_cp87Wf04D0Kd-Z3czG_DBbpNDo8OIylXTCuF_s0Qgi3D3j1OWL_w7VLmrLEBWegoVGORpaj4rTfIIbSjLIA-eMXXvZc7ParxZNlwKAtJl_aTgQ8bRjMNUmOjnarNKWck"
-                  alt="Martial arts instructor Sarah Jenkins posing"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-black text-slate-900 uppercase dark:text-white">
-                  Master Sarah Jenkins
-                </h3>
-                <p className="mb-2 text-xs font-bold tracking-wide text-[#1e3a8a] uppercase">
-                  4th Dan Black Belt
-                </p>
-              </div>
-            </div>
-
-            {/* Chief Instructor */}
-            <div className="group relative z-10 w-full scale-105 border-4 border-primary bg-slate-900 shadow-2xl shadow-primary/20 lg:w-1/3 lg:scale-110">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary px-6 py-1 text-sm font-black tracking-tighter text-white uppercase italic">
-                Chief Instructor
-              </div>
-              <div className="aspect-[4/5] overflow-hidden transition-all duration-500 group-hover:brightness-110">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC491QLeh_kKBQkRjd2iXfGLnRmL_7kPShiulCT26LE65QL7yuOPLaabKIH7yPEBiT3Mrc7B5jNV4w5E5zGMr41j9xdXj05dXXEmWhbSBdeUU-2FMG7XGXeYL5RnMDrsi_RusIVjYjkv6KAb2yKMiULObDP-3KGktNN2mYV4HmvFyJugS3bTFhc2qi9Fx3Pd6WR6ksQBblSRRkUsOF7ojmAAnSVMfQDv0bFJv884iGzpc1bLvP0PwDNrsO48A05cfuqhF-JjUnlvE"
-                  alt="Grandmaster Elias Thorne"
-                />
-              </div>
-              <div className="bg-[#0d0d0d] p-8">
-                <h3 className="text-2xl font-black text-white uppercase italic">
-                  Grandmaster Elias Thorne
-                </h3>
-                <p className="mb-4 text-sm font-bold tracking-widest text-primary uppercase">
-                  Academy Founder
-                </p>
-                <p className="text-sm leading-relaxed text-slate-400">
-                  Pioneering modern martial arts education with over 30 years of
-                  discipline and mastery.
-                </p>
-              </div>
-            </div>
-
-            {/* Instructor 2 */}
-            <div className="group w-full border border-slate-200 bg-slate-50 transition-all hover:-translate-y-2 dark:border-slate-800 dark:bg-slate-900 lg:w-1/4">
-              <div className="aspect-[4/5] overflow-hidden grayscale transition-all duration-500 group-hover:grayscale-0">
-                <img
-                  className="h-full w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBrlr01NW4-fIeyay0n9PHb8j6thKs969-oLjp_kuLiG5cDJADryxJof8ifCcnvNdGLFqUpZqHqH1-uWvIfsWOnmMy4zJPdDhFvpNlR0bd4ZsaR-32oORF_Lzbtq2WS1A6h6ao9uCTyHh0r_BTz-3Af--dWCJ3ZRuDhk33mI_EB__6oHhumNeVExFMyUatEhnxRkVQkuK4HUqxLsFLJpevc9y3HJ7_k5LYOaC-klBuk-m9RmI47hOc28jlo8XL6dIZuio1qYRRXQE"
-                  alt="Sensei David Vogel"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-black text-slate-900 uppercase dark:text-white">
-                  Sensei David Vogel
-                </h3>
-                <p className="mb-2 text-xs font-bold tracking-wide text-[#1e3a8a] uppercase">
-                  Karate Specialist
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MeetOurInstructorsSection />
 
       {/* Accessories & Equipment */}
       <section className="bg-[#f3f4f6] py-24 dark:bg-slate-950">
@@ -203,8 +128,8 @@ export default function AboutPage() {
             <div className="absolute -top-4 -left-4 h-24 w-24 border-t-4 border-l-4 border-primary" />
             <img
               className="relative z-10 h-[500px] w-full rounded object-cover shadow-2xl"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2PUkTf-rHLA_laNzTCzSIaK7_jPKFD3fWBxkS5fPBPxph7thLAHuJqN8s_qyKFYpva9Hippc-nh0DEoWWUKwIDxXHwoAALar-62BawLkAln7XWYT8AIT_DrAKeLrC99hqs1inp-AXeZjub6_vD37zQ5WSlGOWDUEb7LLRF_lJ9eQVJfUGSlcE9c8Kf7mvMosJdvdlWd-xaSCs-NrLyWWnblQ1hagmPl8LkrWeWB6xY0Ieu1R7GPdy5TOKbk2hq-9lqSshRFBblcI"
-              alt="Vintage black and white photo of early dojo training"
+              src="/gallery/martial-art-coaches.jpg"
+              alt="Martial arts coaches training with students"
             />
             <div className="absolute -bottom-4 -right-4 h-24 w-24 border-b-4 border-r-4 border-[#1e3a8a]" />
           </div>
@@ -390,20 +315,20 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAo8XyaJVPi36gl669yjaOdQzjlvE8zKG44ogHVHD-GYmgI_whLHwKZDn6XFbA7NmCf4gt6xjyHn5pWf416JGm3pB7WEGGU_c5AqpGBne0WRAg5y909IHE52auymboQ_D6oZnlIl5a9BxEYrerPcMVr57DZCQldjoiw1eWX8mB3Y2wBYCYwf93QeSSye9YLQET0dbjGEXJMMUS-nHzL8WaIXMcqULXQIBTpNSa4Su59hsTnLpQtMMtrDicurKBhqEdZktxJzDyQV_c",
-                alt: "Students training together in dojo",
+                img: "/gallery/training/taining-time.jpg",
+                alt: "Training time at the dojo",
               },
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB-pFk0Dvslm5JjrQnGDKzcHhT88HnJjdXF9gXZSIaLepX079LyQJAyITRPDkx4e8Nd4EXemEfx4SI7jkCYgndCj8MTFetK4mEspw4mPzubb7vRQYchkva6_UCOrVZgw4cKG79PCyFdmFPveQ82MciWXBS6jKsfm2mdS3HsQ1Xnau_onZEaxMTSUxXSAG0P_G20K2LweYASS5wy3qRFozC-7TWcvP6rp4VcV5ybYmQZjOCqRdrQGaKCw2iAeUkY7Dd3me7rN9WTlhE",
-                alt: "Intense sparring session",
+                img: "/gallery/training/taining-time2.jpg",
+                alt: "Training time sparring session",
               },
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDREpfBoFrVvcVoFrkX-TOBDMavNsREPnc3b4BEzk_xYJ405zWCkrBA2yfrhMDmiTn_nWWSSq1iaBEp88CnXWtc0HArqseK-ZvNwEBWNtqoR7VwCXFPTVgMfc5VVznZZ2qCg-J1Y7BXi9ys1NNdxUGLJHk1e8HrUFjb6jPGIPFZc5ql8ppAeSnF3_UPLJjoYphS-CBRsVbGFvqvEbkhkTk54ALlQaK-BWcIdAI2jLHp075XkVOdJtwrfC3mKVZ7nE8_8nSlf9629ks",
-                alt: "Belt promotion ceremony photo",
+                img: "/gallery/training/taining-time3.jpg",
+                alt: "Training time drills and techniques",
               },
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzuO85X3Y6vcUZYs7dgnWQruwpEEVwIfX0YnaLXEGTmyu1m9wl8M-7qbMkE7lVLTOYEggyAxFaxtvCoz9eopyR88GBwqpO11Mk6UR9H-WvPinqk9oooWOKNf5ANzAoT7o_J08NP5JRGf9g8JKZ5IPhw0PqEFa49n3SCaoHfexKEYBaw3zijoTH6rVMgJ5A7eJDjVcasARWfVCKSWztMqq49YDt2AOw51kUrdeHLhM7_Cl79Uzk5ns4PSIx8w7UKJKzlIHGSlZD0GI",
-                alt: "Children martial arts class training",
+                img: "/gallery/training/taining-time4.jpg",
+                alt: "Training time group practice",
               },
             ].map((g) => (
               <div

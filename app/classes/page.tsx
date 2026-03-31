@@ -11,8 +11,7 @@ const styleCards = [
     focus: "Focus: Precision & Balance",
     bestFor: "Best For: Technical Growth",
     icon: "target",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBGDHP9b4w9952eVUZdOZoqlMeulqRM8KsJOqxbwbBifFDhexPj9xUhH0vD6HNNAG0KhMXWQyZU7ZXENb9mwo_K5T_aGTk0Yo39ci1_Bz5mxuG9WGsVux-fgy9KbgXZxU2Ip8r8-yEf9M1EUR5ffDVVwrok_1Yk4KIVBk_hWT9TAMaplsd32E89QZ5prWySdwfo9_l3TCCsn0L_UyuqzKzi4oTU5dl8L7NwSBMT_h_wMLPwQQ6pOMexMP7VNpGvpoWx1xewGgNAChI",
+    image: "/kun-fu.PNG",
     alt: "Traditional Kung Fu practitioner performing a precise movement in a bright minimal studio",
   },
   {
@@ -23,8 +22,7 @@ const styleCards = [
     focus: "Focus: Speed & Reflexes",
     bestFor: "Best For: Self-Defense",
     icon: "bolt",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAdbJ4gjP4lvvYAm3ZxiwjytAJgxB488rrSCZtmjEUROL5oaC04Xi7A8bi6aJi2fdeG4DUu1D9705sLreRDxk_JjbvzQ5jteWLMq1JjhF527tgNsJevKfU7lxkOGT0A56sxW26EHZwunIGAQWPA25jEtv0ZSENAQg3ywcmaBheoxLs-naAk35e_IuFQ8xo0jTEqa-6_wRlRIeqGrEUZazU-14uDf339TDv7nxsjGlJlcj2QrvD15YAB-w1UxBWFjJKKHoBsw2HUusE",
+    image: "/JKD.PNG",
     alt: "Close up of mixed martial arts training with heavy bags and dynamic lighting",
   },
   {
@@ -35,8 +33,7 @@ const styleCards = [
     focus: "Focus: Athleticism & Power",
     bestFor: "Best For: Total Fitness",
     icon: "fitness_center",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBCpPCzk6lP64D-ZKyAQ_T0R0tPvjWbqGoBS9Pd6zGu3LZAOiP-3kdPkb1Qx0F-8twJk-vSyBLiXDH8_6QokzzzNq8Z-7bnDPtGOLKjl1amrBqUOaDNm6XNQEn8X0TfkL__-Mwrb111RH-9QBdoXlWTgd9hkAswT1sAJ0Keco7cJYmy6hoM2OoHWVmpmK06Lo-aLLxNvMC2HAF0ELhmN7V69YqhK7GqyekYK5HcdN1DHCMmFJnX_cgHZhRKSyfy8S_OO45bwb4zpz8",
+    image: "/wusu.PNG",
     alt: "Acrobatic Wushu performer mid-air against a high-contrast dark background",
   },
 ];
@@ -162,7 +159,7 @@ export default function ClassesPage() {
                 >
                   <div className="mb-6 aspect-video overflow-hidden bg-neutral-100">
                     <img
-                      className="h-full w-full scale-105 object-cover grayscale transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0"
+                      className="h-full w-full object-cover"
                       src={card.image}
                       alt={card.alt}
                     />

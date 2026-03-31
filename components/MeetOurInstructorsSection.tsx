@@ -68,7 +68,7 @@ export default function MeetOurInstructorsSection() {
           <span className="text-primary font-black uppercase tracking-widest text-sm block mb-2">
             The Vanguard
           </span>
-          <h2 className="text-3xl md:text-4xl font-black uppercase italic">Meet Our Instructors</h2>
+          <h2 className="text-3xl md:text-4xl font-black uppercase ">Meet Our Instructors</h2>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
