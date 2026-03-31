@@ -69,8 +69,6 @@ export default function ChooseArtSection() {
 
   useEffect(() => {
     if (!selectedArt) return;
-    setQuoteDelayDone(false);
-
     const t = window.setTimeout(() => {
       setQuoteDelayDone(true);
     }, 3000);
@@ -312,6 +310,7 @@ export default function ChooseArtSection() {
                         setSelected(art.key);
                         setShowCta(false);
                         setVideoReady(false);
+                        setQuoteDelayDone(false);
                       }}
                       className="group flex flex-col items-start gap-4 border border-white/10 bg-black/70 p-5 transition-all duration-300 hover:border-white/20 hover:bg-black/55 active:scale-[0.99] sm:p-6 md:flex-row md:items-center md:gap-6 md:p-8"
                     >

@@ -138,10 +138,6 @@ export default function TrainingGallerySection() {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
-  useEffect(() => {
-    setExpanded(false);
-  }, [activeCategory]);
-
   const initialVisibleCount = columns * 2;
   const shouldShowToggle = visibleItems.length > initialVisibleCount;
   const itemsToRender = expanded ? visibleItems : visibleItems.slice(0, initialVisibleCount);
@@ -168,7 +164,10 @@ export default function TrainingGallerySection() {
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  setExpanded(false);
+                }}
                 className={[
                   "rounded-full px-8 py-2 text-xs font-black tracking-widest uppercase transition-all",
                   isActive

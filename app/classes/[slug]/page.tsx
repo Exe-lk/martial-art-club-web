@@ -3,6 +3,15 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { classesData, getClassBySlug, getOtherClasses } from "@/lib/classesData";
 
+function isPromiseLike<T = unknown>(value: unknown): value is PromiseLike<T> {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "then" in value &&
+    typeof (value as { then?: unknown }).then === "function"
+  );
+}
+
 export function generateStaticParams() {
   return classesData.map((c) => ({ slug: c.slug }));
 }
@@ -15,7 +24,7 @@ export function generateMetadata({
   // Next may pass params as a promise in some builds; support both.
   const maybePromise = params as unknown as { slug?: string } | Promise<{ slug: string }>;
 
-  if (typeof (maybePromise as any)?.then === "function") {
+  if (isPromiseLike<{ slug: string }>(maybePromise)) {
     return (maybePromise as Promise<{ slug: string }>).then(({ slug }) => {
       const cls = getClassBySlug(slug);
       if (!cls) return { title: "Class Not Found" };

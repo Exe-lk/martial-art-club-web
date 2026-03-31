@@ -14,36 +14,36 @@ export default function NavigationBar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-        <a
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/"
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/about"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/classes"
           >
             Classes
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/contact"
           >
-            Conatct us
-          </a>
-          <a
+            Contact us
+          </Link>
+          <Link
             className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
             href="/blog"
           >
             Blog
-          </a>
+          </Link>
           
           <button className="rounded bg-primary px-6 py-2 text-sm font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
             Join the Club
