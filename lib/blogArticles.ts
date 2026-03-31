@@ -100,8 +100,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Oct 24, 2024",
     readTimeLabel: "5-Min Read",
     hero: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUyfN87qborHSttPrMBKmfwLI2KTYGrZpF4ASUQZD1_4QADxgs5U1M53Myd633PxeX0kcFHGUhcrV53xLBWO18aVfOpJa0nZgFSvsPE3OuGbh-gqZx_D7QA5PTw6Z-6tQFG9-0YX6IO-E9IbukfAP_k2BX3G98hxynlH3AmospRPPXNt4EY1eVLbZGuItV59DNZMeEXCSe-UhHLYVjkc7uiGTGXwkO8sLuiYUQ7e89KZmfp92XvES1rISb9YHTe0p76tvvP1kyYkA",
-      alt: "Cinematic wide shot of a martial artist in a minimalist concrete dojo, dramatic low-key lighting, deep shadows, and smoke texture.",
+      url: "/globe.svg",
+      alt: "Article cover illustration.",
     },
     introLead:
       "In an era of instant gratification and digital noise, the ancient principles of martial arts offer more than just physical combat techniques. They provide a blueprint for mental fortitude. Discipline is not a punishment; it is the ultimate form of self-respect. It is the quiet voice that demands excellence when no one is watching.",
@@ -205,8 +205,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Sep 12, 2024",
     readTimeLabel: "7-Min Read",
     hero: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDls-frs4aYnPvFH56bBIYlNlv-tDRhQpuXgCQambwJeMX5K9Yd0w7sX7ZwGaYNrKQYHlasmXIDEuf7c777_k7AJCS2nbafvixn5mjesvcjvzz5OinhDLbgZ16G8WkXsFo5zrCxrAMi-z0ZhrpbdxbTehSbrKP-vykRxDMpoY3gmGEwN26J_Rc4bNLCdVPqpr60qHzStD3wojASrWVe8VpSJJ_mEzVTLocObKI8SXkyy9Ac_9kyObhGOn6_jDpdfQ2NjHJQBVphJ6h0",
-      alt: "Atmospheric shot of a martial arts dojo at night with moonlight streaming through windows.",
+      url: "/window.svg",
+      alt: "Article cover illustration.",
     },
     introLead:
       "Explosive striking is not about isolated arm speed—it is a full-body negotiation between mass, acceleration, and timing. When the chain is clean, force arrives in a compact window that is hard to read and harder to brace.",
@@ -246,8 +246,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Aug 3, 2024",
     readTimeLabel: "6-Min Read",
     hero: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAEfBCJF9iKXvlA7DmZOycHL1by3hkmK2R2ZhrAkCq_Hq1nWuFqS6n0JE6q7f2UtWgci4rJMh14Y1hSRz91tDGOVCReDL1Pxw8FUk9Ig8sg__lkJVzozPdt2DFU0zcYMTlM5zk5Zt6p6KkQR3vVo-f5oz9wnaUoExzsWcE1scQpo3Zd_8WOuFZapLUL4z7umAQEtOpKDuccvEnvP9_nQ2IN0GMgGhd9yH95l8qt8UfRCI2RWelsK7hEaeDcE1Az5XBXcF10UIBOuqs",
-      alt: "A focused fighter preparing wraps; contemplative mood before training.",
+      url: "/file.svg",
+      alt: "Article cover illustration.",
     },
     introLead:
       "Plateaus are not absence of ability—they are adaptation catching up with demand. The mind interprets flat lines as failure, but the body often consolidates in silence before the next jump.",
@@ -290,8 +290,8 @@ export const blogArticles: BlogArticle[] = [
     publishedDate: "Jul 19, 2024",
     readTimeLabel: "5-Min Read",
     hero: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUYvde0CrQ55CXga6GaugHjD9ZDnNQ6_AAyfGkqTBwIt-5MCDtNyBrQ1Uhj2Qq0H3HZDAqzSiKS0t_UKeztIVfT0EgKZ4mgaqkq8djg6oat0o4q3it0XgBmGQJr0Y8WKq_b3uBtsQVLU3j_KxDGE0hFHf-dwJwRIdVF9FLzZesfcySiY2HhchfwhGhaAg4VFNNUJQ6aXjR4U_xChV8bWfOCjKASK5GyUSN8irnrOTrzmlaexmSApGbdHydNP6nw_3Pc2pka9i6xx8",
-      alt: "A martial artist performing a high kick outdoors during sunrise.",
+      url: "/next.svg",
+      alt: "Article cover illustration.",
     },
     introLead:
       "Agility is not circus tricks—it is coordinated redirection of force. The same split steps and level changes that save you in sparring make stairs, crowds, and sudden pivots in daily life feel effortless.",

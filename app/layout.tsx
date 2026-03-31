@@ -21,7 +21,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <head>
         {/* Material Symbols (used as icon font in pages) */}
         <link
@@ -29,7 +29,10 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+      <body
+        className={`${inter.className} min-h-full flex flex-col`}
+        suppressHydrationWarning
+      >
         <NavigationBar />
         <div className="flex-1 pt-10">{children}</div>
         <Footer />

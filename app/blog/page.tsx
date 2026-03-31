@@ -47,7 +47,7 @@ export default function BlogPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/blog-martial-art.jpeg')",
+            backgroundImage: "url('/globe.svg')",
           }}
           aria-label="Martial arts professional in training stance"
         />
