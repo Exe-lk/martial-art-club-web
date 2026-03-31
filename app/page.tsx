@@ -8,20 +8,39 @@ import FacilitiesSection from "@/components/FacilitiesSection";
 import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
 import AchievementsCounterSection from "@/components/AchievementsCounterSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <main className="flex-1 overflow-x-hidden">
+    <main className="flex-1 overflow-x-hidden bg-[#000000]">
       <HeroSection />
-      <ChooseArtSection />
-      <NotJustFightingClassSection />
-      <ClassesSection />
-      <FacilitiesSection />
-      <MeetOurInstructorsSection />
-      <AchievementsCounterSection />
-      <TestimonialsSection />
-      <TrainingGallerySection />
-      <CtaSection />
+      <ScrollReveal>
+        <ChooseArtSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <NotJustFightingClassSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ClassesSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FacilitiesSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <MeetOurInstructorsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <AchievementsCounterSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TestimonialsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TrainingGallerySection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CtaSection />
+      </ScrollReveal>
     </main>
   );
 }

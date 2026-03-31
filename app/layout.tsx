@@ -30,11 +30,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} min-h-full flex flex-col`}
+        className={`${inter.className} min-h-full flex flex-col bg-[#000000]`}
         suppressHydrationWarning
       >
         <NavigationBar />
-        <div className="flex-1 pt-10">{children}</div>
+        <div className="flex-1 pt-20">{children}</div>
         <Footer />
       </body>
     </html>

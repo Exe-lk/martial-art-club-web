@@ -1,4 +1,5 @@
 import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function AboutPage() {
   return (
@@ -35,10 +36,13 @@ export default function AboutPage() {
       </section>
 
       {/* Meet Our Instructors */}
-      <MeetOurInstructorsSection />
+      <ScrollReveal>
+        <MeetOurInstructorsSection />
+      </ScrollReveal>
 
       {/* Accessories & Equipment */}
-      <section className="bg-[#f3f4f6] py-24 dark:bg-slate-950">
+      <ScrollReveal>
+        <section className="bg-[#f3f4f6] py-24 dark:bg-slate-950">
         <div className="container mx-auto px-6">
           <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -120,9 +124,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Why Us */}
-      <section className="bg-[#f3f4f6] py-24 dark:bg-slate-900">
+      <ScrollReveal>
+        <section className="bg-[#f3f4f6] py-24 dark:bg-slate-900">
         <div className="container mx-auto grid items-center gap-16 px-6 lg:grid-cols-2">
           <div className="relative">
             <div className="absolute -top-4 -left-4 h-24 w-24 border-t-4 border-l-4 border-primary" />
@@ -195,9 +201,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Achievements */}
-      <section className="border-y border-slate-800 bg-[#0d0d0d] py-20">
+      <ScrollReveal>
+        <section className="border-y border-slate-800 bg-[#0d0d0d] py-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 gap-12 text-center lg:grid-cols-4">
             {[
@@ -221,9 +229,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Our Complete Staff */}
-      <section className="bg-white py-24 dark:bg-[#0d0d0d]">
+      <ScrollReveal>
+        <section className="bg-white py-24 dark:bg-[#0d0d0d]">
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
             <span className="mb-2 block text-sm font-black tracking-widest text-primary uppercase">
@@ -290,9 +300,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Gallery */}
-      <section className="bg-[#f3f4f6] py-24 dark:bg-slate-900">
+      <ScrollReveal>
+        <section className="bg-[#f3f4f6] py-24 dark:bg-slate-900">
         <div className="container mx-auto px-6">
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -350,9 +362,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* CTA */}
-      <section className="bg-primary py-20">
+      <ScrollReveal>
+        <section className="bg-primary py-20">
         <div className="container mx-auto max-w-4xl px-6 text-center">
           <h2 className="mb-8 text-4xl font-black text-white uppercase italic md:text-5xl">
             Ready to Start Your Martial Arts Journey?
@@ -367,6 +381,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </main>
   );
 }

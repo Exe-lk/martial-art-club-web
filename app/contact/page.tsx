@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BranchesSection from "@/components/BranchesSection";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Contact Us | Apex Martial Arts Academy",
@@ -42,14 +43,15 @@ export default function ContactPage() {
       <div className="h-16 bg-gradient-to-b from-background-dark to-background-light" />
 
       {/* Form + Contact methods */}
-      <section className="bg-background-light px-6 pb-24 md:px-20 pt-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
-            <div className="h-full rounded-xl bg-white p-10 shadow-xl">
-              <h2 className="mb-8 text-3xl font-black tracking-tighter text-slate-900 uppercase">
-                Send a Message
-              </h2>
-              <form className="space-y-6">
+      <ScrollReveal>
+        <section className="bg-background-light px-6 pb-24 md:px-20 pt-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
+              <div className="h-full rounded-xl bg-white p-10 shadow-xl">
+                <h2 className="mb-8 text-3xl font-black tracking-tighter text-slate-900 uppercase">
+                  Send a Message
+                </h2>
+                <form className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-xs font-bold tracking-widest text-slate-500 uppercase">
@@ -206,81 +208,88 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
-      <BranchesSection />
+      <ScrollReveal>
+        <BranchesSection />
+      </ScrollReveal>
 
       {/* FAQ */}
-      <section className="border-t border-slate-200 bg-background-light px-6 py-24 md:px-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-black tracking-tighter text-[#0d0d0d] uppercase md:text-5xl">
-              Frequently Asked Questions
-            </h2>
-            <p className="mx-auto max-w-2xl text-slate-600">
-              Everything you need to know about starting your journey at Apex
-              Martial Arts Academy.
-            </p>
-          </div>
+      <ScrollReveal>
+        <section className="border-t border-slate-200 bg-background-light px-6 py-24 md:px-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 text-center">
+              <h2 className="mb-4 text-4xl font-black tracking-tighter text-[#0d0d0d] uppercase md:text-5xl">
+                Frequently Asked Questions
+              </h2>
+              <p className="mx-auto max-w-2xl text-slate-600">
+                Everything you need to know about starting your journey at Apex
+                Martial Arts Academy.
+              </p>
+            </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {[
-              {
-                q: "What should I wear for my first class?",
-                a: "For your first session, comfortable athletic wear like a t-shirt and shorts/leggings is perfect. We provide specialized gear for trial sessions if required.",
-              },
-              {
-                q: "Do I need any previous experience?",
-                a: "Not at all! Our 'Beginners Program' is specifically designed for those with zero martial arts background. Our coaches will guide you every step of the way.",
-              },
-              {
-                q: "What is the minimum age for kids' classes?",
-                a: "We welcome young warriors starting from age 5. Our kids' classes focus on discipline, coordination, and fundamental techniques in a fun environment.",
-              },
-              {
-                q: "Can I try a class for free?",
-                a: "Absolutely. We offer a complimentary first session for all new local residents so you can experience our facility and coaching first-hand.",
-              },
-            ].map((item) => (
-              <div
-                key={item.q}
-                className="rounded-xl border-l-4 border-secondary bg-white p-8 shadow-sm"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="material-symbols-outlined font-bold text-secondary">
-                    help
-                  </span>
-                  <div>
-                    <h3 className="mb-3 text-lg font-bold text-[#0d0d0d]">
-                      {item.q}
-                    </h3>
-                    <p className="leading-relaxed text-slate-600">{item.a}</p>
+            <div className="grid gap-8 md:grid-cols-2">
+              {[
+                {
+                  q: "What should I wear for my first class?",
+                  a: "For your first session, comfortable athletic wear like a t-shirt and shorts/leggings is perfect. We provide specialized gear for trial sessions if required.",
+                },
+                {
+                  q: "Do I need any previous experience?",
+                  a: "Not at all! Our 'Beginners Program' is specifically designed for those with zero martial arts background. Our coaches will guide you every step of the way.",
+                },
+                {
+                  q: "What is the minimum age for kids' classes?",
+                  a: "We welcome young warriors starting from age 5. Our kids' classes focus on discipline, coordination, and fundamental techniques in a fun environment.",
+                },
+                {
+                  q: "Can I try a class for free?",
+                  a: "Absolutely. We offer a complimentary first session for all new local residents so you can experience our facility and coaching first-hand.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.q}
+                  className="rounded-xl border-l-4 border-secondary bg-white p-8 shadow-sm"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="material-symbols-outlined font-bold text-secondary">
+                      help
+                    </span>
+                    <div>
+                      <h3 className="mb-3 text-lg font-bold text-[#0d0d0d]">
+                        {item.q}
+                      </h3>
+                      <p className="leading-relaxed text-slate-600">{item.a}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* CTA */}
-      <section className="relative overflow-hidden border-t border-white/5 bg-background-dark px-6 py-24 text-center md:px-20">
-        <div className="absolute top-0 right-0 h-64 w-64 bg-primary/10 blur-[120px]" />
-        <div className="absolute bottom-0 left-0 h-64 w-64 bg-secondary/10 blur-[120px]" />
-        <div className="relative z-10 mx-auto max-w-3xl">
-          <h2 className="mb-8 text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
-            Start Your <span className="text-primary">Martial Arts</span> Journey
-            Today
-          </h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            <button className="bg-primary px-10 py-5 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
-              Join the Club
-            </button>
-            <button className="border-2 border-white/20 px-10 py-5 font-bold tracking-widest text-white uppercase transition-all hover:bg-white/10">
-              Book Free Trial
-            </button>
+      <ScrollReveal>
+        <section className="relative overflow-hidden border-t border-white/5 bg-background-dark px-6 py-24 text-center md:px-20">
+          <div className="absolute top-0 right-0 h-64 w-64 bg-primary/10 blur-[120px]" />
+          <div className="absolute bottom-0 left-0 h-64 w-64 bg-secondary/10 blur-[120px]" />
+          <div className="relative z-10 mx-auto max-w-3xl">
+            <h2 className="mb-8 text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
+              Start Your <span className="text-primary">Martial Arts</span> Journey
+              Today
+            </h2>
+            <div className="flex flex-wrap justify-center gap-6">
+              <button className="bg-primary px-10 py-5 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
+                Join the Club
+              </button>
+              <button className="border-2 border-white/20 px-10 py-5 font-bold tracking-widest text-white uppercase transition-all hover:bg-white/10">
+                Book Free Trial
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
     </main>
   );
 }
