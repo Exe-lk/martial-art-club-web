@@ -38,75 +38,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact methods */}
-      <section className="bg-[#12110F] px-6 py-20 md:px-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
-              <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
-                <span className="material-symbols-outlined text-4xl">chat</span>
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-slate-900">WhatsApp</h3>
-              <p className="mb-4 text-sm text-slate-600">
-                Chat with our support team instantly.
-              </p>
-              <a className="text-sm font-bold text-primary" href="#">
-                +1 (555) 000-9999
-              </a>
-            </div>
-
-            <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
-              <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
-                <span className="material-symbols-outlined text-4xl">call</span>
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-slate-900">Telephone</h3>
-              <p className="mb-4 text-sm text-slate-600">
-                Call us for direct inquiries.
-              </p>
-              <a className="text-sm font-bold text-primary" href="#">
-                +1 (555) 123-4567
-              </a>
-            </div>
-
-            <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
-              <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
-                <span className="material-symbols-outlined text-4xl">mail</span>
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-slate-900">Email</h3>
-              <p className="mb-4 text-sm text-slate-600">
-                Drop us a line anytime.
-              </p>
-              <a className="text-sm font-bold text-primary" href="#">
-                info@apexmartialarts.com
-              </a>
-            </div>
-
-            <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
-              <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
-                <span className="material-symbols-outlined text-4xl">
-                  location_on
-                </span>
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-slate-900">Address</h3>
-              <p className="mb-4 text-sm text-slate-600">
-                Visit our world-class dojo.
-              </p>
-              <p className="text-sm font-bold text-primary">
-                123 Warrior Way, Combat City
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Smooth transition */}
       <div className="h-16 bg-gradient-to-b from-background-dark to-background-light" />
 
-      {/* Form + Map */}
+      {/* Form + Contact methods */}
       <section className="bg-background-light px-6 pb-24 md:px-20 pt-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-start gap-12 lg:grid-cols-2">
-            <div className="rounded-xl bg-white p-10 shadow-xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
+            <div className="h-full rounded-xl bg-white p-10 shadow-xl">
               <h2 className="mb-8 text-3xl font-black tracking-tighter text-slate-900 uppercase">
                 Send a Message
               </h2>
@@ -172,37 +111,95 @@ export default function ContactPage() {
                 <button className="w-full rounded bg-primary py-5 font-black tracking-widest text-white uppercase shadow-lg shadow-primary/20 transition-all hover:bg-red-700">
                   Send Message
                 </button>
+
+                <div className="pt-4">
+                  <p className="mb-3 text-center text-xs font-bold tracking-widest text-slate-500 uppercase">
+                    Connect with us
+                  </p>
+                  <div className="flex items-center justify-center gap-3">
+                    <a
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                      href="#"
+                      aria-label="WhatsApp"
+                    >
+                      <span className="material-symbols-outlined">chat</span>
+                    </a>
+                    <a
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                      href="#"
+                      aria-label="Facebook"
+                    >
+                      <span className="material-symbols-outlined">public</span>
+                    </a>
+                    <a
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                      href="#"
+                      aria-label="Instagram"
+                    >
+                      <span className="material-symbols-outlined">photo_camera</span>
+                    </a>
+                  </div>
+                </div>
               </form>
             </div>
 
-            <div className="flex flex-col gap-8">
-              <div>
-                <h2 className="mb-4 text-3xl font-black tracking-tighter text-slate-900 uppercase">
-                  Find Our Dojo
-                </h2>
-                <p className="mb-6 text-slate-600">
-                  Our academy is located in the heart of the sports district.
-                  Featuring over 10,000 sq ft of premium mats, bags, and recovery
-                  zones.
-                </p>
+            <div className="flex h-full min-h-0 flex-col gap-8">
+              <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">
+                Contact Details
+              </h2>
 
-                <div className="group relative aspect-video w-full overflow-hidden rounded-xl shadow-2xl grayscale transition-all duration-700 hover:grayscale-0">
-                  <div className="pointer-events-none absolute inset-0 z-10 bg-primary/10" />
-                  <div
-                    className="h-full w-full bg-slate-300"
-                    style={{
-                      backgroundImage:
-                        "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiAmZArk_3xG_n7_DbCSK26AQbrW6xJdf93QDWoAqoKeuO5s-Jd-C17egLytj6aF_0njM7QdwLykAWlurcKCQmDITx-ym7rfFs-d5OaZuWEcgmv4ZoFqevk53T7ffCx1XnubdCv6dZfOHRg9zgQwV1B2aKvkkoDmW6G1KP_neLS7zSQ2rMF2QmEcdV69lHVXwtgUzyAsESwDTVgmC2jD0JBBXvQ0Ymu5a5ge7j1WN4D7-oVl-fsZDcFDluqd9QqThbVYuFbSZrHdc')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                    aria-label="Stylized map showing academy location"
-                  />
-                  <div className="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-                    <span className="material-symbols-outlined text-6xl text-primary drop-shadow-lg">
+              <div className="grid flex-1 grid-cols-1 gap-6 overflow-auto pr-1">
+               
+
+                <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
+                  <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
+                    <span className="material-symbols-outlined text-4xl">
+                      call
+                    </span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold text-slate-900">
+                    Telephone
+                  </h3>
+                  <p className="mb-4 text-sm text-slate-600">
+                    Call us for direct inquiries.
+                  </p>
+                  <a className="text-sm font-bold text-primary" href="#">
+                    +1 (555) 123-4567
+                  </a>
+                </div>
+
+                <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
+                  <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
+                    <span className="material-symbols-outlined text-4xl">
+                      mail
+                    </span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold text-slate-900">
+                    Email
+                  </h3>
+                  <p className="mb-4 text-sm text-slate-600">
+                    Drop us a line anytime.
+                  </p>
+                  <a className="text-sm font-bold text-primary" href="#">
+                    info@apexmartialarts.com
+                  </a>
+                </div>
+
+                <div className="group rounded-xl border-b-4 border-transparent bg-white p-8 shadow-sm transition-all duration-300 hover:border-primary">
+                  <div className="mb-6 text-secondary transition-transform group-hover:scale-110">
+                    <span className="material-symbols-outlined text-4xl">
                       location_on
                     </span>
                   </div>
+                  <h3 className="mb-2 text-lg font-bold text-slate-900">
+                    Address
+                  </h3>
+                  <p className="mb-4 text-sm text-slate-600">
+                    Visit our world-class dojo.
+                  </p>
+                  <p className="text-sm font-bold text-primary">
+                    123 Warrior Way, Combat City
+                  </p>
                 </div>
               </div>
             </div>

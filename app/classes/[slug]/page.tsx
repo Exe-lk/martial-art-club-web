@@ -196,7 +196,7 @@ export default async function ClassDetailPage({
         </div>
       </section>
 
-      {/* Fees Section */}
+      {/* Fees Section 
       <section className="bg-background-dark py-24 px-6 md:px-20 text-white">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
@@ -256,7 +256,7 @@ export default async function ClassDetailPage({
             </div>
           ))}
         </div>
-      </section>
+      </section>*/}
 
       {/* Trainer Section */}
       <section className="bg-neutral-gray dark:bg-slate-900 py-24 px-6 md:px-20">
