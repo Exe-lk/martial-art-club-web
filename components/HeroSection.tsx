@@ -62,7 +62,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-[8px] z-20">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[88px] z-20">
         <div className="pointer-events-auto mx-auto max-w-7xl overflow-hidden px-6">
           <NewsTicker className="border-t border-primary/90" />
         </div>

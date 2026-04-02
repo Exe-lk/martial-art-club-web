@@ -92,8 +92,7 @@ export const blogArticles: BlogArticle[] = [
     },
     author: {
       name: "Master Chen",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC1HZXgCMwdaYewvug95BwmHHQoNlTZOn7PKcIxdPo9rH6is_uvoIN_G7jfgNzzAgJ473Z-U3khvK0RXRcTQebjsfp3kyFMLoX74WYA8iHLZpST9VaBk7oY8dQDMjbEM0-hr0NxvMNTxFaZc4tzr1nZded7XFOFtiyOcql62VGHhYQNLPH1Bi40mOOR6h7HKZamNxHHSeeVkcmQyN1GfErH0bFW8ssiCg2Uml6Uos5Q_TnlSwijYs_GnA3SSwroJ8qmop648ohf0gk",
+      imageUrl: "/gallery/martial-art-coaches.jpg",
       imageAlt:
         "Close up portrait of a mature martial arts master with a calm expression, professional studio lighting against a dark background.",
     },
@@ -108,7 +107,7 @@ export const blogArticles: BlogArticle[] = [
     introBody:
       'Modern training often focuses on the "what"—the strikes, the takedowns, the agility. But the "how" is where the true warrior is forged. Every repetition in the gym is a micro-transaction in the bank of character. To move with discipline is to move with intent, stripping away the unnecessary until only the essential remains.',
     fullWidthImage: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeRpOgM0pVX5Ryi3-dyxPNn2TcHVmFhwOTvcBv06jHs4IRM90rM_IYSwXijGiEwToUJBX6HtDNFZy4GUxM83kHal50aujsv8pANlIyMfTGd9o0RaMLUlAJBmGhefr2QHt1CtDAz4a0DXsKUd-QhNgXJDbLCB4MX1SZG0q-azuRlx_8yIavmwXp1Jp_iPE-x3TcXCqF7YglaL28FK95mDf1NIj7qyjkKtgEDZsnjMwJrrOvc3j70_znHiXe5TCjujasgOzq0dYrCK8",
+      url: "/gallery/training/taining-time2.jpg",
       alt: "High-action shot of multiple fighters training in a grit-style gym with dramatic overhead lighting and sweat glistening, cinematic motion blur.",
     },
     mindset: {
@@ -118,7 +117,7 @@ export const blogArticles: BlogArticle[] = [
         "This mental equilibrium allows a practitioner to transcend reaction and enter a state of action. It is the bridge between the physical exertion and spiritual growth.",
       ],
       image: {
-        url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFwIGl0pjGV3wXyKIUToKLUau0tF0jWO_e8NszeblQDXMLj8zfeydHVsRtt9dz2ZmDciUUgzzo0rXP42PkKqeRAFTRAnKqXkTpE1LDkiVZdt4GBW17Hc_hbg3nXxnaxds6fBjZQxi4UFcoH6Co2nqk0jtbJNnQGM5L543QdO9xaBmR4KTlMF1QX5TzZfmSDy_tk8k8291OZW5yvvCbbr_QIsSTBagW0W4IaPhjtJWBkcwl1DgSTgXglRQtiF9DZUL4W6iZBwWzMtY",
+        url: "/gallery/jeet-kun-do/480671797_2068773616923470_3354075174883740120_n.jpg",
         alt: "A martial artist sitting in seiza meditation pose, silhouette against a soft backlighting, minimalist and serene atmosphere.",
       },
     },
@@ -130,15 +129,15 @@ export const blogArticles: BlogArticle[] = [
       title: "Moments of Transcendence",
       items: [
         {
-          url: "https://lh3.googleusercontent.com/aida-public/AB6AXuC5XbfBfw466FTOEVdhkjdkxKnjLuyrRTNjMHGEdC3F_XTNdA_XwCaFDdurH0hrJzDgovB5sqOmrAJx4qKE56CUfY6UX0nqtmaTHRKtJdDptpT9QpEhijGfmXyzR7DyV7S3xfwen3h2HGXrFnJFe3NgDjA9f4_6xtlwPbNGHq5ULfeYys5vw0unEs_lWS02yqOSMolwl50BsFFxEpFJjfX5el8Q06B0vA0qB5WQbjRrZFQpZVY4IKNt0ii6mgPC9NV-HRFqpqbcuaA",
+          url: "/gallery/kun-fu/480659567_604273912510537_385981634691492231_n.jpg",
           alt: "Close up of a black belt being tied around a traditional white gi, high contrast black and white photography.",
         },
         {
-          url: "https://lh3.googleusercontent.com/aida-public/AB6AXuCrtfIK-IX5XLES5cMtsx336XZwbNFB7BMwQ-tfazhlDoZdER2g2RjEZQ1QZR5bw1lEW6Su8sAvKr1Icy4B_6UWOE5KecWPrEy9YcHZT-mMQFptSG8vEWuR9_JtjwhwtyFuNnAwev2SnXVn7JcunWDS5qrCOsPG4rdOEs-JstiqPuR-sGKIAub6GSbVLqdlkmX_cgMgIiZ8wxgDcLiNuBz4w5d7IprYOEu9NLLZ5kVjlZH4ivf_SuyrUX6eYXnkDZptQuBOvUuCzzw",
+          url: "/gallery/events/480281407_596698423268086_8216583939379925773_n.jpg",
           alt: "A group of martial artists bowing in unison at the start of a class in a traditional wooden dojo.",
         },
         {
-          url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBuP69w-eedVT4fe64rEkpUKYUbxXH6-BYC8YgIydxaMrS69QwHinMizUW8wLuFSOxTJvQtFcFD5DMAfSp-uIl-31NHjpicCt9wQFX85jYDByrpEOe7Z-bqgscVUdLhNIMWIpUCYpZSIjRQ5OaPUAA-B9z5neY1STJwZ3Gt94BLOLza06kZ0EvqP19lHYc1RkiM5KIDLcw0KN43DtFtV8Zjq4zJjJsZKJcJKlRwPa5tfrOR9H4YhDyOzuakYLfAU9eqaQxXG-Nt8ds",
+          url: "/gallery/wushu/481115393_604273762510552_269428111622660870_n.jpg",
           alt: "Intense close up of two martial artists engaged in a technical grappling exchange, sweat and focus visible.",
         },
       ],
@@ -150,7 +149,7 @@ export const blogArticles: BlogArticle[] = [
           title: "Focus",
           body: "The elimination of the non-essential. Total immersion in the present moment, where distraction ceases to exist.",
           image: {
-            url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBU7biFe44yfc7ag1t_UvRTI7SHvjf09Whbn0z_GoGJBFzVZ_w3hLwmNoWnZ4QTTKfG9KqFLysRTXCNSpoPzvx2A3fTP6HKJggA0yt3GPV2hCxZWRY4fstNol1DQeXonTQmOE6o1DQbH5KPfsus959j0XeBOCF6pvzG1tUaS7t3xb9AiCKvZmGCpCcKb8-ctlbgNYfn9bT6OI4LUvdItePl-iw13r1YA55S--mQdTxAT-1O-XAnvnVCbSYyZwc-W40PQVnBDeVzZrzU",
+            url: "/improve-focus.PNG",
             alt: "A close up of a martial artist's eyes, conveying intense focus and determination, moody lighting.",
           },
         },
@@ -158,7 +157,7 @@ export const blogArticles: BlogArticle[] = [
           title: "Practice",
           body: "The relentless pursuit of perfection through repetition. Turning conscious effort into instinctive reaction.",
           image: {
-            url: "https://lh3.googleusercontent.com/aida-public/AB6AXuCjiJXVbtAWX7B71iZnnpLonY7bCG2nJNMfUZmwIutEG3tipdqLY-YxFWAXNV3HFJU6CMZzbYzHFT7SC3HESgPF_diXUyKGzX-yITG7sKMoE3e3xMKRjxkrPNy_Jsj78GdiERicA9qjaeB0o33oXT16HYI2dtwfeurtJfxAYDM4ElpIAXcLjRWTp8VjP34GMNFc88a4p0vuN2CiCq7Ch-3Jzhg1HSHQhmuw2jk8NzNJXYc5t6jS26GfHJNPBMQyrkGMY5OBdJyU1RU",
+            url: "/gym/gym.jpeg",
             alt: "A martial artist punching a heavy bag, water droplets flying off the bag, capturing the impact.",
           },
         },
@@ -166,7 +165,7 @@ export const blogArticles: BlogArticle[] = [
           title: "Respect",
           body: "Honor for the craft, the opponent, and oneself. The humility to remain a student for life, regardless of rank.",
           image: {
-            url: "https://lh3.googleusercontent.com/aida-public/AB6AXuACifCZqYR5qDFeAoXQCJiA8r9rF1H1ielaalzZXaZwoSQb6tH5zoX-EGRqfrEz6U_srP_jgwmzRKBa1YiXfG_OPKkG5WwznGLOmJQzTVV8gcKhc3G7qANbXAdtmcoPRM2LaJ08wZFv_pfNedqgogr9PshO_z2jwHuZXK9JNYwWfB9bOigCQHbZDs9vDqpaxx3tn5GLMLoWnZz6P-16IA8iXwqy4L5sV9s8EYW--SuumlmmJDflQv5d-Le-zT-9cc1-GG7P5X0GAaI",
+            url: "/gallery/training/taining-time3.jpg",
             alt: "Two martial artists bowing to each other in a traditional setting, demonstrating mutual respect.",
           },
         },
@@ -198,8 +197,7 @@ export const blogArticles: BlogArticle[] = [
     },
     author: {
       name: "Coach Rivera",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC1HZXgCMwdaYewvug95BwmHHQoNlTZOn7PKcIxdPo9rH6is_uvoIN_G7jfgNzzAgJ473Z-U3khvK0RXRcTQebjsfp3kyFMLoX74WYA8iHLZpST9VaBk7oY8dQDMjbEM0-hr0NxvMNTxFaZc4tzr1nZded7XFOFtiyOcql62VGHhYQNLPH1Bi40mOOR6h7HKZamNxHHSeeVkcmQyN1GfErH0bFW8ssiCg2Uml6Uos5Q_TnlSwijYs_GnA3SSwroJ8qmop648ohf0gk",
+      imageUrl: "/gallery/training/taining-time.jpg",
       imageAlt: "Portrait of a combat coach in low-key lighting.",
     },
     publishedDate: "Sep 12, 2024",
@@ -213,7 +211,7 @@ export const blogArticles: BlogArticle[] = [
     introBody:
       "This article breaks down how stance, hip drive, fascia elasticity, and breath collaborate. You will leave with a checklist you can film, measure, and improve—whether you train karate, kickboxing, or hybrid combat sports.",
     fullWidthImage: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAEfBCJF9iKXvlA7DmZOycHL1by3hkmK2R2ZhrAkCq_Hq1nWuFqS6n0JE6q7f2UtWgci4rJMh14Y1hSRz91tDGOVCReDL1Pxw8FUk9Ig8sg__lkJVzozPdt2DFU0zcYMTlM5zk5Zt6p6KkQR3vVo-f5oz9wnaUoExzsWcE1scQpo3Zd_8WOuFZapLUL4z7umAQEtOpKDuccvEnvP9_nQ2IN0GMgGhd9yH95l8qt8UfRCI2RWelsK7hEaeDcE1Az5XBXcF10UIBOuqs",
+      url: "/gym/fighting-safety.jpeg",
       alt: "A focused fighter preparing their hand wraps before a session, close up on textures.",
     },
     highlightQuote: {
@@ -239,8 +237,7 @@ export const blogArticles: BlogArticle[] = [
     },
     author: {
       name: "Dr. Amina Cole",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC1HZXgCMwdaYewvug95BwmHHQoNlTZOn7PKcIxdPo9rH6is_uvoIN_G7jfgNzzAgJ473Z-U3khvK0RXRcTQebjsfp3kyFMLoX74WYA8iHLZpST9VaBk7oY8dQDMjbEM0-hr0NxvMNTxFaZc4tzr1nZded7XFOFtiyOcql62VGHhYQNLPH1Bi40mOOR6h7HKZamNxHHSeeVkcmQyN1GfErH0bFW8ssiCg2Uml6Uos5Q_TnlSwijYs_GnA3SSwroJ8qmop648ohf0gk",
+      imageUrl: "/classs-martial-art.jpg",
       imageAlt: "Portrait of a sports psychology consultant.",
     },
     publishedDate: "Aug 3, 2024",
@@ -260,7 +257,7 @@ export const blogArticles: BlogArticle[] = [
         "Micro-goals rebuild confidence: one sharper exit on a combo, one quieter breath under fatigue. Mastery is a ladder of details, not a single leap.",
       ],
       image: {
-        url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFwIGl0pjGV3wXyKIUToKLUau0tF0jWO_e8NszeblQDXMLj8zfeydHVsRtt9dz2ZmDciUUgzzo0rXP42PkKqeRAFTRAnKqXkTpE1LDkiVZdt4GBW17Hc_hbg3nXxnaxds6fBjZQxi4UFcoH6Co2nqk0jtbJNnQGM5L543QdO9xaBmR4KTlMF1QX5TzZfmSDy_tk8k8291OZW5yvvCbbr_QIsSTBagW0W4IaPhjtJWBkcwl1DgSTgXglRQtiF9DZUL4W6iZBwWzMtY",
+        url: "/stay-active-and-healthy.PNG",
         alt: "Martial artist in meditation; calm focus as metaphor for mental reset.",
       },
     },
@@ -283,14 +280,13 @@ export const blogArticles: BlogArticle[] = [
     },
     author: {
       name: "Sensei Okada",
-      imageUrl:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC1HZXgCMwdaYewvug95BwmHHQoNlTZOn7PKcIxdPo9rH6is_uvoIN_G7jfgNzzAgJ473Z-U3khvK0RXRcTQebjsfp3kyFMLoX74WYA8iHLZpST9VaBk7oY8dQDMjbEM0-hr0NxvMNTxFaZc4tzr1nZded7XFOFtiyOcql62VGHhYQNLPH1Bi40mOOR6h7HKZamNxHHSeeVkcmQyN1GfErH0bFW8ssiCg2Uml6Uos5Q_TnlSwijYs_GnA3SSwroJ8qmop648ohf0gk",
+      imageUrl: "/contact-martial-art-academy.jpg",
       imageAlt: "Portrait of a techniques coach.",
     },
     publishedDate: "Jul 19, 2024",
     readTimeLabel: "5-Min Read",
     hero: {
-      url: "/next.svg",
+      url: "/wusu.PNG",
       alt: "Article cover illustration.",
     },
     introLead:
@@ -298,7 +294,7 @@ export const blogArticles: BlogArticle[] = [
     introBody:
       "We map three carryover pathways: deceleration control, lateral readiness, and eyes-up scanning. Each has a simple drill progression you can stack after class in ten minutes.",
     fullWidthImage: {
-      url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeRpOgM0pVX5Ryi3-dyxPNn2TcHVmFhwOTvcBv06jHs4IRM90rM_IYSwXijGiEwToUJBX6HtDNFZy4GUxM83kHal50aujsv8pANlIyMfTGd9o0RaMLUlAJBmGhefr2QHt1CtDAz4a0DXsKUd-QhNgXJDbLCB4MX1SZG0q-azuRlx_8yIavmwXp1Jp_iPE-x3TcXCqF7YglaL28FK95mDf1NIj7qyjkKtgEDZsnjMwJrrOvc3j70_znHiXe5TCjujasgOzq0dYrCK8",
+      url: "/gallery/training/taining-time.jpg",
       alt: "High-action training session; footwork and spacing in motion.",
     },
     relatedSlugs: ["modern-warrior-discipline", "physics-perfect-strike", "overcoming-plateau"],
