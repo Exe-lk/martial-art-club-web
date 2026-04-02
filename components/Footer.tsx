@@ -32,7 +32,7 @@ export default function Footer() {
               sports_martial_arts
             </span>
             <span className="text-xl font-black tracking-tight text-white uppercase">
-              IRON <span className="text-primary">OBSIDIAN</span>
+              Bkack <span className="text-primary">Dragon</span>
             </span>
           </Link>
 

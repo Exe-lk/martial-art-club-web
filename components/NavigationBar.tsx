@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 
 export default function NavigationBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = useMemo(
     () => [
@@ -33,7 +35,16 @@ export default function NavigationBar() {
           {navItems.map((item) => (
             <Link
               key={item.href}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-primary"
+              className={[
+                "text-sm font-medium transition-colors hover:text-primary",
+                item.href === "/"
+                  ? pathname === "/"
+                    ? "text-primary"
+                    : "text-white/80"
+                  : pathname.startsWith(item.href)
+                    ? "text-primary"
+                    : "text-white/80",
+              ].join(" ")}
               href={item.href}
             >
               {item.label}
@@ -73,7 +84,16 @@ export default function NavigationBar() {
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+              className={[
+                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                item.href === "/"
+                  ? pathname === "/"
+                    ? "text-primary"
+                    : "text-white/85 hover:text-white"
+                  : pathname.startsWith(item.href)
+                    ? "text-primary"
+                    : "text-white/85 hover:text-white",
+              ].join(" ")}
             >
               {item.label}
             </Link>

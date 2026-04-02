@@ -100,7 +100,7 @@ export default function FacilitiesSection() {
           </div>
 
           <div className="md:col-span-4 flex flex-col gap-4 kinetic-unskew md:mt-12">
-            <div className="flex h-[380px] flex-col justify-center border-t-4 border-primary bg-[#1f1f1f] p-8">
+          <div className="flex h-[380px] flex-col justify-center border-t-4 border-primary bg-[#1f1f1f] p-8">
               <span className="text-primary text-6xl font-black opacity-10">{FACILITIES[2].number}</span>
               <h3 className="mb-4 text-2xl font-black tracking-tight uppercase">
                 {FACILITIES[2].title}

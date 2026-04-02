@@ -9,6 +9,7 @@ import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
 import AchievementsCounterSection from "@/components/AchievementsCounterSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ScrollReveal from "@/components/ScrollReveal";
+import LandingFloatingButtons from "@/components/LandingFloatingButtons";
 
 export default function Home() {
   return (
@@ -41,6 +42,7 @@ export default function Home() {
       <ScrollReveal>
         <CtaSection />
       </ScrollReveal>
+      <LandingFloatingButtons />
     </main>
   );
 }

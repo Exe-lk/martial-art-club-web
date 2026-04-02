@@ -80,13 +80,13 @@ export default function NotJustFightingClassSection() {
             >
               <img
                 alt={card.alt}
-                className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform"
+                className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
                 src={card.image}
               />
               {/* Darkens entire card on hover so title + reveal read over the image */}
               <div
                 aria-hidden
-                className="hover-dim pointer-events-none absolute inset-0 z-[1] bg-black/55"
+                className="hover-dim pointer-events-none absolute inset-0 z-[1] bg-black/20"
               />
               <div className="overlay-gradient pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-[background] duration-500" />
               <div className="relative z-[3] flex h-full flex-col justify-end p-8">
