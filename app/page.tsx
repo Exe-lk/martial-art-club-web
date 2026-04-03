@@ -21,9 +21,6 @@ export default function Home() {
         <AboutClubSection />
       </ScrollReveal>
       <ScrollReveal>
-        <ChooseArtSection />
-      </ScrollReveal>
-      <ScrollReveal>
         <EventsSection />
       </ScrollReveal>
       <ScrollReveal>
@@ -31,6 +28,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <ClassesSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ChooseArtSection />
       </ScrollReveal>
       <ScrollReveal>
         <FacilitiesSection />
