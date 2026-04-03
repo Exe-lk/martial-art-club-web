@@ -161,7 +161,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-center text-sm text-white/50">
-        © 2026 Iron Obsidian. All rights reserved.
+      © 2026 Designed by Exe.lk All rights reserved.
       </div>
     </footer>
   );

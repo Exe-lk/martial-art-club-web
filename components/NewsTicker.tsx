@@ -8,9 +8,9 @@ type NewsTickerProps = {
 };
 
 export default function NewsTicker({
-  text = "BLACK DRAGON JEET KUNE DO",
+  text = "🇱🇰 Sri Lanka’s Premier Martial Arts Academy — Excellence in Every Move BLACK DRAGON JEET KUNE DO",
   repeat = 10,
-  durationSeconds = 44,
+  durationSeconds = 120,
   className = "",
 }: NewsTickerProps) {
   const items = Array.from({ length: repeat }, (_, i) => i);
