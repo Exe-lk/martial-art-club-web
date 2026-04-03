@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import BranchScheduleSection from "@/components/BranchScheduleSection";
 
 const styleCards = [
   {
@@ -39,14 +40,6 @@ const styleCards = [
   },
 ];
 
-const weeklySchedule = [
-  { day: "Monday", cls: "Kung Fu", time: "5:30PM - 7:00PM", accent: "secondary" },
-  { day: "Tuesday", cls: "Jeet Kune Do", time: "6:00PM - 7:30PM", accent: "primary" },
-  { day: "Wednesday", cls: "Wushu", time: "5:30PM - 7:00PM", accent: "secondary" },
-  { day: "Friday", cls: "Sparring", time: "6:00PM - 8:00PM", accent: "primary" },
-  { day: "Saturday", cls: "Mixed Styles", time: "9:00AM - 11:00AM", accent: "secondary" },
-];
-
 const classSlugByTitle: Record<string, string> = {
   "Kung Fu": "kung-fu",
   "Jeet Kune Do": "jeet-kune-do",
@@ -71,6 +64,10 @@ export default function ClassesPage() {
   const [experience, setExperience] = useState<Experience>("beginner");
   const [preference, setPreference] = useState<Preference>("mixed");
   const [suggestedTitle, setSuggestedTitle] = useState<keyof typeof classSlugByTitle | null>(null);
+
+  const mainSectionHeaderClass =
+    "mx-auto mb-4 w-fit border-b-4 border-[#d62929] pb-2 text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
+  const mainSectionKickerClass = "text-xs font-bold tracking-widest text-slate-300 uppercase text-center";
 
   const result = useMemo(() => {
     if (!suggestedTitle) return null;
@@ -140,15 +137,11 @@ export default function ClassesPage() {
         <ScrollReveal>
           <section className="bg-[#000000] py-24 text-white max-w-7xl mx-auto">
             <div className="container mx-auto px-6">
-              <div className="mb-16 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-                <div className="max-w-2xl">
-                  <h2 className="border-b-4 border-[#d62929] pb-2 text-4xl font-black tracking-tight uppercase md:text-5xl">
-                    Explore Our Fighting Styles
-                  </h2>
-                </div>
-                <div className="text-xs font-bold tracking-widest text-white uppercase">
-                  Refine Your Combat DNA
-                </div>
+              <div className="mb-16">
+                <h2 className={mainSectionHeaderClass}>
+                  Explore Our Fighting <span className="text-[#d62929]">Styles</span>
+                </h2>
+                <p className={mainSectionKickerClass}>Refine Your Combat DNA</p>
               </div>
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3 text-black">
@@ -203,9 +196,9 @@ export default function ClassesPage() {
         {/* Interactive */}
         <ScrollReveal>
           <section className="border-y border-slate-800 bg-[#0D0D0D] py-24 max-w-7xl mx-auto">
-          <h2 className="mb-8 text-4xl font-black tracking-tight uppercase mx-auto text-center">
-                    Which <span className="text-[#d62929]">Style</span> Fits You?
-                  </h2>
+          <h2 className={mainSectionHeaderClass}>
+            Which <span className="text-[#d62929]">Style</span> Fits You?
+          </h2>
             <div className="container mx-auto px-6">
             
             <div className="grid items-center gap-16 md:grid-cols-2">
@@ -386,45 +379,9 @@ export default function ClassesPage() {
         </section>
         </ScrollReveal>
 
-        {/* Class Schedule */}
+        {/* Branch Schedule (tabs + sessions) */}
         <ScrollReveal>
-          <section className="bg-gray-100 py-24 text-[#0D0D0D]">
-            <div className="container mx-auto px-6">
-              <div className="mb-16">
-                <h2 className="border-b-4 border-[#d62929] pb-2 text-4xl font-black tracking-tight uppercase md:text-5xl">
-                  Weekly Training Schedule
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
-                {weeklySchedule.map((item) => (
-                  <div
-                    key={item.day}
-                    className={`bg-white p-6 shadow-md ${
-                      item.accent === "primary"
-                        ? "border-l-4 border-[#d62929]"
-                        : "border-l-4 border-[#1E3A8A]"
-                    }`}
-                  >
-                    <div
-                      className={`mb-2 text-[10px] font-black tracking-widest uppercase ${
-                        item.accent === "primary" ? "text-[#d62929]" : "text-[#1E3A8A]"
-                      }`}
-                    >
-                      {item.day}
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <div className="text-xl font-black tracking-tight uppercase">{item.cls}</div>
-                        <div className="text-xs font-bold tracking-widest text-slate-500 uppercase">
-                          {item.time}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <BranchScheduleSection />
         </ScrollReveal>
 
         {/* Student Progress */}
@@ -432,10 +389,10 @@ export default function ClassesPage() {
           <section className="overflow-hidden bg-black py-24 text-white">
             <div className="container mx-auto px-6">
               <div className="mb-16 text-center">
-                <h2 className="mb-4 text-4xl font-black tracking-tight uppercase md:text-5xl">
-                  Your Training Journey
+                <h2 className={mainSectionHeaderClass}>
+                  Your Training <span className="text-[#d62929]">Journey</span>
                 </h2>
-                <p className="text-sm font-bold tracking-widest text-slate-300 uppercase">
+                <p className={mainSectionKickerClass}>
                   Discipline is the bridge between goals and accomplishment.
                 </p>
               </div>

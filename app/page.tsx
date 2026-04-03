@@ -10,6 +10,8 @@ import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
 import AchievementsCounterSection from "@/components/AchievementsCounterSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import EventsSection from "@/components/EventsSection";
+import MembershipPlansSection from "@/components/MembershipPlansSection";
+import KidsAcademyHighlightSection from "@/components/KidsAcademyHighlightSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import LandingFloatingButtons from "@/components/LandingFloatingButtons";
 
@@ -28,6 +30,12 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <ClassesSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <KidsAcademyHighlightSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <MembershipPlansSection />
       </ScrollReveal>
       <ScrollReveal>
         <ChooseArtSection />
