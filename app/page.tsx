@@ -29,10 +29,6 @@ const MembershipPlansSection = dynamic(
   { loading: () => <SectionLoadFallback minHeight="min-h-[360px]" /> },
 );
 
-const ChooseArtSection = dynamic(() => import("@/components/ChooseArtSection"), {
-  loading: () => <SectionLoadFallback minHeight="min-h-[520px]" />,
-});
-
 const FacilitiesSection = dynamic(() => import("@/components/FacilitiesSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[480px]" />,
 });
@@ -49,10 +45,6 @@ const AchievementsCounterSection = dynamic(
 
 const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[320px]" />,
-});
-
-const TrainingGallerySection = dynamic(() => import("@/components/TrainingGallerySection"), {
-  loading: () => <SectionLoadFallback minHeight="min-h-[400px]" />,
 });
 
 const CtaSection = dynamic(() => import("@/components/CtaSection"), {
@@ -82,9 +74,6 @@ export default function Home() {
         <MembershipPlansSection />
       </ScrollReveal>
       <ScrollReveal>
-        <ChooseArtSection />
-      </ScrollReveal>
-      <ScrollReveal>
         <FacilitiesSection />
       </ScrollReveal>
       <ScrollReveal>
@@ -95,9 +84,6 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <TestimonialsSection />
-      </ScrollReveal>
-      <ScrollReveal>
-        <TrainingGallerySection />
       </ScrollReveal>
       <ScrollReveal>
         <CtaSection />
