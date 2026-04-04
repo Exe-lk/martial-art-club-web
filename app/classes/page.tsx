@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import BranchScheduleSection from "@/components/BranchScheduleSection";
@@ -104,12 +105,14 @@ export default function ClassesPage() {
       <main>
         {/* Hero (no header/footer per request) */}
         <section className="relative flex h-[614px] items-center overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/classs-martial-art.jpg')",
-            }}
-            aria-label="Martial arts professional in training stance"
+          <Image
+            className="object-cover"
+            src="/classs-martial-art.jpg"
+            alt="Martial arts professional in training stance"
+            fill
+            sizes="100vw"
+            priority
+            quality={80}
           />
           <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
           <div className="container relative z-20 mx-auto px-6">
@@ -152,11 +155,13 @@ export default function ClassesPage() {
                       index === 1 ? "md:mt-12" : ""
                     }`}
                   >
-                    <div className="mb-6 aspect-video overflow-hidden bg-neutral-100">
-                      <img
-                        className="h-full w-full object-cover"
+                    <div className="relative mb-6 aspect-video overflow-hidden bg-neutral-100">
+                      <Image
+                        className="object-cover"
                         src={card.image}
                         alt={card.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
                     <div className="mb-4 flex items-start justify-between">

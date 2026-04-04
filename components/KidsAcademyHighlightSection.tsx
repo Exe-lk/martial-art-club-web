@@ -1,10 +1,17 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function KidsAcademyHighlightSection() {
   return (
     <section className="relative overflow-hidden py-20 text-white">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/classs-martial-art.jpg')" }}
-        aria-label="Kids academy martial arts training"
+      <Image
+        className="object-cover"
+        src="/classs-martial-art.jpg"
+        alt="Kids academy martial arts training"
+        fill
+        sizes="100vw"
+        loading="lazy"
+        quality={75}
       />
       <div className="absolute inset-0 bg-black/20" />
 
@@ -17,12 +24,12 @@ export default function KidsAcademyHighlightSection() {
             Build confidence, focus, and discipline in a fun and structured environment.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
+            <Link
               href="/classes"
               className="inline-flex items-center justify-center rounded-full bg-[#d62929] px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:brightness-110"
             >
               Explore now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

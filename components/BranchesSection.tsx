@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useId, useState } from "react";
 
 import { branches } from "@/data/branches";
@@ -62,14 +63,13 @@ export default function BranchesSection() {
             {/* Left: visual + branch cards */}
             <div className="lg:col-span-7 flex flex-col gap-5 lg:min-h-0">
               <div className="group relative h-[280px] overflow-hidden rounded-xl bg-white/5 lg:h-full lg:max-h-[52vh]">
-                <div
-                  className="h-full w-full bg-slate-800 transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url('${active.heroImageUrl}')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                  aria-label={`${active.name} training image`}
+                <Image
+                  src={active.heroImageUrl}
+                  alt={`${active.name} training image`}
+                  fill
+                  className="bg-slate-800 object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6">
@@ -144,15 +144,14 @@ export default function BranchesSection() {
             </div>
 
             {/* Right: map */}
-            <div className="lg:col-span-5 relative min-h-[320px] overflow-hidden rounded-xl bg-white/5 lg:min-h-0 lg:h-full lg:max-h-[calc(52vh+12.5rem)]">
-              <div
-                className="h-full w-full grayscale brightness-75 contrast-125"
-                style={{
-                  backgroundImage: `url('${active.mapImageUrl}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                aria-label={`Map preview for ${active.name}`}
+            <div className="relative min-h-[320px] overflow-hidden rounded-xl bg-white/5 lg:col-span-5 lg:min-h-0 lg:h-full lg:max-h-[calc(52vh+12.5rem)]">
+              <Image
+                src={active.mapImageUrl}
+                alt={`Map preview for ${active.name}`}
+                fill
+                className="object-cover grayscale brightness-75 contrast-125"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                loading="lazy"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />

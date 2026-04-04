@@ -1,6 +1,6 @@
-
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -172,6 +172,7 @@ export default function ChooseArtSection() {
                     playsInline
                     muted
                     controls={false}
+                    preload="none"
                     disablePictureInPicture
                     onLoadStart={() => {
                       setVideoReady(false);
@@ -194,10 +195,13 @@ export default function ChooseArtSection() {
                   >
                     <div className="mx-auto max-w-2xl px-6 text-center">
                       <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-black/60 backdrop-blur-sm md:h-28 md:w-28">
-                        <img
+                        <Image
                           src={selectedArt.logoSrc}
                           alt={`${selectedArt.title} logo`}
+                          width={64}
+                          height={64}
                           className="h-14 w-14 object-contain opacity-95 md:h-16 md:w-16"
+                          unoptimized={selectedArt.logoSrc.endsWith(".svg")}
                         />
                       </div>
                       <div className="text-xs font-black tracking-[0.3em] text-slate-200 uppercase">
@@ -294,12 +298,16 @@ export default function ChooseArtSection() {
               </div>
             ) : (
               <div className="relative flex min-h-[500px] items-center overflow-hidden p-5 sm:p-8 md:p-12">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  aria-hidden="true"
-                  style={{ backgroundImage: 'url("/choose-your-style-background.png")' }}
+                <Image
+                  src="/choose-your-style-background.png"
+                  alt=""
+                  fill
+                  className="z-0 object-cover"
+                  sizes="100vw"
+                  loading="lazy"
+                  quality={75}
                 />
-                <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+                <div className="absolute inset-0 z-[1] bg-black/40" aria-hidden="true" />
 
                 <div className="relative z-10 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
                   {arts.map((art) => (
@@ -315,10 +323,13 @@ export default function ChooseArtSection() {
                       className="group flex flex-col items-start gap-4 border border-white/10 bg-black/70 p-5 transition-all duration-300 hover:border-white/20 hover:bg-black/55 active:scale-[0.99] sm:p-6 md:flex-row md:items-center md:gap-6 md:p-8"
                     >
                       <div className="flex h-16 w-16 items-center justify-center bg-white/5 md:h-24 md:w-24">
-                        <img
+                        <Image
                           src={art.logoSrc}
                           alt={`${art.title} logo`}
+                          width={64}
+                          height={64}
                           className="h-12 w-12 object-contain opacity-90 transition-opacity group-hover:opacity-100 md:h-16 md:w-16"
+                          unoptimized={art.logoSrc.endsWith(".svg")}
                         />
                       </div>
                       <div className="text-left">

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { EVENTS, type ClubEvent } from "@/data/events";
 
 function EventTitle({
@@ -72,15 +74,16 @@ function EventBlock({
             <StateBadge state={event.state} />
           </div>
           <div
-            className="aspect-[16/10] overflow-hidden bg-[#141414] shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
+            className="relative aspect-[16/10] overflow-hidden bg-[#141414] shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
             style={{ clipPath: imageClipPath }}
           >
             {event.imageSrc ? (
-              // Using <img> matches existing sections in this repo
-              <img
+              <Image
                 alt={event.imageAlt ?? event.title}
-                className="h-full w-full object-cover opacity-85 transition-transform duration-1000 hover:scale-110 hover:opacity-100"
+                className="object-cover opacity-85 transition-transform duration-1000 hover:scale-110 hover:opacity-100"
                 src={event.imageSrc}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             ) : (
               <div className="h-full w-full bg-gradient-to-br from-primary/20 via-black to-secondary/15" />

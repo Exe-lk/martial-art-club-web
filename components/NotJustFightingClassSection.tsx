@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const BENEFIT_CARDS = [
   {
     icon: "psychology",
@@ -78,10 +80,12 @@ export default function NotJustFightingClassSection() {
               key={card.title}
               className={`group kinetic-hover relative h-[450px] cursor-pointer overflow-hidden rounded-sm bg-[#141414] ${card.stagger ? "lg:mt-12" : ""}`}
             >
-              <img
+              <Image
                 alt={card.alt}
-                className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+                className="z-0 object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
                 src={card.image}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               {/* Darkens entire card on hover so title + reveal read over the image */}
               <div

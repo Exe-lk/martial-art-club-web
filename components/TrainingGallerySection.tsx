@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 type GalleryItem = {
@@ -187,11 +188,12 @@ export default function TrainingGallerySection() {
               key={`${item.title}-${item.imageSrc}`}
               className="relative aspect-square overflow-hidden rounded-lg bg-white/5"
             >
-              <img
+              <Image
                 alt={item.imageAlt}
                 src={item.imageSrc}
-                className="h-full w-full object-cover"
-                loading="lazy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-6">
                 <span className="text-[10px] font-black tracking-widest text-primary uppercase">

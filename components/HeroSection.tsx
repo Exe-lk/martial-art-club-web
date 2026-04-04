@@ -1,18 +1,10 @@
+import HeroDeferredVideo from "@/components/HeroDeferredVideo";
 import NewsTicker from "@/components/NewsTicker";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-[80svh] max-h-[90svh] overflow-hidden bg-black text-white">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      >
-        <source src="/videos/hero-video.mp4" type="video/mp4" />
-      </video>
+      <HeroDeferredVideo />
 
       <div className="absolute inset-0 bg-black/55" />
 

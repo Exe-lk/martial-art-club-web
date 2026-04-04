@@ -21,6 +21,8 @@ const ABOUT_BLOCKS = [
   },
 ] as const;
 
+import Image from "next/image";
+
 const HIGHLIGHTS = [
   {
     label: "Discipline",
@@ -85,10 +87,13 @@ export default function AboutClubSection() {
         <div className="absolute inset-0 z-10 bg-primary/10 mix-blend-overlay" />
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent" />
 
-        <img
+        <Image
           alt="Black Dragon Jeet Kune Do training"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="object-cover"
           src="/stay-active-and-healthy.PNG"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority
         />
 
         <div className="absolute bottom-1/4 right-0 z-10 h-72 w-72 rounded-full bg-primary/20 blur-[120px]" />

@@ -26,7 +26,7 @@ export default function ScrollReveal({
     if (!el) return;
 
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setVisible(true);
+      queueMicrotask(() => setVisible(true));
       return;
     }
 

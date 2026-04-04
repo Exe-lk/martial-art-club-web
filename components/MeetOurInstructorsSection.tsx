@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Instructor = {
   name: string;
   subtitle: string;
@@ -35,8 +37,14 @@ function InstructorCard({ instructor }: { instructor: Instructor }) {
           Chief Instructor
         </div>
 
-        <div className="aspect-[2.5/3] overflow-hidden">
-          <img className="w-full h-full object-cover" src={instructor.image} alt={instructor.name} />
+        <div className="relative aspect-[2.5/3] overflow-hidden">
+          <Image
+            className="object-cover"
+            src={instructor.image}
+            alt={instructor.name}
+            fill
+            sizes="(max-width: 1024px) 100vw, 25vw"
+          />
         </div>
 
         <div className="p-4">
@@ -49,8 +57,14 @@ function InstructorCard({ instructor }: { instructor: Instructor }) {
 
   return (
     <div className="w-full lg:w-1/4 group bg-slate-900 border border-slate-800 hover:-translate-y-2 transition-all">
-      <div className="aspect-[4/5] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-        <img className="w-full h-full object-cover" src={instructor.image} alt={instructor.name} />
+      <div className="relative aspect-[4/5] overflow-hidden grayscale transition-all duration-500 group-hover:grayscale-0">
+        <Image
+          className="object-cover"
+          src={instructor.image}
+          alt={instructor.name}
+          fill
+          sizes="(max-width: 1024px) 100vw, 25vw"
+        />
       </div>
       <div className="p-5">
         <h3 className="text-lg font-black uppercase">{instructor.name}</h3>

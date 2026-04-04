@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const FACILITIES = [
   {
     number: "01",
@@ -49,46 +52,56 @@ export default function FacilitiesSection() {
         <div className="relative mx-auto max-w-6xl">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-12 md:gap-6">
             <div className="group relative col-span-1 aspect-[4/5] overflow-hidden rounded-3xl bg-[#292929] md:col-span-4 md:aspect-[4/5]">
-              <img
+              <Image
                 alt={FACILITIES[0].alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 src={FACILITIES[0].image}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
 
             <div className="group relative col-span-1 aspect-[4/5] overflow-hidden rounded-3xl bg-[#292929] md:col-span-4 md:translate-y-10">
-              <img
+              <Image
                 alt={FACILITIES[1].alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 src={FACILITIES[1].image}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
             </div>
 
             <div className="group relative col-span-2 aspect-[21/9] overflow-hidden rounded-3xl bg-[#292929] md:col-span-4 md:aspect-[4/5]">
-              <img
+              <Image
                 alt={FACILITIES[2].alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 src={FACILITIES[2].image}
+                fill
+                sizes="(max-width: 768px) 100vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
             </div>
 
             <div className="group relative col-span-2 aspect-[21/9] overflow-hidden rounded-3xl bg-[#292929] md:col-span-6 md:aspect-[16/9] md:-translate-y-8">
-              <img
+              <Image
                 alt="Premium boxing gloves"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 src="/facilities/gym%20accesories.jpeg"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
             </div>
 
             <div className="group relative col-span-2 aspect-[21/9] overflow-hidden rounded-3xl bg-[#292929] md:col-span-6 md:aspect-[16/9] md:translate-y-6">
-              <img
+              <Image
                 alt="Martial arts academy contact area"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 src="/facilities/contact-martial-art-academy.jpg"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
@@ -103,12 +116,12 @@ export default function FacilitiesSection() {
                 Train in a structured environment with modern facilities and qualified coaches.
               </p>
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-                <a
+                <Link
                   href="/classes"
                   className="inline-flex items-center justify-center rounded-full border-2 border-white/80 px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:bg-white hover:text-black"
                 >
                   Learn more
-                </a>
+                </Link>
               </div>
             </div>
           </div>

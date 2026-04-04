@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { classesData } from "@/lib/classesData";
 
 function getHighlightValue(
@@ -47,10 +49,12 @@ export default function ClassesSection() {
               className="group flex flex-col overflow-hidden rounded-xl border border-white/5 bg-[#1a1a1a]"
             >
               <div className="relative h-56 overflow-hidden">
-                <img
-                  alt={program.alt}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                <Image
+                  alt={program.alt ?? program.title}
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   src={program.image}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute left-4 top-4">
                   <span className="bg-accent-blue/90 rounded px-2 py-1 text-[10px] font-bold tracking-tighter text-white uppercase">
