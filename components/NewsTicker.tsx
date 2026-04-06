@@ -10,7 +10,7 @@ type NewsTickerProps = {
 export default function NewsTicker({
   text = "🇱🇰 Sri Lanka’s Premier Martial Arts Academy — Excellence in Every Move BLACK DRAGON JEET KUNE DO",
   repeat = 10,
-  durationSeconds = 120,
+  durationSeconds = 200,
   className = "",
 }: NewsTickerProps) {
   const items = Array.from({ length: repeat }, (_, i) => i);
@@ -51,9 +51,6 @@ export default function NewsTicker({
       <style jsx>{`
         .ticker-track {
           animation: ticker var(--ticker-duration, 18s) linear infinite;
-        }
-        .group:hover .ticker-track {
-          animation-play-state: paused;
         }
         @keyframes ticker {
           0% {

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useId, useState } from "react";
 
 import { branches } from "@/data/branches";
@@ -132,12 +133,12 @@ export default function BranchesSection() {
                     >
                       Get Directions
                     </button>
-                    <button
-                      type="button"
-                      className="w-full rounded border-2 border-white/15 bg-black/30 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-white/5"
+                    <Link
+                      href="/schedule"
+                      className="flex w-full items-center justify-center rounded border-2 border-white/15 bg-black/30 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-white/5"
                     >
                       View Schedule
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ export default function HeroSection() {
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
-          <div className="hero-join-rainbow w-full rounded-lg sm:inline-flex sm:w-auto">
+          <div className="w-full rounded-lg sm:inline-flex sm:w-auto">
             <button className="flex w-full items-center justify-center gap-2  bg-primary px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-red-700 sm:w-auto">
               Join the Club <span className="material-symbols-outlined">arrow_forward</span>
             </button>
@@ -32,7 +32,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-[13px] z-20">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[0px] z-20">
         <div className="pointer-events-auto mx-auto max-w-full overflow-hidden px-0">
           <NewsTicker className="border-t border-primary/90" />
         </div>

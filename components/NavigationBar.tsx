@@ -13,6 +13,7 @@ export default function NavigationBar() {
       { href: "/", label: "Home" },
       { href: "/about", label: "About" },
       { href: "/classes", label: "Classes" },
+      { href: "/schedule", label: "Schedule" },
       { href: "/contact", label: "Contact us" },
       { href: "/blog", label: "Blog" },
     ],

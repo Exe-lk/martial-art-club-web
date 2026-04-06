@@ -105,23 +105,6 @@ export default function NotJustFightingClassSection() {
             </div>
           ))}
         </div>
-
-        <div className="mt-1 flex flex-col items-center justify-between gap-8 border-l-4 border-primary bg-[#141414] p-10 md:mt-24 md:flex-row md:p-12">
-          <div className="text-center md:text-left">
-            <h3 className="text-3xl font-black uppercase tracking-tighter text-white">
-              Ready to Forge Your New Self?
-            </h3>
-            <p className="mt-2 text-slate-400">
-              Limited slots available for the next elite training cycle.
-            </p>
-          </div>
-          <button
-            type="button"
-            className="shrink-0 bg-primary px-10 py-4 font-black uppercase tracking-widest text-white transition-all hover:bg-red-700 active:scale-95"
-          >
-            Apply for Training
-          </button>
-        </div>
       </div>
     </section>
   );

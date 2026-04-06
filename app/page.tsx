@@ -6,7 +6,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SectionLoadFallback from "@/components/SectionLoadFallback";
 import LandingFloatingButtons from "@/components/LandingFloatingButtons";
 
-const EventsSection = dynamic(() => import("@/components/EventsSection"), {
+const EventsSection = dynamic(() => import("@/components/EventsCardsSection"), {
+  loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
+});
+
+const BlogArticlesSection = dynamic(() => import("@/components/BlogArticlesSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
 });
 
@@ -60,12 +64,13 @@ export default function Home() {
   return (
     <main className="flex-1 overflow-x-hidden bg-[#000000]">
       <HeroSection />
+
       <ScrollReveal>
         <AboutClubSection />
       </ScrollReveal>
       
       <ScrollReveal>
-        <WeeklyTrainingScheduleSection />
+        <ClassesSection />
       </ScrollReveal>
 
       <ScrollReveal>
@@ -75,9 +80,10 @@ export default function Home() {
       <ScrollReveal>
         <NotJustFightingClassSection />
       </ScrollReveal>
-      <ScrollReveal>
-        <ClassesSection />
-      </ScrollReveal>
+
+
+
+
       <ScrollReveal>
         <KidsAcademyHighlightSection />
       </ScrollReveal>
@@ -89,6 +95,10 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <MeetOurInstructorsSection />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <BlogArticlesSection />
       </ScrollReveal>
       <ScrollReveal>
         <AchievementsCounterSection />

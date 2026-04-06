@@ -78,7 +78,7 @@ export const WEEKLY_SCHEDULE_SLOT_START_HOURS = [
 export const trainingClasses: TrainingClassDetail[] = [
   {
     id: "jkd-urubokka-beginner",
-    branchId: "jkd-urubokka",
+    branchId: "KunFu-urubokka",
     title: "Beginner Class",
     startTime: "08:00",
     imageUrl: "/Boost-Confidence.PNG",
@@ -98,7 +98,7 @@ export const trainingClasses: TrainingClassDetail[] = [
   },
   {
     id: "jkd-walasmulla-beginner",
-    branchId: "jkd-walasmulla",
+    branchId: "WUSU-walasmulla",
     title: "Beginner Class",
     startTime: "17:30",
     imageUrl: "/kun-fu.PNG",
@@ -108,7 +108,7 @@ export const trainingClasses: TrainingClassDetail[] = [
   },
   {
     id: "jkd-beliatta-beginner",
-    branchId: "jkd-beliatta",
+    branchId: "KunFu-beliatta",
     title: "Beginner Class",
     startTime: "09:00",
     imageUrl: "/wusu.PNG",
@@ -128,7 +128,7 @@ export const trainingClasses: TrainingClassDetail[] = [
   },
   {
     id: "jkd-beliatta-intermediate",
-    branchId: "jkd-beliatta",
+    branchId: "WUSU-beliatta",
     title: "Intermediate Class",
     startTime: "16:00",
     imageUrl: "/JKD.PNG",

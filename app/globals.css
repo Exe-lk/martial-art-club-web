@@ -13,6 +13,77 @@ body {
   min-height: 100%;
 }
 
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.animated-gradient-border {
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #213,
+    #112 5%,
+    #112 60%,
+    #213 95%
+  );
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    #08f,
+    #f03 99%,
+    transparent
+  );
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: solid 3px transparent;
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  background-position: center center;
+  animation: animated-gradient-border-spin 3s linear infinite;
+}
+
+.animated-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 3px; /* keep border visible */
+  border-radius: inherit;
+  background: rgba(127, 99, 99, 0.12);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.animated-gradient-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-gradient-border:hover {
+  animation-play-state: paused;
+}
+
+.animated-gradient-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes animated-gradient-border-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-border {
+    animation: none;
+  }
+}
+
 /* Prevent default yellow highlights from <mark> elements (e.g., injected by browsers/extensions). */
 mark {
   background-color: transparent;
@@ -63,55 +134,6 @@ mark {
   transform: scale(var(--hover-scale));
 }
 
-/* Hero "Join the Club" — animated border: red / black / blue / white */
-@property --hero-join-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@property --hero-join-opacity {
-  syntax: "<number>";
-  initial-value: 0.5;
-  inherits: false;
-}
-
-.hero-join-rainbow {
-  --hero-join-angle: 45deg;
-  --hero-join-opacity: 0.5;
-  --hero-join-border-size: 0.3rem;
-  box-sizing: border-box;
-  border: var(--hero-join-border-size) solid transparent;
-  border-image: conic-gradient(
-      from var(--hero-join-angle),
-      #d62929 0deg 90deg,
-      #000000 90deg 180deg,
-      #1e3a8a 180deg 270deg,
-      #ffffff 270deg 360deg
-    )
-    1 stretch;
-  background: rgb(255 255 255 / var(--hero-join-opacity));
-  animation: hero-join-rotate 4s linear infinite,
-    hero-join-opacity-change 3s infinite alternate;
-}
-
-@keyframes hero-join-rotate {
-  to {
-    --hero-join-angle: 360deg;
-  }
-}
-
-@keyframes hero-join-opacity-change {
-  to {
-    --hero-join-opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-join-rainbow {
-    animation: none;
-  }
-}
 
 /* Events section — upcoming badge: red ↔ red @ lower opacity, ~1s per leg */
 @keyframes event-badge-upcoming-bg {
