@@ -63,12 +63,15 @@ export default function Home() {
       <ScrollReveal>
         <AboutClubSection />
       </ScrollReveal>
-      <ScrollReveal>
-        <EventsSection />
-      </ScrollReveal>
+      
       <ScrollReveal>
         <WeeklyTrainingScheduleSection />
       </ScrollReveal>
+
+      <ScrollReveal>
+        <EventsSection />
+      </ScrollReveal> 
+      
       <ScrollReveal>
         <NotJustFightingClassSection />
       </ScrollReveal>

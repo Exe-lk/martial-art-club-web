@@ -192,9 +192,6 @@ export default function EventsSection() {
           {ordered.map((event, idx) => (
             <div key={event.id} className="space-y-16 md:space-y-24">
               <EventBlock event={event} index={idx} reveal={reveal} />
-              {idx !== ordered.length - 1 ? (
-                <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-25" />
-              ) : null}
             </div>
           ))}
         </div>

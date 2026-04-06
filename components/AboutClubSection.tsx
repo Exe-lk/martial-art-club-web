@@ -1,3 +1,5 @@
+"use client";
+
 const ABOUT_BLOCKS = [
   {
     title: "What is Black Dragon Jeet Kune Do?",
@@ -22,6 +24,7 @@ const ABOUT_BLOCKS = [
 ] as const;
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const HIGHLIGHTS = [
   {
@@ -39,6 +42,29 @@ const HIGHLIGHTS = [
 ] as const;
 
 export default function AboutClubSection() {
+  const imageAreaRef = useRef<HTMLDivElement | null>(null);
+  const [revealImage, setRevealImage] = useState(false);
+
+  useEffect(() => {
+    const el = imageAreaRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          setRevealImage(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.22 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="about"
@@ -49,9 +75,12 @@ export default function AboutClubSection() {
           <span className="mb-4 inline-block text-xs font-black tracking-[0.3em] text-secondary uppercase">
             About us
           </span>
-          <h2 className="text-3xl font-black uppercase tracking-tight leading-none md:text-4xl lg:text-5xl">
+          <h2 className="text-xl font-black uppercase tracking-tight leading-none md:text-1xl lg:text-3xl">
             BLACK DRAGON <span className="text-primary">JEET KUNE DO</span>
           </h2>
+          <h3 className="mb-2 text-base font-black uppercase tracking-tight md:text-lg">
+          Sri Lanka’s <span className="text-primary">#1 Martial Arts</span> Training Academy 
+              </h3>
         </div>
 
         <div className="grid gap-5 md:gap-6">
@@ -68,32 +97,25 @@ export default function AboutClubSection() {
           ))}
         </div>
 
-        <div className="mt-1 grid grid-cols-1 gap-5 border-t border-white/10 pt-7 sm:grid-cols-3">
-          {HIGHLIGHTS.map((item) => (
-            <div key={item.label}>
-              <span className="mb-2 block text-[10px] font-black tracking-[0.3em] text-primary uppercase">
-                {item.label}
-              </span>
-              <p className="text-sm font-black uppercase tracking-tight leading-tight">
-                {item.value}
-              </p>
-            </div>
-          ))}
-        </div>
+        
       </div>
 
-      <div className="relative h-[320px] overflow-hidden sm:h-[380px] md:h-auto md:max-h-[85svh]">
+      <div
+        ref={imageAreaRef}
+        className="relative h-[320px] overflow-hidden sm:h-[380px] md:h-auto md:max-h-[85svh]"
+      >
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-transparent to-transparent" />
         <div className="absolute inset-0 z-10 bg-primary/10 mix-blend-overlay" />
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent" />
 
         <Image
           alt="Black Dragon Jeet Kune Do training"
-          className="object-cover"
+          className={`object-cover about-image-slide ${revealImage ? "about-image-slide--show" : ""}`}
           src="/stay-active-and-healthy.PNG"
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           priority
+          style={{ ["--about-slide-delay" as any]: "140ms" }}
         />
 
         <div className="absolute bottom-1/4 right-0 z-10 h-72 w-72 rounded-full bg-primary/20 blur-[120px]" />
