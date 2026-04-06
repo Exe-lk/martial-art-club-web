@@ -108,7 +108,7 @@ export default function FacilitiesSection() {
           </div>
 
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4">
-            <div className="pointer-events-auto w-full max-w-xl rounded-3xl border border-white/10 bg-white/[0.06] p-8 text-center shadow-2xl backdrop-blur-md md:p-10">
+            <div className="pointer-events-auto w-full max-w-xl rounded-3xl border border-white/10 bg-black/40 p-8 text-center shadow-2xl backdrop-blur-md md:p-10">
               <h3 className="text-3xl font-black tracking-tight md:text-4xl">
                 We’ll help you become who you dream of being
               </h3>
@@ -117,7 +117,7 @@ export default function FacilitiesSection() {
               </p>
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                 <Link
-                  href="/classes"
+                  href="/facilities"
                   className="inline-flex items-center justify-center rounded-full border-2 border-white/80 px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:bg-white hover:text-black"
                 >
                   Learn more
