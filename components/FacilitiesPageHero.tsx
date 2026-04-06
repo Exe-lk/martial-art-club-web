@@ -1,18 +1,18 @@
 import Image from "next/image";
 
-const LEFT_BG = "/contact-martial-art-academy.jpg";
-const RIGHT_IMAGE = "/dragon.jpg";
+const LEFT_BG = "/gym/contact-martial-art-academy.jpg";
+const RIGHT_IMAGE = "/logos/JeetKuneDo.svg";
 
-export default function SchedulePageHero() {
+export default function FacilitiesPageHero() {
   return (
     <section
-      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[56vh] lg:grid-cols-2"
-      aria-labelledby="schedule-hero-heading"
+      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[66vh] lg:grid-cols-2"
+      aria-labelledby="facilities-hero-heading"
     >
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={LEFT_BG}
-          alt="Martial arts training at the academy"
+          alt="Martial arts academy facilities"
           fill
           priority
           className="object-cover"
@@ -24,10 +24,10 @@ export default function SchedulePageHero() {
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={RIGHT_IMAGE}
-          alt="Martial arts training session"
+          alt="Modern training space"
           fill
           priority
-          className="object-full"
+          className="object-cover"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
@@ -36,16 +36,17 @@ export default function SchedulePageHero() {
             Black Dragon
           </p>
           <h1
-            id="schedule-hero-heading"
-            className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
+            id="facilities-hero-heading"
+            className="mt-2 max-w-3xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
           >
-            Class <span className="text-primary">Schedule</span>
+            World Class <span className="text-primary">Facilities</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-            Plan your training sessions by branch and find the class times that fit you.
+          <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-slate-200 md:text-base">
+            Train in a professional environment built for performance, safety, and comfort.
           </p>
         </div>
       </div>
     </section>
   );
 }
+

@@ -3,11 +3,11 @@ import Image from "next/image";
 const LEFT_BG = "/contact-martial-art-academy.jpg";
 const RIGHT_IMAGE = "/dragon.jpg";
 
-export default function SchedulePageHero() {
+export default function CoachesPageHero() {
   return (
     <section
       className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[56vh] lg:grid-cols-2"
-      aria-labelledby="schedule-hero-heading"
+      aria-labelledby="coaches-hero-heading"
     >
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
@@ -36,16 +36,18 @@ export default function SchedulePageHero() {
             Black Dragon
           </p>
           <h1
-            id="schedule-hero-heading"
+            id="coaches-hero-heading"
             className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
           >
-            Class <span className="text-primary">Schedule</span>
+            Our <span className="text-primary">Coaches</span>
           </h1>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-            Plan your training sessions by branch and find the class times that fit you.
+            Meet the team guiding your training with discipline, technique, and
+            real-world experience.
           </p>
         </div>
       </div>
     </section>
   );
 }
+

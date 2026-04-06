@@ -2,23 +2,57 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+type NavItem = {
+  href: string;
+  label: string;
+  children?: Array<{ href: string; label: string }>;
+};
 
 export default function NavigationBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(
+    null,
+  );
   const pathname = usePathname();
 
-  const navItems = useMemo(
+  useEffect(() => {
+    setOpenDesktopDropdown(null);
+  }, [pathname]);
+
+  const navItems: NavItem[] = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "/about", label: "About" },
-      { href: "/classes", label: "Classes" },
-      { href: "/schedule", label: "Schedule" },
+      {
+        href: "/about",
+        label: "About",
+        children: [
+          { href: "/about", label: "Our Story" },
+          { href: "/schedule", label: "Schedule" },
+          { href: "/coaches", label: "Coach & Team" },
+          { href: "/facilities", label: "Facilities" },
+        ],
+      },
+      {
+        href: "/classes",
+        label: "Classes",
+        children: [
+          { href: "/classes", label: "Classes overview" },
+          { href: "/kids-academy", label: "Kids Academy" },
+          { href: "/schedule", label: "Schedule" },
+        ],
+      },
       { href: "/contact", label: "Contact us" },
       { href: "/blog", label: "Blog" },
     ],
     [],
   );
+
+  const isItemActive = (item: NavItem) => {
+    if (item.href === "/") return pathname === "/";
+    return pathname === item.href || pathname.startsWith(`${item.href}/`);
+  };
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#000000] px-6 py-4 backdrop-blur-md lg:px-20">
@@ -33,24 +67,81 @@ export default function NavigationBar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              className={[
-                "text-sm font-medium transition-colors hover:text-primary",
-                item.href === "/"
-                  ? pathname === "/"
-                    ? "text-primary"
-                    : "text-white/80"
-                  : pathname.startsWith(item.href)
-                    ? "text-primary"
-                    : "text-white/80",
-              ].join(" ")}
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isItemActive(item);
+
+            if (!item.children?.length) {
+              return (
+                <Link
+                  key={item.href}
+                  className={[
+                    "text-sm font-medium transition-colors hover:text-primary",
+                    active ? "text-primary" : "text-white/80",
+                  ].join(" ")}
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={item.href}
+                className="group relative"
+                onMouseEnter={() => setOpenDesktopDropdown(item.href)}
+                onMouseLeave={() => setOpenDesktopDropdown(null)}
+              >
+                <Link
+                  href={item.href}
+                  className={[
+                    "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary",
+                    active ? "text-primary" : "text-white/80",
+                  ].join(" ")}
+                  aria-haspopup="menu"
+                  aria-expanded={openDesktopDropdown === item.href}
+                >
+                  {item.label}
+                  <span
+                    className={[
+                      "material-symbols-outlined text-base opacity-80 transition-transform",
+                      openDesktopDropdown === item.href ? "rotate-180" : "",
+                    ].join(" ")}
+                  >
+                    expand_more
+                  </span>
+                </Link>
+
+                <div
+                  className={[
+                    "absolute left-0 top-full z-50 mt-3 min-w-56 rounded-xl border border-white/10 bg-[#0b0b0b] p-2 shadow-2xl transition-all duration-150",
+                    openDesktopDropdown === item.href
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible translate-y-1 opacity-0",
+                  ].join(" ")}
+                >
+                  {item.children.map((child) => {
+                    const childActive =
+                      pathname === child.href ||
+                      pathname.startsWith(`${child.href}/`);
+                    return (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setOpenDesktopDropdown(null)}
+                        className={[
+                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                          childActive ? "text-primary" : "text-white/85",
+                        ].join(" ")}
+                      >
+                        {child.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
 
           <button className="rounded bg-primary px-6 py-2 text-sm font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
             Join the Club
@@ -80,25 +171,70 @@ export default function NavigationBar() {
         ].join(" ")}
       >
         <div className="flex flex-col gap-3">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className={[
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
-                item.href === "/"
-                  ? pathname === "/"
-                    ? "text-primary"
-                    : "text-white/85 hover:text-white"
-                  : pathname.startsWith(item.href)
-                    ? "text-primary"
-                    : "text-white/85 hover:text-white",
-              ].join(" ")}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isItemActive(item);
+
+            if (!item.children?.length) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={[
+                    "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                    active
+                      ? "text-primary"
+                      : "text-white/85 hover:text-white",
+                  ].join(" ")}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={item.href} className="rounded-md border border-white/10">
+                <Link
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={[
+                    "flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                    active
+                      ? "text-primary"
+                      : "text-white/85 hover:text-white",
+                  ].join(" ")}
+                >
+                  <span>{item.label}</span>
+                  <span className="material-symbols-outlined text-xl opacity-80">
+                    chevron_right
+                  </span>
+                </Link>
+
+                <div className="flex flex-col gap-1 border-t border-white/10 p-2">
+                  {item.children.map((child) => {
+                    const childActive =
+                      pathname === child.href ||
+                      pathname.startsWith(`${child.href}/`);
+                    return (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={[
+                          "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                          childActive
+                            ? "text-primary"
+                            : "text-white/80 hover:text-white",
+                        ].join(" ")}
+                      >
+                        {child.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
 
           <button
             type="button"
