@@ -1,10 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
-import { trainingBranches, trainingSessions, type TrainingBranch } from "@/data/trainingSchedule";
+import {
+  trainingBranches,
+  trainingClasses,
+  type TrainingBranch,
+} from "@/data/trainingSchedule";
 
-function formatLkr(priceLkr: number) {
-  return `LKR ${priceLkr.toLocaleString("en-LK")}`;
+function formatClassTime(startTime: string): string {
+  const [hStr, mStr] = startTime.split(":");
+  const h = Number.parseInt(hStr ?? "0", 10);
+  const m = Number.parseInt(mStr ?? "0", 10);
+  const d = new Date();
+  d.setHours(h, m, 0, 0);
+  return d.toLocaleTimeString("en-LK", { hour: "numeric", minute: "2-digit", hour12: true });
 }
 
 export default function BranchScheduleSection() {
@@ -22,13 +32,12 @@ export default function BranchScheduleSection() {
   );
 
   const sessions = useMemo(
-    () => trainingSessions.filter((s) => s.branchId === activeBranch?.id),
+    () => trainingClasses.filter((c) => c.branchId === activeBranch?.id),
     [activeBranch?.id],
   );
 
   return (
-    <section id="schedule" className="pt-24 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-      {/* Section Header */}
+    <section id="schedule" className="mx-auto max-w-7xl px-6 pt-24 pb-24 md:px-12">
       <header className="mb-16">
         <h2 className={mainSectionHeaderClass}>
           Training <span className="text-[#d62929]">Schedule</span>
@@ -39,8 +48,7 @@ export default function BranchScheduleSection() {
         </p>
       </header>
 
-      {/* Branch Selector Tabs */}
-      <div className="flex overflow-x-auto pb-4 mb-12 gap-2 no-scrollbar border-b border-neutral-800">
+      <div className="mb-12 flex gap-2 overflow-x-auto border-b border-neutral-800 pb-4 no-scrollbar">
         {trainingBranches.map((branch) => {
           const isActive = branch.id === activeBranch?.id;
           return (
@@ -50,8 +58,8 @@ export default function BranchScheduleSection() {
               onClick={() => setActiveBranchId(branch.id)}
               className={
                 isActive
-                  ? "whitespace-nowrap px-8 py-4 bg-[#d62929] text-white font-black uppercase tracking-widest text-[12px] border-b-2 border-[#d62929] active:scale-95 transition-all"
-                  : "whitespace-nowrap px-8 py-4 bg-[#141414] text-slate-400 font-black uppercase tracking-widest text-[12px] hover:bg-[#1f1f1f] transition-all border-b-2 border-transparent"
+                  ? "whitespace-nowrap border-b-2 border-[#d62929] bg-[#d62929] px-8 py-4 text-[12px] font-black tracking-widest text-white uppercase transition-all active:scale-95"
+                  : "whitespace-nowrap border-b-2 border-transparent bg-[#141414] px-8 py-4 text-[12px] font-black tracking-widest text-slate-400 uppercase transition-all hover:bg-[#1f1f1f]"
               }
             >
               {branch.label}
@@ -60,65 +68,55 @@ export default function BranchScheduleSection() {
         })}
       </div>
 
-      {/* Schedule Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-        {sessions.map((session, idx) => (
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        {sessions.map((session) => (
           <div
             key={session.id}
-            className="group relative bg-[#141414] border-l-4 border-[#d62929] p-8 shadow-2xl transition-all duration-500 hover:bg-[#292929]"
+            className="group relative overflow-hidden border-l-4 border-[#d62929] bg-[#141414] shadow-2xl transition-all duration-500 hover:bg-[#292929]"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-              <span className="material-symbols-outlined text-6xl text-[#1E3A8A]">
-                {session.icon}
-              </span>
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0a0a0a]">
+              <Image
+                src={session.imageUrl}
+                alt={`${session.title} at ${activeBranch?.location ?? ""}`}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+              />
             </div>
 
-            <div className="mb-8">
-              <span className="text-[10px] text-slate-400 tracking-[0.3em] uppercase font-bold">
+            <div className="p-8">
+              <span className="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">
                 {activeBranch?.location} Branch
               </span>
-              <h3 className="text-3xl font-black uppercase tracking-tight mt-2 text-white">
+              <h3 className="mt-2 text-3xl font-black tracking-tight text-white uppercase">
                 {session.title}
               </h3>
-            </div>
 
-            <div className="space-y-4 mb-10">
-              <div className="flex items-center gap-4">
-                <span className="material-symbols-outlined text-[#1E3A8A]">calendar_today</span>
-                <span className="text-white font-medium uppercase text-sm tracking-wide">
-                  {session.date}
-                </span>
+              <div className="mt-8 space-y-4">
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-[#1E3A8A]">calendar_today</span>
+                  <span className="text-sm font-medium tracking-wide text-white uppercase">
+                    {session.date}
+                  </span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="material-symbols-outlined text-[#1E3A8A]">schedule</span>
+                  <span className="text-sm font-medium tracking-wide text-white uppercase">
+                    {formatClassTime(session.startTime)}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="material-symbols-outlined text-[#1E3A8A]">schedule</span>
-                <span className="text-white font-medium uppercase text-sm tracking-wide">
-                  {session.time}
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="material-symbols-outlined text-[#1E3A8A]">timer</span>
-                <span className="text-white font-medium uppercase text-sm tracking-wide">
-                  {session.duration}
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="material-symbols-outlined text-[#1E3A8A]">payments</span>
-                <span className="text-white font-black text-xl tracking-tight">
-                  {formatLkr(session.priceLkr)}
-                </span>
-              </div>
-            </div>
 
-            <button
-              type="button"
-              className="w-full bg-[#d62929] py-4 text-white font-black uppercase tracking-widest text-[12px] group-hover:scale-[1.02] active:scale-95 transition-all"
-            >
-              Enlist Now
-            </button>
+              <button
+                type="button"
+                className="mt-10 w-full bg-[#d62929] py-4 text-[12px] font-black tracking-widest text-white uppercase transition-all group-hover:scale-[1.02] active:scale-95"
+              >
+                Enlist Now
+              </button>
+            </div>
           </div>
         ))}
       </div>
     </section>
   );
 }
-

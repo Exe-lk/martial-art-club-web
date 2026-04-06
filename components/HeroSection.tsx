@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center gap-6 px-6 text-center bottom-10">
         <div className="space-y-4">
           <h1 className="text-4xl font-black leading-tight tracking-tight uppercase sm:text-5xl md:text-6xl">
-          Start Your Journey. <br />Become Unstoppable.
+          Start Your Journey Become Unstoppable.
             
           </h1>
 
@@ -21,10 +21,12 @@ export default function HeroSection() {
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
-          <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-red-700 sm:w-auto">
-            Join the Club <span className="material-symbols-outlined">arrow_forward</span>
-          </button>
-          <button className="w-full rounded-lg border-2 border-accent-blue px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto">
+          <div className="hero-join-rainbow w-full rounded-lg sm:inline-flex sm:w-auto">
+            <button className="flex w-full items-center justify-center gap-2  bg-primary px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-red-700 sm:w-auto">
+              Join the Club <span className="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+          <button className="w-full  border-2 border-accent-blue px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto">
             View Classes
           </button>
         </div>

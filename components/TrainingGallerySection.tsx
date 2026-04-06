@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type GalleryItem = {
   title: string;
@@ -108,9 +108,11 @@ const GALLERY_ITEMS: GalleryItem[] = LOCAL_IMAGE_PATHS.map((path) => {
 });
 
 export default function TrainingGallerySection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [expanded, setExpanded] = useState(false);
   const [columns, setColumns] = useState(4);
+  const [reveal, setReveal] = useState(false);
 
   const visibleItems = useMemo(() => {
     if (activeCategory === "all") return GALLERY_ITEMS;
@@ -139,12 +141,33 @@ export default function TrainingGallerySection() {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          setReveal(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.18 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const initialVisibleCount = columns * 2;
   const shouldShowToggle = visibleItems.length > initialVisibleCount;
   const itemsToRender = expanded ? visibleItems : visibleItems.slice(0, initialVisibleCount);
 
   return (
     <section
+      ref={sectionRef}
       id="training-gallery"
       className="border-t border-white/10 bg-background-dark py-24"
     >
@@ -183,7 +206,7 @@ export default function TrainingGallerySection() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {itemsToRender.map((item) => (
+          {itemsToRender.map((item, idx) => (
             <div
               key={`${item.title}-${item.imageSrc}`}
               className="relative aspect-square overflow-hidden rounded-lg bg-white/5"
@@ -192,8 +215,11 @@ export default function TrainingGallerySection() {
                 alt={item.imageAlt}
                 src={item.imageSrc}
                 fill
-                className="object-cover"
+                priority={idx < columns}
+                loading={idx < columns ? "eager" : "lazy"}
+                className={`object-cover image-wipe ${reveal ? "image-wipe--show" : ""}`}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                style={{ ["--image-wipe-delay" as any]: `${idx * 45}ms` }}
               />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-6">
                 <span className="text-[10px] font-black tracking-widest text-primary uppercase">

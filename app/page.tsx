@@ -10,6 +10,11 @@ const EventsSection = dynamic(() => import("@/components/EventsSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
 });
 
+const WeeklyTrainingScheduleSection = dynamic(
+  () => import("@/components/WeeklyTrainingScheduleSection"),
+  { loading: () => <SectionLoadFallback minHeight="min-h-[380px]" /> },
+);
+
 const NotJustFightingClassSection = dynamic(
   () => import("@/components/NotJustFightingClassSection"),
   { loading: () => <SectionLoadFallback minHeight="min-h-[520px]" /> },
@@ -24,9 +29,9 @@ const KidsAcademyHighlightSection = dynamic(
   { loading: () => <SectionLoadFallback minHeight="min-h-[280px]" /> },
 );
 
-const MembershipPlansSection = dynamic(
-  () => import("@/components/MembershipPlansSection"),
-  { loading: () => <SectionLoadFallback minHeight="min-h-[360px]" /> },
+const MembershipPlansShowcaseSection = dynamic(
+  () => import("@/components/MembershipPlansShowcaseSection"),
+  { loading: () => <SectionLoadFallback minHeight="min-h-[520px]" /> },
 );
 
 const FacilitiesSection = dynamic(() => import("@/components/FacilitiesSection"), {
@@ -62,6 +67,9 @@ export default function Home() {
         <EventsSection />
       </ScrollReveal>
       <ScrollReveal>
+        <WeeklyTrainingScheduleSection />
+      </ScrollReveal>
+      <ScrollReveal>
         <NotJustFightingClassSection />
       </ScrollReveal>
       <ScrollReveal>
@@ -71,7 +79,7 @@ export default function Home() {
         <KidsAcademyHighlightSection />
       </ScrollReveal>
       <ScrollReveal>
-        <MembershipPlansSection />
+        <MembershipPlansShowcaseSection />
       </ScrollReveal>
       <ScrollReveal>
         <FacilitiesSection />
