@@ -28,33 +28,48 @@ const benefits = [
 export default function KidsAcademyPage() {
   return (
     <main className="flex-1 overflow-x-hidden bg-[#000000] text-white">
-      <section className="relative overflow-hidden">
-        <div className="relative h-[72vh] min-h-[520px] w-full">
+      <section
+        className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
+        aria-labelledby="kids-hero-heading"
+      >
+        <div className="relative min-h-[320px] lg:min-h-0">
           <Image
-            className="object-cover"
             src="/classs-martial-art.jpg"
             alt="Kids practicing martial arts in class"
             fill
             priority
-            sizes="100vw"
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             quality={80}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/55 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent lg:bg-gradient-to-r lg:from-black/60 lg:via-black/25" />
         </div>
 
-        <div className="absolute inset-0 flex items-end">
-          <div className="mx-auto w-full max-w-7xl px-6 pb-14">
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <Image
+            src="/dragon.jpg"
+            alt="Martial arts training session"
+            fill
+            priority
+            className="object-full"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
             <p className="text-xs font-black tracking-[0.35em] uppercase text-white/80">
               Kids academy
             </p>
-            <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight uppercase md:text-6xl">
+            <h1
+              id="kids-hero-heading"
+              className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
+            >
               Martial arts that helps students thrive
             </h1>
-            <p className="mt-4 max-w-2xl text-sm text-slate-200 md:text-base">
+            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
               Our kids program builds focus, discipline, confidence, and respect—skills
               that support learning, friendships, and a strong mindset at school.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/classes"
                 className="inline-flex items-center justify-center rounded-full bg-[#d62929] px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:brightness-110"

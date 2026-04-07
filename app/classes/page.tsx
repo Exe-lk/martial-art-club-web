@@ -67,7 +67,7 @@ export default function ClassesPage() {
   const [suggestedTitle, setSuggestedTitle] = useState<keyof typeof classSlugByTitle | null>(null);
 
   const mainSectionHeaderClass =
-    "mx-auto mb-4 w-fit border-b-4 border-[#d62929] pb-2 text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
+    "mx-auto mb-4 w-fit text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
   const mainSectionKickerClass = "text-xs font-bold tracking-widest text-slate-300 uppercase text-center";
 
   const result = useMemo(() => {
@@ -104,34 +104,46 @@ export default function ClassesPage() {
     <div className="bg-[#0D0D0D] text-gray-100 selection:bg-[#d62929] selection:text-white">
       <main>
         {/* Hero (no header/footer per request) */}
-        <section className="relative flex h-[614px] items-center overflow-hidden">
-          <Image
-            className="object-cover"
-            src="/classs-martial-art.jpg"
-            alt="Martial arts professional in training stance"
-            fill
-            sizes="100vw"
-            priority
-            quality={80}
-          />
-          <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
-          <div className="container relative z-20 mx-auto px-6">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-4 text-5xl leading-none font-black tracking-tight uppercase md:text-7xl">
+        <section
+          className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
+          aria-labelledby="classes-hero-heading"
+        >
+          <div className="relative min-h-[320px] lg:min-h-0">
+            <Image
+              src="/classs-martial-art.jpg"
+              alt="Martial arts professional in training stance"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={80}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent lg:bg-gradient-to-r lg:from-black/60 lg:via-black/25" />
+          </div>
+
+          <div className="relative min-h-[320px] lg:min-h-0">
+            <Image
+              src="/dragon.jpg"
+              alt="Martial arts training session"
+              fill
+              priority
+              className="object-full"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+              <p className="text-xs font-black tracking-[0.35em] text-[#d62929] uppercase">
+                Black Dragon
+              </p>
+              <h1
+                id="classes-hero-heading"
+                className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
+              >
                 Our Martial Arts <span className="text-[#d62929]">Classes</span>
               </h1>
-              <p className="mx-auto mb-8 max-w-xl text-lg font-medium text-slate-300 md:text-xl">
-                Choose your path, train with purpose, and master your discipline. Join the elite
-                practitioners at IRON OBSIDIAN.
+              <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
+                Choose your path, train with purpose, and master your discipline.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <button className="bg-[#d62929] px-8 py-4 text-sm font-black tracking-widest uppercase transition-all hover:brightness-110">
-                  View Schedule
-                </button>
-                <button className="bg-[#1E3A8A] px-8 py-4 text-sm font-black tracking-widest uppercase transition-all hover:brightness-110">
-                  Join the Club
-                </button>
-              </div>
             </div>
           </div>
         </section>
@@ -197,6 +209,15 @@ export default function ClassesPage() {
             </div>
           </section>
         </ScrollReveal>
+
+
+        {/* Branch Schedule (tabs + sessions) */}
+        <ScrollReveal>
+          <BranchScheduleSection />
+        </ScrollReveal>
+
+
+
 
         {/* Interactive */}
         <ScrollReveal>
@@ -384,68 +405,7 @@ export default function ClassesPage() {
         </section>
         </ScrollReveal>
 
-        {/* Branch Schedule (tabs + sessions) */}
-        <ScrollReveal>
-          <BranchScheduleSection />
-        </ScrollReveal>
-
-        {/* Student Progress */}
-        <ScrollReveal>
-          <section className="overflow-hidden bg-black py-24 text-white">
-            <div className="container mx-auto px-6">
-              <div className="mb-16 text-center">
-                <h2 className={mainSectionHeaderClass}>
-                  Your Training <span className="text-[#d62929]">Journey</span>
-                </h2>
-                <p className={mainSectionKickerClass}>
-                  Discipline is the bridge between goals and accomplishment.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute top-1/2 left-0 hidden h-1 w-full -translate-y-1/2 bg-neutral-800 md:block" />
-                <div className="relative z-10 grid grid-cols-1 gap-12 md:grid-cols-4">
-                  {[
-                    {
-                      step: "01",
-                      title: "Beginner",
-                      color: "bg-neutral-900",
-                      text: "Foundational mechanics, basic forms, and establishing psychological discipline.",
-                    },
-                    {
-                      step: "02",
-                      title: "Intermediate",
-                      color: "bg-[#d62929]",
-                      text: "Application of speed, sparring fundamentals, and technical combinations.",
-                    },
-                    {
-                      step: "03",
-                      title: "Advanced",
-                      color: "bg-[#1E3A8A]",
-                      text: "Mastery of flow, independent tactical thinking, and competitive readiness.",
-                    },
-                    {
-                      step: "04",
-                      title: "Master Level",
-                      color: "bg-red-800",
-                      text: "The synthesis of technique and philosophy. Teaching others the way of Obsidian.",
-                    },
-                  ].map((item) => (
-                    <div key={item.step} className="bg-transparent text-center md:pt-16">
-                      <div
-                        className={`mx-auto mb-6 flex h-12 w-12 items-center justify-center text-white outline-8 outline-white ${item.color} font-black outline`}
-                      >
-                        {item.step}
-                      </div>
-                      <h4 className="mb-2 text-lg font-black tracking-tight uppercase">{item.title}</h4>
-                      <p className="px-4 text-sm leading-relaxed text-slate-300">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-        </ScrollReveal>
-
+     
         {/* CTA */}
         <ScrollReveal>
           <section className="bg-[#d62929] py-20">

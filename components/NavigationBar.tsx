@@ -15,11 +15,49 @@ export default function NavigationBar() {
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(
     null,
   );
+  const [hiddenOnScroll, setHiddenOnScroll] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setOpenDesktopDropdown(null);
   }, [pathname]);
+
+  useEffect(() => {
+    // Auto-hide on scroll down, show on scroll up.
+    // Keep visible when mobile menu is open to avoid trapping navigation.
+    if (mobileOpen) {
+      setHiddenOnScroll(false);
+      return;
+    }
+
+    let lastY = window.scrollY;
+    let ticking = false;
+    const delta = 8;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        const diff = y - lastY;
+
+        if (y <= 4) {
+          setHiddenOnScroll(false);
+        } else if (diff > delta) {
+          setHiddenOnScroll(true);
+        } else if (diff < -delta) {
+          setHiddenOnScroll(false);
+        }
+
+        lastY = y;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [mobileOpen]);
 
   const navItems: NavItem[] = useMemo(
     () => [
@@ -30,17 +68,19 @@ export default function NavigationBar() {
         children: [
           { href: "/about", label: "Our Story" },
           { href: "/schedule", label: "Schedule" },
+          { href: "/gallery", label: "Gallery" },
+          { href: "/events", label: "Events" },
           { href: "/coaches", label: "Coach & Team" },
           { href: "/facilities", label: "Facilities" },
         ],
       },
+      { href: "/memberships", label: "Prices" },
       {
         href: "/classes",
         label: "Classes",
         children: [
           { href: "/classes", label: "Classes overview" },
           { href: "/kids-academy", label: "Kids Academy" },
-          { href: "/schedule", label: "Schedule" },
         ],
       },
       { href: "/contact", label: "Contact us" },
@@ -55,7 +95,12 @@ export default function NavigationBar() {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#000000] px-6 py-4 backdrop-blur-md lg:px-20">
+    <header
+      className={[
+        "fixed top-0 z-50 w-full border-b border-white/10 bg-[#000000] px-6 py-5 backdrop-blur-md transition-transform duration-300 will-change-transform lg:px-20",
+        hiddenOnScroll ? "-translate-y-full" : "translate-y-0",
+      ].join(" ")}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <span className="material-symbols-outlined text-3xl text-primary">
@@ -75,7 +120,7 @@ export default function NavigationBar() {
                 <Link
                   key={item.href}
                   className={[
-                    "text-sm font-medium transition-colors hover:text-primary",
+                    "text-base font-medium transition-colors hover:text-primary",
                     active ? "text-primary" : "text-white/80",
                   ].join(" ")}
                   href={item.href}
@@ -95,7 +140,7 @@ export default function NavigationBar() {
                 <Link
                   href={item.href}
                   className={[
-                    "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary",
+                    "inline-flex items-center gap-1 text-base font-medium transition-colors hover:text-primary",
                     active ? "text-primary" : "text-white/80",
                   ].join(" ")}
                   aria-haspopup="menu"
@@ -130,7 +175,7 @@ export default function NavigationBar() {
                         href={child.href}
                         onClick={() => setOpenDesktopDropdown(null)}
                         className={[
-                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                          "block rounded-lg px-3 py-2 text-base font-medium transition-colors hover:bg-white/10",
                           childActive ? "text-primary" : "text-white/85",
                         ].join(" ")}
                       >
@@ -143,7 +188,7 @@ export default function NavigationBar() {
             );
           })}
 
-          <button className="rounded bg-primary px-6 py-2 text-sm font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
+          <button className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
             Join the Club
           </button>
         </div>
@@ -181,7 +226,7 @@ export default function NavigationBar() {
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className={[
-                    "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                    "rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-white/10",
                     active
                       ? "text-primary"
                       : "text-white/85 hover:text-white",
@@ -198,7 +243,7 @@ export default function NavigationBar() {
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className={[
-                    "flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                    "flex items-center justify-between rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-white/10",
                     active
                       ? "text-primary"
                       : "text-white/85 hover:text-white",
@@ -221,7 +266,7 @@ export default function NavigationBar() {
                         href={child.href}
                         onClick={() => setMobileOpen(false)}
                         className={[
-                          "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10",
+                          "rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-white/10",
                           childActive
                             ? "text-primary"
                             : "text-white/80 hover:text-white",
@@ -238,7 +283,7 @@ export default function NavigationBar() {
 
           <button
             type="button"
-            className="mt-2 rounded bg-primary px-6 py-3 text-sm font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
+            className="mt-2 rounded bg-primary px-6 py-3 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
             onClick={() => setMobileOpen(false)}
           >
             Join the Club

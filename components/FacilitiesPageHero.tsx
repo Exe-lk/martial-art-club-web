@@ -6,7 +6,7 @@ const RIGHT_IMAGE = "/logos/JeetKuneDo.svg";
 export default function FacilitiesPageHero() {
   return (
     <section
-      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[66vh] lg:grid-cols-2"
+      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
       aria-labelledby="facilities-hero-heading"
     >
       <div className="relative min-h-[320px] lg:min-h-0">

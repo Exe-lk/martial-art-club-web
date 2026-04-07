@@ -230,18 +230,19 @@ mark {
   0% {
     opacity: 0;
   }
-  /* ~2s into 7s cycle (max opacity reached) */
+  /* ~2s: reach max opacity */
   28.571% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
-  /* ~4s into 7s cycle (hold at max for 2s) */
+  /* ~4s: still at max (hold 2s) */
   57.142% {
     opacity: 0.9;
   }
-  /* ~6s into 7s cycle (fade out over 2s) */
+  /* ~6s: fully gone (fade out 2s from 4s → 6s) */
   85.714% {
     opacity: 0.5;
   }
+  /* ~7s: stay hidden */
   100% {
     opacity: 0;
   }
@@ -252,6 +253,24 @@ mark {
     animation: none;
     opacity: 0.35;
   }
+}
+
+/* About section — soft neon headline (text-shadow is clipped if an ancestor uses overflow:hidden) */
+.about-neon-headline {
+  color: #f5f0f0;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.7),
+    0 0 6px rgba(214, 41, 41, 0.35),
+    0 0 14px rgba(214, 41, 41, 0.22),
+    0 0 24px rgba(180, 30, 30, 0.12);
+}
+
+.about-neon-headline__accent {
+  color: #d84a4a;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 8px rgba(214, 41, 41, 0.45),
+    0 0 16px rgba(214, 41, 41, 0.28);
 }
 
 /* About section — image slide-in reveal (on scroll into view) */

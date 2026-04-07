@@ -17,23 +17,62 @@ function formatClassTime(startTime: string): string {
   return d.toLocaleTimeString("en-LK", { hour: "numeric", minute: "2-digit", hour12: true });
 }
 
+function humanizeBranchId(branchId: string): string {
+  // e.g. "jkd-urubokka" -> "Jkd - Urubokka", "KunFu-urubokka" -> "KunFu - Urubokka"
+  return branchId
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" - ");
+}
+
+function getBranchLocationLabel(branch: TrainingBranch): string {
+  if (branch.location?.trim()) return branch.location.trim();
+
+  // Fallback for any branch ids not present in trainingBranches.
+  // Example: "jkd-urubokka" -> "Urubokka"
+  const parts = branch.id.split("-").filter(Boolean);
+  const last = parts.at(-1) ?? branch.label ?? branch.id;
+  return last.charAt(0).toUpperCase() + last.slice(1);
+}
+
 export default function BranchScheduleSection() {
+  const allBranchOptions = useMemo(() => {
+    const branchesById = new Map<string, TrainingBranch>();
+
+    for (const b of trainingBranches) branchesById.set(b.id, b);
+
+    // Ensure every branch referenced by a class is selectable (even if missing from trainingBranches).
+    for (const c of trainingClasses) {
+      if (!branchesById.has(c.branchId)) {
+        branchesById.set(c.branchId, {
+          id: c.branchId,
+          art: "",
+          location: "",
+          label: humanizeBranchId(c.branchId),
+        });
+      }
+    }
+
+    return [...branchesById.values()];
+  }, []);
+
   const [activeBranchId, setActiveBranchId] = useState<TrainingBranch["id"]>(
-    trainingBranches[0]?.id ?? "",
+    allBranchOptions[0]?.id ?? "",
   );
 
   const mainSectionHeaderClass =
-    "mx-auto mb-4 w-fit border-b-4 border-[#d62929] pb-2 text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
+    "mx-auto mb-4 w-fit pb-2 text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
   const mainSectionKickerClass = "text-xs font-bold tracking-widest text-slate-300 uppercase text-center";
 
   const activeBranch = useMemo(
-    () => trainingBranches.find((b) => b.id === activeBranchId) ?? trainingBranches[0],
-    [activeBranchId],
+    () => allBranchOptions.find((b) => b.id === activeBranchId) ?? allBranchOptions[0],
+    [activeBranchId, allBranchOptions],
   );
 
   const sessions = useMemo(
-    () => trainingClasses.filter((c) => c.branchId === activeBranch?.id),
-    [activeBranch?.id],
+    () => trainingClasses.filter((c) => c.branchId === activeBranchId),
+    [activeBranchId],
   );
 
   return (
@@ -49,7 +88,7 @@ export default function BranchScheduleSection() {
       </header>
 
       <div className="mb-12 flex gap-2 overflow-x-auto border-b border-neutral-800 pb-4 no-scrollbar">
-        {trainingBranches.map((branch) => {
+        {allBranchOptions.map((branch) => {
           const isActive = branch.id === activeBranch?.id;
           return (
             <button
@@ -62,7 +101,7 @@ export default function BranchScheduleSection() {
                   : "whitespace-nowrap border-b-2 border-transparent bg-[#141414] px-8 py-4 text-[12px] font-black tracking-widest text-slate-400 uppercase transition-all hover:bg-[#1f1f1f]"
               }
             >
-              {branch.label}
+              {getBranchLocationLabel(branch)}
             </button>
           );
         })}
@@ -72,7 +111,7 @@ export default function BranchScheduleSection() {
         {sessions.map((session) => (
           <div
             key={session.id}
-            className="group relative overflow-hidden border-l-4 border-[#d62929] bg-[#141414] shadow-2xl transition-all duration-500 hover:bg-[#292929]"
+            className="group relative overflow-hidden border border-white/10 bg-[#141414] shadow-2xl transition-all duration-500 hover:bg-[#292929]"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0a0a0a]">
               <Image

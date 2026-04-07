@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function MeetOurInstructorsSection() {
   return (
     <section
-      className="bg-background-dark px-6 py-16 text-white md:py-20"
+      className="bg-[#000000] px-6 py-16 text-white md:py-20"
       id="instructors"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -42,7 +42,7 @@ export default function MeetOurInstructorsSection() {
 
           <div className="pt-2">
             <Link
-              href="/about"
+              href="/coaches"
               className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
               Meet the Team

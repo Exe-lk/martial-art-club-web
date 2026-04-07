@@ -1,27 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { EVENTS, type ClubEvent } from "@/data/events";
-
-function StateBadgeCompact({ state }: { state: ClubEvent["state"] }) {
-  const isUpcoming = state === "upcoming";
-  return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-sm px-4 py-2 text-[11px] font-black tracking-[0.28em] uppercase shadow-lg ring-1 backdrop-blur ${
-        isUpcoming
-          ? "event-badge-upcoming-pulse text-white border-l-[5px] border-primary ring-primary/35 shadow-primary/25"
-          : "bg-white/5 text-slate-200 border-l-[5px] border-secondary ring-white/10 shadow-black/30"
-      }`}
-    >
-      {isUpcoming ? (
-        <span className="inline-flex h-2 w-2 rounded-full bg-primary shadow-[0_0_0_4px_rgba(245,158,11,0.20)]" />
-      ) : null}
-      {isUpcoming ? "Upcoming" : "Past"}
-    </span>
-  );
-}
 
 function EventCard({
   event,
@@ -32,27 +15,27 @@ function EventCard({
   index: number;
   reveal: boolean;
 }) {
-  const imageClipPath = "polygon(10% 0, 100% 0, 90% 100%, 0% 100%)";
-
-  const isEven = index % 2 === 0;
-  const accentColor = isEven ? "secondary" : "primary";
-  const eyebrowText =
-    accentColor === "primary" ? "text-primary" : "text-secondary";
+  const isUpcoming = event.state === "upcoming";
 
   return (
-    <article className="group relative overflow-hidden rounded-none bg-black/30 ring-1 ring-white/10 backdrop-blur-sm">
+    <article className="group relative overflow-hidden rounded-3xl bg-[#0D0D0D] shadow-[0_18px_55px_rgba(0,0,0,0.35)] ring-1 ring-white/10 mb-15">
       <div className="relative">
-        <div className="absolute left-4 top-4 z-20">
-          <StateBadgeCompact state={event.state} />
-        </div>
-        <div
-          className="relative aspect-[16/10] overflow-hidden bg-[#141414] shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]"
-          style={{ clipPath: imageClipPath }}
-        >
+        {event.dateMonth && event.dateDay ? (
+          <div className="absolute left-4 top-4 z-20 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-black/10">
+            <div className="px-4 pt-3 text-center text-sm font-black tracking-widest text-red-600">
+              {event.dateMonth}
+            </div>
+            <div className="px-4 pb-3 text-center text-4xl font-black leading-none text-red-600">
+              {event.dateDay}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="relative h-64 overflow-hidden bg-[#141414] sm:h-72">
           {event.imageSrc ? (
             <Image
               alt={event.imageAlt ?? event.title}
-              className={`object-cover opacity-85 transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-100 event-image-wipe ${
+              className={`object-cover transition-transform duration-700 group-hover:scale-[1.02] ${
                 reveal ? "event-image-wipe--show" : ""
               }`}
               src={event.imageSrc}
@@ -64,42 +47,35 @@ function EventCard({
           ) : (
             <div className="h-full w-full bg-gradient-to-br from-primary/20 via-black to-secondary/15" />
           )}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         </div>
-        <div
-          className={`absolute ${
-            isEven ? "bottom-0 right-0" : "top-0 left-0"
-          } h-[2px] w-20 ${isEven ? "bg-primary" : "bg-secondary"}`}
-        />
       </div>
 
-      <div className="space-y-3 p-5">
-        <div className="flex items-center justify-between gap-3">
-          <span
-            className={`text-[10px] font-black tracking-[0.22em] uppercase ${eyebrowText}`}
-          >
-            {event.eyebrow}
-          </span>
-        </div>
-
-        <h3 className="text-lg font-black tracking-tight uppercase text-white sm:text-xl">
+      <div className="space-y-4 p-6">
+        <h3 className="text-2xl font-black tracking-tight text-white">
           {event.title}
         </h3>
 
-        {/* <p className="line-clamp-3 text-sm font-medium leading-relaxed text-slate-400">
-          {event.description}
-        </p> */}
+        <div className="flex flex-wrap items-center gap-3">
+          {event.timeLabel ? (
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-black text-white">
+              <span className="material-symbols-outlined text-base">schedule</span>
+              <span className="whitespace-nowrap">{event.timeLabel}</span>
+            </div>
+          ) : null}
+          <span
+            className={`inline-flex items-center rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase ${
+              isUpcoming ? "bg-white text-black" : "bg-white/10 text-white"
+            }`}
+          >
+            {isUpcoming ? "Upcoming" : "Past"}
+          </span>
+        </div>
 
         <a
-          className={`inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase text-white transition-colors ${
-            accentColor === "primary" ? "hover:text-primary" : "hover:text-secondary"
-          }`}
+          className="inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-5 py-4 text-sm font-black tracking-widest uppercase text-white shadow-lg transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
           href={event.ctaHref ?? "#"}
         >
           {event.ctaLabel}
-          <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">
-            arrow_forward
-          </span>
         </a>
       </div>
     </article>
@@ -139,7 +115,7 @@ export default function EventsCardsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background-dark text-white py-16"
+      className="bg-[#000000] text-white py-16"
       id="events"
     >
       <div className="mx-auto max-w-7xl px-6">
@@ -152,10 +128,20 @@ export default function EventsCardsSection() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {ordered.map((event, idx) => (
             <EventCard key={event.id} event={event} index={idx} reveal={reveal} />
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/blog"
+            className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
+          >
+            See more
+            <span className="material-symbols-outlined text-xl">arrow_forward</span>
+          </Link>
         </div>
       </div>
     </section>

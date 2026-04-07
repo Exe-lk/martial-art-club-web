@@ -1,3 +1,7 @@
+ "use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+
 type CounterItem = {
   icon: string;
   value: string;
@@ -12,19 +16,80 @@ const COUNTERS: CounterItem[] = [
 ];
 
 export default function AchievementsCounterSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  const parsed = useMemo(() => {
+    return COUNTERS.map((c) => {
+      const match = c.value.match(/(\d[\d,]*)\s*(\+)?/);
+      const numberPart = match?.[1] ?? "0";
+      const suffix = match?.[2] ?? "";
+      const target = Number(numberPart.replaceAll(",", "")) || 0;
+      return { ...c, target, suffix };
+    });
+  }, []);
+
+  const [displayed, setDisplayed] = useState<number[]>(() =>
+    parsed.map(() => 0)
+  );
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          setShouldAnimate(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.22 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldAnimate) return;
+
+    const durationMs = 3000;
+    const start = performance.now();
+    let raf = 0;
+
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / durationMs);
+      const eased = 1 - Math.pow(1 - t, 3);
+
+      setDisplayed(parsed.map((p) => Math.round(p.target * eased)));
+
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [parsed, shouldAnimate]);
+
   return (
-    <section className="bg-white py-16 md:py-20 border-y border-slate-200">
+    <section
+      ref={sectionRef}
+      className="bg-black py-16 md:py-20"
+    >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 text-center">
-          {COUNTERS.map((item) => (
+          {parsed.map((item, idx) => (
             <div key={item.label} className="flex flex-col items-center gap-4">
-              <span className="material-symbols-outlined text-warrior-blue text-5xl">
+              <span className="material-symbols-outlined text-white text-5xl">
                 {item.icon}
               </span>
-              <div className="text-blue-900 text-4xl md:text-5xl font-black italic">
-                {item.value}
+              <div className="text-red-600 text-4xl md:text-5xl font-black italic">
+                {(displayed[idx] ?? 0).toLocaleString()}
+                {item.suffix}
               </div>
-              <p className="text-black uppercase tracking-widest text-xs font-bold">
+              <p className="text-white uppercase tracking-widest text-xs font-bold">
                 {item.label}
               </p>
             </div>

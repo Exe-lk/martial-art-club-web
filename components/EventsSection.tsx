@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { EVENTS, type ClubEvent } from "@/data/events";
@@ -67,9 +68,11 @@ function EventBlock({
   const eyebrowText =
     accentColor === "primary" ? "text-primary" : "text-secondary";
 
+  const detailsHref = `/events/${event.id}`;
+
   return (
     <div
-      className={`flex flex-col items-center gap-10 md:gap-12 ${
+      className={`flex flex-col items-center gap-10 md:gap-12 mt-50 ${
         isEven ? "md:flex-row" : "md:flex-row-reverse"
       }`}
     >
@@ -78,26 +81,32 @@ function EventBlock({
           <div className="absolute -top-10 left-0 z-20 md:-top-12">
             <StateBadge state={event.state} />
           </div>
-          <div
-            className="relative aspect-[16/10] overflow-hidden bg-[#141414] shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
-            style={{ clipPath: imageClipPath }}
+          <Link
+            aria-label={`View details for ${event.title}`}
+            href={detailsHref}
+            className="block"
           >
-            {event.imageSrc ? (
-              <Image
-                alt={event.imageAlt ?? event.title}
-                className={`object-cover opacity-85 transition-transform duration-1000 hover:scale-110 hover:opacity-100 event-image-wipe ${reveal ? "event-image-wipe--show" : ""}`}
-                src={event.imageSrc}
-                fill
-                priority={index === 0}
-                loading={index === 0 ? "eager" : "lazy"}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ ["--event-wipe-delay" as any]: `${index * 120}ms` }}
-              />
-            ) : (
-              <div className="h-full w-full bg-gradient-to-br from-primary/20 via-black to-secondary/15" />
-            )}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-          </div>
+            <div
+              className="relative aspect-[16/10] overflow-hidden bg-[#141414] shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
+              style={{ clipPath: imageClipPath }}
+            >
+              {event.imageSrc ? (
+                <Image
+                  alt={event.imageAlt ?? event.title}
+                  className={`object-cover opacity-85 transition-transform duration-1000 hover:scale-110 hover:opacity-100 event-image-wipe ${reveal ? "event-image-wipe--show" : ""}`}
+                  src={event.imageSrc}
+                  fill
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ ["--event-wipe-delay" as any]: `${index * 120}ms` }}
+                />
+              ) : (
+                <div className="h-full w-full bg-gradient-to-br from-primary/20 via-black to-secondary/15" />
+              )}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+            </div>
+          </Link>
           <div
             className={`absolute ${
               isEven ? "bottom-0 right-0" : "top-0 left-0"
@@ -120,19 +129,21 @@ function EventBlock({
           {event.description}
         </p>
 
-        <a
-          className={`group inline-flex items-center gap-3 text-sm font-black tracking-widest uppercase text-white transition-colors ${
-            accentColor === "primary"
-              ? "hover:text-primary"
-              : "hover:text-secondary"
-          }`}
-          href={event.ctaHref ?? "#"}
-        >
-          {event.ctaLabel}
-          <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
-            arrow_forward
-          </span>
-        </a>
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+          <Link
+            className={`group inline-flex items-center gap-3 text-sm font-black tracking-widest uppercase text-white transition-colors ${
+              accentColor === "primary"
+                ? "hover:text-primary"
+                : "hover:text-secondary"
+            }`}
+            href={detailsHref}
+          >
+            View Details
+            <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
+              arrow_forward
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );

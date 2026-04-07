@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-const LEFT_BG = "/contact-martial-art-academy.jpg";
+const LEFT_BG = "/gallery/martial-art-coaches.jpg";
 const RIGHT_IMAGE = "/dragon.jpg";
 
 export default function CoachesPageHero() {
   return (
     <section
-      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[56vh] lg:grid-cols-2"
+      className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
       aria-labelledby="coaches-hero-heading"
     >
       <div className="relative min-h-[320px] lg:min-h-0">

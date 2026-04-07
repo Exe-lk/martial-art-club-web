@@ -19,7 +19,7 @@ export default function NewsTicker({
   return (
     <section
       aria-label="News ticker"
-      className={`w-full bg-[#0B0B0B] border-y border-primary/90 ${className}`}
+      className={`w-full bg-[#0B0B0B] ${className}`}
     >
       <div className="group relative w-full overflow-hidden">
         <div

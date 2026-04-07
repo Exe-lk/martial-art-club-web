@@ -3,34 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const MARTIAL_ARTS = [
-  {
-    id: "jkd",
-    title: "Jeet Kune Do",
-    slug: "jeet-kune-do",
-    backgroundImageUrl: "/gallery/kun-fu/JKDA.jpg",
-    logoUrl: "/logos/JeetKuneDo.svg",
-  },
-  {
-    id: "wushu",
-    title: "Wushu",
-    slug: "wushu",
-    backgroundImageUrl: "/gallery/wushu/wusuA.jpg",
-    logoUrl: "/logos/kun-fu.png",
-  },
-  {
-    id: "kung-fu",
-    title: "Kung Fu",
-    slug: "kung-fu",
-    backgroundImageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
-    logoUrl: "/logos/wushu.png",
-  },
-] as const;
+import { branches } from "@/data/branches";
 
 export default function ClassesSection() {
   return (
     <section
-      className="bg-background-dark py-24 text-white"
+      className="bg-[#000000] py-24 text-white"
       id="programs"
     >
       <div className="mx-auto max-w-7xl px-6">
@@ -47,18 +25,18 @@ export default function ClassesSection() {
         </header>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {MARTIAL_ARTS.map((art) => (
+          {branches.map((branch) => (
             <article
-              key={art.id}
+              key={branch.name}
               className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] shadow-lg"
             >
               <Image
-                alt={`${art.title} background`}
+                alt={`${branch.location} branch background`}
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                src={art.backgroundImageUrl}
+                src={branch.cardImageUrl}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                priority={art.id === "jkd"}
+                loading="lazy"
               />
 
               <div className="absolute inset-0 bg-black/25 transition-opacity duration-300 group-hover:opacity-0" />
@@ -69,28 +47,19 @@ export default function ClassesSection() {
 
               <div className="absolute inset-x-0 bottom-0 z-10">
                 <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-5 min-w-0">
-                    <div className="grid h-32 w-32 place-items-center rounded-2xl">
-                      <Image
-                        alt={`${art.title} logo`}
-                        src={art.logoUrl}
-                        width={92}
-                        height={102}
-                        className="h-24 w-24 object-contain"
-                      />
-                    </div>
-
-                    <h4 className="truncate text-xl font-black uppercase leading-tight tracking-tight md:text-2xl">
-                      {art.title}
-                    </h4>
-                  </div>
+                  <p className="text-sm font-bold tracking-wide text-white/90">
+                    Black Dragon Jeet Kune Do
+                  </p>
+                  <h4 className="mt-1 truncate text-3xl font-black uppercase leading-tight tracking-tight md:text-4xl">
+                    {branch.location}
+                  </h4>
 
                   <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:mt-4 group-hover:max-h-24 group-hover:opacity-100">
                     <Link
-                      href={`/classes/${art.slug}`}
+                      href="/classes"
                       className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-sm font-black tracking-[0.2em] text-white uppercase shadow-lg transition-transform hover:scale-[1.02] hover:bg-red-700 active:scale-[0.98]"
                     >
-                      Explore more
+                      Explore classes
                       <span className="material-symbols-outlined text-xl">
                         arrow_forward
                       </span>

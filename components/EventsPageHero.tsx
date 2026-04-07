@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-const LEFT_BG = "/gallery/training/taining-time2.jpg";
-const RIGHT_IMAGE = "/dragon.jpg";
+const LEFT_BG = "/event.jpg";
+const RIGHT_IMAGE = "/logos/kun-fu.png";
 
-export default function SchedulePageHero() {
+export default function EventsPageHero() {
   return (
     <section
       className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
-      aria-labelledby="schedule-hero-heading"
+      aria-labelledby="events-hero-heading"
     >
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
@@ -24,10 +24,10 @@ export default function SchedulePageHero() {
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={RIGHT_IMAGE}
-          alt="Martial arts training session"
+          alt="Martial arts event highlights"
           fill
           priority
-          className="object-full"
+          className="object-cover"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
@@ -36,16 +36,18 @@ export default function SchedulePageHero() {
             Black Dragon
           </p>
           <h1
-            id="schedule-hero-heading"
+            id="events-hero-heading"
             className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
           >
-            Class <span className="text-primary">Schedule</span>
+            Club <span className="text-primary">Events</span>
           </h1>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-            Plan your training sessions by branch and find the class times that fit you.
+            Discover upcoming seminars, championships, and milestones from our
+            academy.
           </p>
         </div>
       </div>
     </section>
   );
 }
+

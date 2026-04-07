@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -14,6 +15,33 @@ function isPromiseLike<T = unknown>(value: unknown): value is PromiseLike<T> {
 
 export function generateStaticParams() {
   return classesData.map((c) => ({ slug: c.slug }));
+}
+
+function getGalleryHeroImages(slug: string): { leftSrc: string; rightSrc: string } {
+  if (slug === "kung-fu") {
+    return {
+      leftSrc: "/gallery/kun-fu/480784630_604272952510633_7677364397842933082_n.jpg",
+      rightSrc: "/gallery/training/482002605_604272615844000_5475728776468286268_n.jpg",
+    };
+  }
+  if (slug === "jeet-kune-do") {
+    return {
+      leftSrc: "/gallery/jeet-kun-do/481216794_2068774033590095_6673438331088346098_n.jpg",
+      rightSrc: "/gallery/training/JKD.jpg",
+    };
+  }
+  if (slug === "wushu") {
+    return {
+      leftSrc: "/gallery/wushu/481262174_604273949177200_2820651480742250467_n.jpg",
+      rightSrc: "/gallery/wushu/wusuA.jpg",
+    };
+  }
+
+  // Fallback: still use gallery imagery
+  return {
+    leftSrc: "/gallery/training/taining-time4.jpg",
+    rightSrc: "/gallery/training/taining-time3.jpg",
+  };
 }
 
 export function generateMetadata({
@@ -48,22 +76,41 @@ export default async function ClassDetailPage({
   if (!cls) notFound();
 
   const other = getOtherClasses(slug);
+  const heroImages = getGalleryHeroImages(slug);
 
   return (
-    <main className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-x-hidden">
+    <main className="bg-[#000000] text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-28 pb-20 px-6 md:px-20 lg:min-h-[70vh] flex flex-col justify-center">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-transparent z-10" />
-          <div
-            className="w-full h-full bg-cover bg-center"
-            aria-label={cls.heroImageAlt}
-            style={{ backgroundImage: `url("${cls.heroImageUrl}")` }}
+      <section
+        className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
+        aria-labelledby="class-hero-heading"
+      >
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <Image
+            src={heroImages.leftSrc}
+            alt="Martial arts training at the academy"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent lg:bg-gradient-to-r lg:from-black/60 lg:via-black/25" />
         </div>
 
-        <div className="relative z-20 max-w-4xl">
-          <div className="flex flex-wrap gap-2 mb-6">
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <Image
+            src={heroImages.rightSrc}
+            alt={cls.heroImageAlt}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
             {cls.badges.map((b, idx) => (
               <span
                 key={b}
@@ -78,50 +125,62 @@ export default async function ClassDetailPage({
                 {b}
               </span>
             ))}
-          </div>
+            </div>
 
-          <h1 className="text-5xl md:text-7xl font-black uppercase italic leading-none tracking-tighter mb-4">
-            {cls.name} <span className="text-primary">Training</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed font-medium">
-            {cls.seoDescription}
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-primary hover:scale-105 transition-transform text-white font-black uppercase tracking-widest px-8 py-4 rounded text-sm">
-              Join This Class
-            </button>
-            <a
-              href="#schedule"
-              className="inline-flex items-center justify-center border-2 border-secondary text-white hover:bg-secondary/20 transition-all font-black uppercase tracking-widest px-8 py-4 rounded text-sm"
+            <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
+              Black Dragon
+            </p>
+            <h1
+              id="class-hero-heading"
+              className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
             >
-              View Schedule
-            </a>
+              {cls.name} <span className="text-primary">Training</span>
+            </h1>
+
+            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
+              {cls.seoDescription}
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-4 md:flex-row">
+              <button className="transform border-2 border-primary bg-primary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform active:scale-95">
+                Join This Class
+              </button>
+              <a
+                href="#schedule"
+                className="transform border-2 border-secondary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform hover:bg-secondary/10 active:scale-95"
+              >
+                View Schedule
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Overview Section */}
-      <section className="bg-neutral-gray dark:bg-slate-900 py-24 px-6 md:px-20">
+      <section className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative group">
             <div className="absolute -inset-4 bg-primary/10 rounded-xl transform group-hover:rotate-2 transition-transform" />
-            <div
-              className="relative aspect-[4/3] bg-cover bg-center rounded-lg shadow-2xl"
-              aria-label={cls.overviewImageAlt}
-              style={{ backgroundImage: `url("${cls.overviewImageUrl}")` }}
-            />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
+              <Image
+                src={heroImages.leftSrc}
+                alt={cls.overviewImageAlt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={80}
+              />
+            </div>
           </div>
 
           <div>
             <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
               Overview
             </h2>
-            <h3 className="text-4xl font-black dark:text-white uppercase mb-6 italic leading-tight">
+            <h3 className="text-4xl font-black text-white uppercase mb-6 leading-tight">
               {cls.overviewTitle}
             </h3>
-            <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
+            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
               {cls.overviewBody}
             </p>
 
@@ -129,14 +188,14 @@ export default async function ClassDetailPage({
               {cls.highlights.map((h) => (
                 <div
                   key={h.label}
-                  className="bg-white dark:bg-background-dark p-4 rounded-lg flex items-center gap-4 border border-slate-200 dark:border-white/5 shadow-sm"
+                  className="bg-[#141414] p-4 rounded-lg flex items-center gap-4 border border-white/10 shadow-sm"
                 >
                   <span className="material-symbols-outlined text-secondary text-3xl">
                     {h.icon}
                   </span>
                   <div>
                     <p className="text-[10px] uppercase font-bold text-slate-400">{h.label}</p>
-                    <p className="font-bold dark:text-white">{h.value}</p>
+                    <p className="font-bold text-white">{h.value}</p>
                   </div>
                 </div>
               ))}
@@ -146,12 +205,12 @@ export default async function ClassDetailPage({
       </section>
 
       {/* Curriculum Section */}
-      <section className="bg-white dark:bg-background-dark py-24 px-6 md:px-20">
+      <section className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             Curriculum
           </h2>
-          <h3 className="text-4xl font-black dark:text-white uppercase italic">
+          <h3 className="text-4xl font-black text-white uppercase">
             What You Will Learn
           </h3>
         </div>
@@ -160,15 +219,15 @@ export default async function ClassDetailPage({
           {cls.curriculum.map((item) => (
             <div
               key={item.title}
-              className="group p-8 border border-slate-100 dark:border-white/5 rounded-xl hover:bg-primary transition-all duration-300"
+              className="group p-8 border border-white/10 rounded-xl hover:bg-primary transition-all duration-300 bg-[#141414]"
             >
               <span className="material-symbols-outlined text-4xl text-primary group-hover:text-white mb-6">
                 {item.icon}
               </span>
-              <h4 className="font-black uppercase italic dark:text-white group-hover:text-white mb-3">
+              <h4 className="font-black uppercase text-white group-hover:text-white mb-3">
                 {item.title}
               </h4>
-              <p className="text-sm text-slate-500 dark:text-slate-400 group-hover:text-white/80">
+              <p className="text-sm text-slate-300 group-hover:text-white/80">
                 {item.description}
               </p>
             </div>
@@ -177,12 +236,12 @@ export default async function ClassDetailPage({
       </section>
 
       {/* Schedule Section */}
-      <section id="schedule" className="bg-neutral-gray dark:bg-slate-900 py-24 px-6 md:px-20">
+      <section id="schedule" className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             Timetable
           </h2>
-          <h3 className="text-4xl font-black dark:text-white uppercase italic">
+          <h3 className="text-4xl font-black text-white uppercase">
             Weekly Training Schedule
           </h3>
         </div>
@@ -191,13 +250,13 @@ export default async function ClassDetailPage({
           {cls.schedule.map((slot) => (
             <div
               key={`${slot.day}-${slot.time}`}
-              className="bg-white dark:bg-background-dark p-6 rounded-lg border-l-4 border-secondary"
+              className="bg-[#141414] p-6 rounded-lg border-l-4 border-secondary"
             >
               <p className="text-primary font-black mb-2 uppercase tracking-widest text-xs">
                 {slot.day}
               </p>
-              <h4 className="text-xl font-bold dark:text-white mb-4">{slot.time}</h4>
-              <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
+              <h4 className="text-xl font-bold text-white mb-4">{slot.time}</h4>
+              <p className="text-slate-300 text-sm font-medium">
                 {slot.title}
               </p>
             </div>
@@ -211,7 +270,7 @@ export default async function ClassDetailPage({
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             Pricing Plans
           </h2>
-          <h3 className="text-4xl font-black uppercase italic">Training Fees</h3>
+          <h3 className="text-4xl font-black uppercase">Training Fees</h3>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -240,7 +299,7 @@ export default async function ClassDetailPage({
                 {plan.name}
               </p>
 
-              <h4 className="text-5xl font-black italic mb-2">
+              <h4 className="text-5xl font-black mb-2">
                 {plan.priceLkr.toLocaleString("en-US")}
                 <span className="text-lg font-bold not-italic text-slate-400 ml-2">LKR</span>
               </h4>
@@ -268,14 +327,14 @@ export default async function ClassDetailPage({
       </section>*/}
 
       {/* Trainer Section */}
-      <section className="bg-neutral-gray dark:bg-slate-900 py-24 px-6 md:px-20">
+      <section className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             Class Instructor
           </h2>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-white dark:bg-background-dark overflow-hidden rounded-2xl shadow-xl flex flex-col">
+        <div className="max-w-4xl mx-auto bg-[#141414] overflow-hidden rounded-2xl shadow-xl flex flex-col border border-white/10">
           <div className="flex flex-col md:flex-row">
             <div
               className="md:w-1/2 min-h-[400px] bg-cover bg-center"
@@ -283,22 +342,22 @@ export default async function ClassDetailPage({
               style={{ backgroundImage: `url("${cls.instructor.imageUrl}")` }}
             />
             <div className="md:w-1/2 p-12 flex flex-col justify-center">
-              <h4 className="text-3xl font-black uppercase italic dark:text-white mb-2">
+              <h4 className="text-3xl font-black uppercase text-white mb-2">
                 {cls.instructor.name}
               </h4>
               <p className="text-primary font-bold mb-6">{cls.instructor.title}</p>
-              <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+              <p className="text-slate-300 mb-8 leading-relaxed">
                 {cls.instructor.bio}
               </p>
 
               <div className="flex gap-4">
                 <div className="text-center">
-                  <p className="text-2xl font-black dark:text-white">{cls.instructor.yearsExp}</p>
+                  <p className="text-2xl font-black text-white">{cls.instructor.yearsExp}</p>
                   <p className="text-[10px] uppercase font-bold text-slate-500">Years Exp</p>
                 </div>
-                <div className="w-px bg-slate-200 dark:bg-white/10" />
+                <div className="w-px bg-white/10" />
                 <div className="text-center">
-                  <p className="text-2xl font-black dark:text-white">{cls.instructor.students}</p>
+                  <p className="text-2xl font-black text-white">{cls.instructor.students}</p>
                   <p className="text-[10px] uppercase font-bold text-slate-500">Students</p>
                 </div>
               </div>
@@ -308,12 +367,12 @@ export default async function ClassDetailPage({
       </section>
 
       {/* Other Classes Section */}
-      <section className="bg-white dark:bg-background-dark py-24 px-6 md:px-20">
+      <section className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             More Options
           </h2>
-          <h3 className="text-4xl font-black dark:text-white uppercase italic">
+          <h3 className="text-4xl font-black text-white uppercase">
             Explore Other Classes
           </h3>
         </div>
@@ -323,7 +382,7 @@ export default async function ClassDetailPage({
             <Link
               key={c.slug}
               href={`/classes/${c.slug}`}
-              className="group overflow-hidden rounded-xl border border-slate-100 dark:border-white/5 shadow-lg"
+              className="group overflow-hidden rounded-xl border border-white/10 shadow-lg bg-[#141414]"
             >
               <div
                 className="aspect-video bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
@@ -331,10 +390,10 @@ export default async function ClassDetailPage({
                 style={{ backgroundImage: `url("${c.heroImageUrl}")` }}
               />
               <div className="p-8">
-                <h4 className="text-xl font-black dark:text-white uppercase italic mb-2">
+                <h4 className="text-xl font-black text-white uppercase mb-2">
                   {c.name}
                 </h4>
-                <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
+                <p className="text-slate-300 text-sm mb-6">
                   {c.seoDescription}
                 </p>
                 <div className="text-xs font-black uppercase tracking-widest text-primary group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
@@ -353,7 +412,7 @@ export default async function ClassDetailPage({
           <span className="material-symbols-outlined text-[30rem]">sports_martial_arts</span>
         </div>
         <div className="relative z-10 text-center text-white max-w-3xl mx-auto">
-          <h2 className="text-5xl font-black uppercase italic mb-6">Start Training Today</h2>
+          <h2 className="text-5xl font-black uppercase mb-6">Start Training Today</h2>
           <p className="text-lg font-medium mb-12 text-white/90">
             Join the elite community at Apex Martial Arts Academy. Your first trial session is on
             us!

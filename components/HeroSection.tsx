@@ -25,7 +25,7 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center gap-6 px-6 text-center bottom-10">
         <div className="space-y-4">
           <h1 className="text-4xl font-black leading-tight tracking-tight uppercase sm:text-5xl md:text-6xl">
-          Start Your Journey Become Unstoppable.
+          Real training. Real discipline. Real fighters.
             
           </h1>
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
       <div className="pointer-events-none absolute inset-x-0 bottom-[0px] z-20">
         <div className="pointer-events-auto mx-auto max-w-full overflow-hidden px-0">
-          <NewsTicker className="border-t border-primary/90" />
+          <NewsTicker />
         </div>
       </div>
     </section>

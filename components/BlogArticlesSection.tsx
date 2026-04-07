@@ -7,7 +7,7 @@ export default function BlogArticlesSection() {
   const featuredArticles = getFeaturedArticlesForIndex().slice(0, 3);
 
   return (
-    <section className="bg-background-dark px-6 py-20 text-white" id="blog">
+    <section className="bg-[#000000] px-6 py-20 text-white" id="blog">
       <div className="mx-auto max-w-7xl">
         <header className="mb-10 text-center">
           <div className="mx-auto max-w-3xl">
@@ -15,20 +15,14 @@ export default function BlogArticlesSection() {
               Insights
             </span>
             <h2 className="text-3xl font-black tracking-tight uppercase md:text-5xl">
-              Blog <span className="text-primary">&amp;</span> Articles
+               <span className="text-primary"> Warrios</span> Path
             </h2>
             <p className="mt-4 text-sm font-medium leading-relaxed text-slate-400 md:text-base">
               Training tips, mindset, and martial arts wisdom from our coaches.
             </p>
           </div>
 
-          <Link
-            href="/blog"
-            className="mx-auto mt-6 inline-flex items-center gap-2 text-xs font-black tracking-widest text-white uppercase transition-colors hover:text-primary"
-          >
-            View all articles
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </Link>
+          
         </header>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -76,16 +70,25 @@ export default function BlogArticlesSection() {
                     </div>
                     <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-widest text-primary uppercase transition-transform group-hover:translate-x-1">
                       Read
-                      <span className="material-symbols-outlined text-sm">
-                        arrow_forward
-                      </span>
+                      
                     </span>
                   </div>
                 </div>
               </Link>
+              
             </article>
           ))}
         </div>
+
+        <div className="mt-18 flex justify-center">
+          <Link
+            href="/blog"
+            className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
+          >
+            View all articles
+          </Link>
+        </div>
+        
       </div>
     </section>
   );

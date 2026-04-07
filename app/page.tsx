@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 
 import HeroSection from "@/components/HeroSection";
+import ClassesSection from "@/components/ClassesSection";
 import AboutClubSection from "@/components/AboutClubSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionLoadFallback from "@/components/SectionLoadFallback";
@@ -19,15 +20,6 @@ const WeeklyTrainingScheduleSection = dynamic(
   { loading: () => <SectionLoadFallback minHeight="min-h-[380px]" /> },
 );
 
-const NotJustFightingClassSection = dynamic(
-  () => import("@/components/NotJustFightingClassSection"),
-  { loading: () => <SectionLoadFallback minHeight="min-h-[520px]" /> },
-);
-
-const ClassesSection = dynamic(() => import("@/components/ClassesSection"), {
-  loading: () => <SectionLoadFallback minHeight="min-h-[400px]" />,
-});
-
 const KidsAcademyHighlightSection = dynamic(
   () => import("@/components/KidsAcademyHighlightSection"),
   { loading: () => <SectionLoadFallback minHeight="min-h-[280px]" /> },
@@ -37,10 +29,6 @@ const MembershipPlansShowcaseSection = dynamic(
   () => import("@/components/MembershipPlansShowcaseSection"),
   { loading: () => <SectionLoadFallback minHeight="min-h-[520px]" /> },
 );
-
-const FacilitiesSection = dynamic(() => import("@/components/FacilitiesSection"), {
-  loading: () => <SectionLoadFallback minHeight="min-h-[480px]" />,
-});
 
 const MeetOurInstructorsSection = dynamic(
   () => import("@/components/MeetOurInstructorsSection"),
@@ -66,11 +54,15 @@ export default function Home() {
       <HeroSection />
 
       <ScrollReveal>
+        <ClassesSection />
+      </ScrollReveal>
+
+      <ScrollReveal>
         <AboutClubSection />
       </ScrollReveal>
-      
+
       <ScrollReveal>
-        <ClassesSection />
+        <AchievementsCounterSection />
       </ScrollReveal>
 
       <ScrollReveal>
@@ -78,30 +70,20 @@ export default function Home() {
       </ScrollReveal> 
       
       <ScrollReveal>
-        <NotJustFightingClassSection />
-      </ScrollReveal>
-
-
-
-
-      <ScrollReveal>
         <KidsAcademyHighlightSection />
       </ScrollReveal>
-      <ScrollReveal>
-        <MembershipPlansShowcaseSection />
-      </ScrollReveal>
-      <ScrollReveal>
-        <FacilitiesSection />
-      </ScrollReveal>
+
       <ScrollReveal>
         <MeetOurInstructorsSection />
       </ScrollReveal>
 
       <ScrollReveal>
-        <BlogArticlesSection />
+        <MembershipPlansShowcaseSection />
       </ScrollReveal>
+
+
       <ScrollReveal>
-        <AchievementsCounterSection />
+        <BlogArticlesSection />
       </ScrollReveal>
       <ScrollReveal>
         <TestimonialsSection />

@@ -153,13 +153,16 @@ export default function WeeklyTrainingScheduleSection() {
                     <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 md:gap-2.5">
                       {classes.map((c) => {
                         const tone: WeeklyClassTone = c.tone ?? "neutral";
+                        const branch = branchLabel(c.branchId);
                         return (
                           <span
                             key={c.id}
-                            title={`${branchLabel(c.branchId)}`}
+                            title={branch}
                             className={`inline-flex max-w-full rounded-full border px-3 py-1.5 text-[11px] font-black uppercase tracking-wide md:px-3.5 md:py-2 md:text-xs ${tonePill[tone]}`}
                           >
-                            {c.title}
+                            <span className="truncate">{c.title}</span>
+                            <span className="mx-2 text-white/30">•</span>
+                            <span className="truncate text-white/85">{branch}</span>
                           </span>
                         );
                       })}

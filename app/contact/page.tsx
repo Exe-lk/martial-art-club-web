@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import BranchesSection from "@/components/BranchesSection";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -10,41 +11,61 @@ export default function ContactPage() {
   return (
     <main className="overflow-x-hidden bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100">
       {/* Hero */}
-      <section className="relative flex h-[60vh] min-h-[600px] items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/contact-martial-art-academy.jpg')",
-          }}
-          aria-label="Martial arts professional in training stance"
-        />
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-black/55 to-black/90" />
+      <section
+        className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
+        aria-labelledby="contact-hero-heading"
+      >
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <Image
+            src="/contact-martial-art-academy.jpg"
+            alt="Martial arts professional in training stance"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent lg:bg-gradient-to-r lg:from-black/60 lg:via-black/25" />
+        </div>
 
-        <div className="relative z-20 max-w-4xl px-4 text-center">
-          <h1 className="mb-6 text-5xl font-black tracking-tighter text-white uppercase md:text-7xl">
-            Contact Our <span className="text-primary">Academy</span>
-          </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg font-medium text-slate-300 md:text-xl">
-            Get in touch with our elite coaching team and start your martial arts
-            journey today. Professional training for all levels.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-primary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
-              Book Free Trial
-            </button>
-            <button className="border-2 border-secondary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-secondary">
-              View Classes
-            </button>
+        <div className="relative min-h-[320px] lg:min-h-0">
+          <Image
+            src="/dragon.jpg"
+            alt="Martial arts training session"
+            fill
+            priority
+            className="object-full"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+            <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
+              Black Dragon
+            </p>
+            <h1
+              id="contact-hero-heading"
+              className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
+            >
+              Contact Our <span className="text-primary">Academy</span>
+            </h1>
+            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
+              Get in touch with our elite coaching team and start your martial arts
+              journey today. Professional training for all levels.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <button className="bg-primary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
+                Book Free Trial
+              </button>
+              <button className="border-2 border-secondary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-secondary">
+                View Classes
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Smooth transition */}
-      <div className="h-16 bg-gradient-to-b from-background-dark to-background-light" />
-
       {/* Form + Contact methods */}
       <ScrollReveal>
-        <section className="bg-background-light px-6 pb-24 md:px-20 pt-20">
+        <section className="bg-[#000000] px-6 pb-24 md:px-20 pt-20">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
               <div className="h-full rounded-xl bg-white p-10 shadow-xl">
@@ -146,7 +167,7 @@ export default function ContactPage() {
             </div>
 
             <div className="flex h-full min-h-0 flex-col gap-8">
-              <h2 className="text-3xl font-black tracking-tighter text-slate-900 uppercase">
+              <h2 className="text-3xl font-black text-white tracking-tighter text-slate-900 uppercase">
                 Contact Details
               </h2>
 
@@ -216,13 +237,13 @@ export default function ContactPage() {
 
       {/* FAQ */}
       <ScrollReveal>
-        <section className="border-t border-slate-200 bg-background-light px-6 py-24 md:px-20">
+        <section className="border-t border-slate-200 bg-[#000000] px-6 py-24 md:px-20 -mt-5">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 text-center">
-              <h2 className="mb-4 text-4xl font-black tracking-tighter text-[#0d0d0d] uppercase md:text-5xl">
+              <h2 className="mb-4 text-4xl font-black text-white tracking-tighter text-[#0d0d0d] uppercase md:text-5xl">
                 Frequently Asked Questions
               </h2>
-              <p className="mx-auto max-w-2xl text-slate-600">
+              <p className="mx-auto max-w-2xl  text-[#C20009]">
                 Everything you need to know about starting your journey at Apex
                 Martial Arts Academy.
               </p>
