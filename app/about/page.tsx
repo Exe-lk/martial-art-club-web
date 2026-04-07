@@ -1,140 +1,23 @@
 import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
+import AboutPageHero from "@/components/AboutPageHero";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function AboutPage() {
   return (
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
       {/* Hero Section */}
-      <section className="relative flex h-[70vh] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-10 bg-black/60" />
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('/blog-martial-art-academy.jpeg')",
-          }}
-          aria-label="Martial arts professional in training stance"
-        />
+      <AboutPageHero />
 
-        <div className="container relative z-20 mx-auto max-w-4xl px-6 text-center">
-          <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-white uppercase md:text-7xl">
-            About Our <span className="text-primary">Academy</span>
-          </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg font-normal leading-relaxed text-slate-300 md:text-xl">
-            Building strength, discipline, and champions through professional
-            martial arts training since 2010.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="rounded bg-primary px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-red-700 shadow-lg shadow-primary/20">
-              Our Instructors
-            </button>
-            <button className="rounded border-2 border-[#1e3a8a] px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-[#1e3a8a]/10">
-              Equipments
-            </button>
-          </div>
-        </div>
-      </section>
 
-      {/* Meet Our Instructors */}
-      <ScrollReveal>
-        <MeetOurInstructorsSection />
-      </ScrollReveal>
-
-      {/* Accessories & Equipment */}
-      <ScrollReveal>
-        <section className="bg-[#f3f4f6] py-24 dark:bg-slate-950">
-        <div className="container mx-auto px-6">
-          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <span className="mb-2 block text-sm font-black tracking-widest text-[#1e3a8a] uppercase">
-                Pro Gear
-              </span>
-              <h2 className="text-4xl font-black text-slate-900 uppercase italic dark:text-white">
-                Armor &amp; Arsenal
-              </h2>
-            </div>
-            <button className="rounded bg-[#1e3a8a] px-8 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-blue-800">
-              Shop All Equipment
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                tag: "Weaponry",
-                border: "border-primary",
-                title: "Oak Training Bokken",
-                price: "$85.00",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDREpfBoFrVvcVoFrkX-TOBDMavNsREPnc3b4BEzk_xYJ405zWCkrBA2yfrhMDmiTn_nWWSSq1iaBEp88CnXWtc0HArqseK-ZvNwEBWNtqoR7VwCXFPTVgMfc5VVznZZ2qCg-J1Y7BXi9ys1NNdxUGLJHk1e8HrUFjb6jPGIPFZc5ql8ppAeSnF3_UPLJjoYphS-CBRsVbGFvqvEbkhkTk54ALlQaK-BWcIdAI2jLHp075XkVOdJtwrfC3mKVZ7nE8_8nSlf9629ks",
-                alt: "Traditional Bokken Wooden Sword",
-                chip: "bg-primary",
-              },
-              {
-                tag: "Striking",
-                border: "border-[#1e3a8a]",
-                title: "Apex Pro 16oz Gloves",
-                price: "$120.00",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB-pFk0Dvslm5JjrQnGDKzcHhT88HnJjdXF9gXZSIaLepX079LyQJAyITRPDkx4e8Nd4EXemEfx4SI7jkCYgndCj8MTFetK4mEspw4mPzubb7vRQYchkva6_UCOrVZgw4cKG79PCyFdmFPveQ82MciWXBS6jKsfm2mdS3HsQ1Xnau_onZEaxMTSUxXSAG0P_G20K2LweYASS5wy3qRFozC-7TWcvP6rp4VcV5ybYmQZjOCqRdrQGaKCw2iAeUkY7Dd3me7rN9WTlhE",
-                alt: "Elite Sparring Gloves",
-                chip: "bg-[#1e3a8a]",
-              },
-              {
-                tag: "Gym Gear",
-                border: "border-primary",
-                title: "100lb Heavy Bag",
-                price: "$210.00",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAo8XyaJVPi36gl669yjaOdQzjlvE8zKG44ogHVHD-GYmgI_whLHwKZDn6XFbA7NmCf4gt6xjyHn5pWf416JGm3pB7WEGGU_c5AqpGBne0WRAg5y909IHE52auymboQ_D6oZnlIl5a9BxEYrerPcMVr57DZCQldjoiw1eWX8mB3Y2wBYCYwf93QeSSye9YLQET0dbjGEXJMMUS-nHzL8WaIXMcqULXQIBTpNSa4Su59hsTnLpQtMMtrDicurKBhqEdZktxJzDyQV_c",
-                alt: "Heavy Training Bag",
-                chip: "bg-primary",
-              },
-              {
-                tag: "Protection",
-                border: "border-[#1e3a8a]",
-                title: "Elite Shin Guards",
-                price: "$65.00",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzuO85X3Y6vcUZYs7dgnWQruwpEEVwIfX0YnaLXEGTmyu1m9wl8M-7qbMkE7lVLTOYEggyAxFaxtvCoz9eopyR88GBwqpO11Mk6UR9H-WvPinqk9oooWOKNf5ANzAoT7o_J08NP5JRGf9g8JKZ5IPhw0PqEFa49n3SCaoHfexKEYBaw3zijoTH6rVMgJ5A7eJDjVcasARWfVCKSWztMqq49YDt2AOw51kUrdeHLhM7_Cl79Uzk5ns4PSIx8w7UKJKzlIHGSlZD0GI",
-                alt: "Protective Gear",
-                chip: "bg-[#1e3a8a]",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className={`group overflow-hidden border-l-4 bg-[#0d0d0d] p-1 ${item.border}`}
-              >
-                <div className="relative aspect-square bg-slate-800">
-                  <img
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    src={item.img}
-                    alt={item.alt}
-                  />
-                  <div
-                    className={`absolute bottom-0 left-0 px-3 py-1 text-[10px] font-black tracking-wide text-white uppercase ${item.chip}`}
-                  >
-                    {item.tag}
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h4 className="mb-1 text-sm font-black text-white uppercase">
-                    {item.title}
-                  </h4>
-                  <p className="text-xs text-slate-500">{item.price}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      </ScrollReveal>
-
-      {/* Why Us */}
-      <ScrollReveal>
+{/* Why Us */}
+<ScrollReveal>
         <section className="bg-[#f3f4f6] py-24 dark:bg-slate-900">
         <div className="container mx-auto grid items-center gap-16 px-6 lg:grid-cols-2">
           <div className="relative">
             <div className="absolute -top-4 -left-4 h-24 w-24 border-t-4 border-l-4 border-primary" />
             <img
               className="relative z-10 h-[500px] w-full rounded object-cover shadow-2xl"
-              src="/gallery/martial-art-coaches.jpg"
+              src="/contact-martial-art-academy.jpg"
               alt="Martial arts coaches training with students"
             />
             <div className="absolute -bottom-4 -right-4 h-24 w-24 border-b-4 border-r-4 border-[#1e3a8a]" />
@@ -146,7 +29,7 @@ export default function AboutPage() {
                 The Legacy
               </span>
               <h2 className="text-4xl font-black text-slate-900 uppercase italic dark:text-white">
-                Why Us
+                Our Academy
               </h2>
             </div>
 
@@ -202,6 +85,101 @@ export default function AboutPage() {
         </div>
       </section>
       </ScrollReveal>
+
+      {/* Meet Our Instructors */}
+      <ScrollReveal>
+        <MeetOurInstructorsSection />
+      </ScrollReveal>
+
+      {/* Accessories & Equipment */}
+      <ScrollReveal>
+        <section className="bg-[#f3f4f6] py-24 dark:bg-slate-950">
+        <div className="container mx-auto px-6">
+          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <span className="mb-2 block text-sm font-black tracking-widest text-[#1e3a8a] uppercase">
+                Pro Gear
+              </span>
+              <h2 className="text-4xl font-black text-slate-900 uppercase italic dark:text-white">
+              Explore our gym
+              </h2>
+            </div>
+            <button className="rounded bg-[#1e3a8a] px-8 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-blue-800">
+              Shop All Equipment
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                topic: "Location",
+                border: "border-primary",
+                img: "/gym/gym.jpeg",
+                alt: "Gym location and training space",
+                desc: "Find us easily and step into a focused training environment built for progress.",
+              },
+              {
+                topic: "Safety",
+                border: "border-[#1e3a8a]",
+                img: "/gym/fighting-safety.jpeg",
+                alt: "Fighting safety training",
+                desc: "Train with clear rules, proper supervision, and protective standards every session.",
+              },
+              {
+                topic: "Accessories",
+                border: "border-primary",
+                img: "/gym/gym%20accesories.jpeg",
+                alt: "Gym accessories and equipment",
+                desc: "Gloves, pads, and essential gear to support your training and protect your body.",
+              },
+              {
+                topic: "Standard",
+                border: "border-[#1e3a8a]",
+                img: "/gym/gym3.jpeg",
+                alt: "Gym training standard and facility",
+                desc: "Clean facilities, structured coaching, and disciplined routines that set the bar high.",
+              },
+            ].map((item) => (
+              <div
+                key={item.topic}
+                className={`group overflow-hidden border-l-4 bg-[#0d0d0d] p-1 ${item.border}`}
+              >
+                <div className="relative aspect-square bg-slate-800">
+                  <img
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    src={item.img}
+                    alt={item.alt}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+
+                  <div className="absolute inset-0 p-5">
+                    <div className="relative h-full">
+                      <h4 className="absolute bottom-0 left-0 text-base font-black tracking-widest text-white uppercase transition-all duration-300 group-hover:bottom-auto group-hover:top-0">
+                        {item.topic}
+                      </h4>
+
+                      <div className="absolute left-0 right-0 bottom-0 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <div className="pt-10">
+                          <p className="text-sm text-slate-200">{item.desc}</p>
+                          <button className="mt-4 inline-flex items-center gap-2 rounded bg-white/10 px-4 py-2 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-white/20">
+                            Learn more
+                            <span className="material-symbols-outlined text-base">
+                              arrow_forward
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      
 
       {/* Achievements */}
       <ScrollReveal>

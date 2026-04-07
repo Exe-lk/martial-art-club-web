@@ -26,9 +26,10 @@ export default function KidsAcademyHighlightSection() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/kids-academy"
-              className="inline-flex items-center justify-center rounded-full bg-[#d62929] px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:brightness-110"
+              className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
               Learn more
+              <span className="material-symbols-outlined text-xl">arrow_forward</span>
             </Link>
           </div>
         </div>

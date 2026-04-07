@@ -43,7 +43,7 @@ export default function MeetOurInstructorsSection() {
           <div className="pt-2">
             <Link
               href="/about"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-all hover:bg-red-700 active:scale-[0.98]"
+              className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
               Meet the Team
               <span className="material-symbols-outlined text-xl">
