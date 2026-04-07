@@ -1,5 +1,6 @@
 import HeroDeferredVideo from "@/components/HeroDeferredVideo";
 import NewsTicker from "@/components/NewsTicker";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -7,6 +8,19 @@ export default function HeroSection() {
       <HeroDeferredVideo />
 
       <div className="absolute inset-0 bg-black/55" />
+
+      <div className="pointer-events-none absolute inset-0 z-[1] bottom-20" aria-hidden>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/dragon-hero-dark.png"
+            alt=""
+            width={900}
+            height={900}
+            priority
+            className="hero-dragon-fade h-auto w-[72vw] max-w-[560px] select-none object-contain sm:max-w-[560px] md:max-w-[680px] lg:max-w-[760px]"
+          />
+        </div>
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center gap-6 px-6 text-center bottom-10">
         <div className="space-y-4">

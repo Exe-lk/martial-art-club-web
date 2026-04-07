@@ -218,6 +218,42 @@ mark {
   }
 }
 
+/* Landing page — hero dragon overlay (fade in 2s → hold 2s → fade out 2s → wait 1s; total 7s loop) */
+.hero-dragon-fade {
+  opacity: 0;
+  animation: hero-dragon-fade 7s linear infinite;
+  animation-fill-mode: both;
+  will-change: opacity;
+}
+
+@keyframes hero-dragon-fade {
+  0% {
+    opacity: 0;
+  }
+  /* ~2s into 7s cycle (max opacity reached) */
+  28.571% {
+    opacity: 0.5;
+  }
+  /* ~4s into 7s cycle (hold at max for 2s) */
+  57.142% {
+    opacity: 0.9;
+  }
+  /* ~6s into 7s cycle (fade out over 2s) */
+  85.714% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dragon-fade {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
 /* About section — image slide-in reveal (on scroll into view) */
 .about-image-slide {
   opacity: 0;
