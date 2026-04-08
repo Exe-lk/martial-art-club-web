@@ -133,6 +133,12 @@ export default function BranchesSection() {
                     >
                       Get Directions
                     </button>
+                  <Link
+                    href={`/branches/${active.slug}`}
+                    className="flex w-full items-center justify-center rounded border-2 border-white/15 bg-black/30 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-white/5"
+                  >
+                    View Branch Details
+                  </Link>
                     <Link
                       href="/schedule"
                       className="flex w-full items-center justify-center rounded border-2 border-white/15 bg-black/30 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-white/5"

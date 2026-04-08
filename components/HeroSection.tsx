@@ -17,7 +17,7 @@ export default function HeroSection() {
             width={900}
             height={900}
             priority
-            className="hero-dragon-fade h-auto w-[72vw] max-w-[560px] select-none object-contain sm:max-w-[560px] md:max-w-[680px] lg:max-w-[760px]"
+            className="hero-dragon-fade h-auto w-[72vw] max-w-[560px] select-none object-cover sm:max-w-[560px] md:max-w-[680px] lg:max-w-[760px]"
           />
         </div>
       </div>
@@ -36,7 +36,15 @@ export default function HeroSection() {
 
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
           <div className="w-full rounded-lg sm:inline-flex sm:w-auto">
-            <button className="flex w-full items-center justify-center gap-2  bg-primary px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-red-700 sm:w-auto">
+            <button
+              className="flex w-full items-center justify-center gap-2 rounded-md px-10 py-4 text-base font-black text-white uppercase transition-all sm:w-auto hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              style={{
+                backgroundImage: "url('/button.PNG')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               Join the Club <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </div>
