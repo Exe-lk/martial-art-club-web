@@ -56,10 +56,10 @@ export default function ClassesSection() {
 
                   <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:mt-4 group-hover:max-h-24 group-hover:opacity-100">
                     <Link
-                      href="/classes"
+                      href={`/branches/${branch.slug}`}
                       className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-sm font-black tracking-[0.2em] text-white uppercase shadow-lg transition-transform hover:scale-[1.02] hover:bg-red-700 active:scale-[0.98]"
                     >
-                      Explore classes
+                      View branch
                       <span className="material-symbols-outlined text-xl">
                         arrow_forward
                       </span>

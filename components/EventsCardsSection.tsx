@@ -71,12 +71,13 @@ function EventCard({
           </span>
         </div>
 
-        <a
+        <Link
           className="inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-5 py-4 text-sm font-black tracking-widest uppercase text-white shadow-lg transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
-          href={event.ctaHref ?? "#"}
+          href={`/events/${event.id}`}
+          aria-label={`View details for ${event.title}`}
         >
-          {event.ctaLabel}
-        </a>
+          View Details
+        </Link>
       </div>
     </article>
   );
