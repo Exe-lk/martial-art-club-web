@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  trainingBranches,
   trainingClasses,
-  type TrainingBranch,
 } from "@/data/trainingSchedule";
+import { branches as clubBranches } from "@/data/branches";
 
 function formatClassTime(startTime: string): string {
   const [hStr, mStr] = startTime.split(":");
@@ -17,63 +17,33 @@ function formatClassTime(startTime: string): string {
   return d.toLocaleTimeString("en-LK", { hour: "numeric", minute: "2-digit", hour12: true });
 }
 
-function humanizeBranchId(branchId: string): string {
-  // e.g. "jkd-urubokka" -> "Jkd - Urubokka", "KunFu-urubokka" -> "KunFu - Urubokka"
-  return branchId
-    .split("-")
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" - ");
-}
-
-function getBranchLocationLabel(branch: TrainingBranch): string {
-  if (branch.location?.trim()) return branch.location.trim();
-
-  // Fallback for any branch ids not present in trainingBranches.
-  // Example: "jkd-urubokka" -> "Urubokka"
-  const parts = branch.id.split("-").filter(Boolean);
-  const last = parts.at(-1) ?? branch.label ?? branch.id;
-  return last.charAt(0).toUpperCase() + last.slice(1);
+function locationSlugFromTrainingBranchId(branchId: string): string {
+  // Examples:
+  // - "jkd-urubokka" -> "urubokka"
+  // - "kung-fu-walasmulla" -> "walasmulla"
+  // - "wushu-beliatta" -> "beliatta"
+  const parts = branchId.split("-").filter(Boolean);
+  return (parts.at(-1) ?? "").toLowerCase();
 }
 
 export default function BranchScheduleSection() {
-  const allBranchOptions = useMemo(() => {
-    const branchesById = new Map<string, TrainingBranch>();
+  const branchOptions = useMemo(() => clubBranches.slice(0, 6), []);
 
-    for (const b of trainingBranches) branchesById.set(b.id, b);
-
-    // Ensure every branch referenced by a class is selectable (even if missing from trainingBranches).
-    for (const c of trainingClasses) {
-      if (!branchesById.has(c.branchId)) {
-        branchesById.set(c.branchId, {
-          id: c.branchId,
-          art: "",
-          location: "",
-          label: humanizeBranchId(c.branchId),
-        });
-      }
-    }
-
-    return [...branchesById.values()];
-  }, []);
-
-  const [activeBranchId, setActiveBranchId] = useState<TrainingBranch["id"]>(
-    allBranchOptions[0]?.id ?? "",
-  );
+  const [activeBranchSlug, setActiveBranchSlug] = useState<string>(branchOptions[0]?.slug ?? "");
 
   const mainSectionHeaderClass =
     "mx-auto mb-4 w-fit pb-2 text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
   const mainSectionKickerClass = "text-xs font-bold tracking-widest text-slate-300 uppercase text-center";
 
-  const activeBranch = useMemo(
-    () => allBranchOptions.find((b) => b.id === activeBranchId) ?? allBranchOptions[0],
-    [activeBranchId, allBranchOptions],
-  );
+  const activeBranch = useMemo(() => {
+    return branchOptions.find((b) => b.slug === activeBranchSlug) ?? branchOptions[0];
+  }, [activeBranchSlug, branchOptions]);
 
-  const sessions = useMemo(
-    () => trainingClasses.filter((c) => c.branchId === activeBranchId),
-    [activeBranchId],
-  );
+  const sessions = useMemo(() => {
+    const slug = (activeBranch?.slug ?? "").toLowerCase();
+    if (!slug) return [];
+    return trainingClasses.filter((c) => locationSlugFromTrainingBranchId(c.branchId) === slug);
+  }, [activeBranch?.slug]);
 
   return (
     <section id="schedule" className="mx-auto max-w-7xl px-6 pt-24 pb-24 md:px-12">
@@ -88,20 +58,20 @@ export default function BranchScheduleSection() {
       </header>
 
       <div className="mb-12 flex gap-2 overflow-x-auto border-b border-neutral-800 pb-4 no-scrollbar">
-        {allBranchOptions.map((branch) => {
-          const isActive = branch.id === activeBranch?.id;
+        {branchOptions.map((branch) => {
+          const isActive = branch.slug === activeBranch?.slug;
           return (
             <button
-              key={branch.id}
+              key={branch.slug}
               type="button"
-              onClick={() => setActiveBranchId(branch.id)}
+              onClick={() => setActiveBranchSlug(branch.slug)}
               className={
                 isActive
                   ? "whitespace-nowrap border-b-2 border-[#d62929] bg-[#d62929] px-8 py-4 text-[12px] font-black tracking-widest text-white uppercase transition-all active:scale-95"
                   : "whitespace-nowrap border-b-2 border-transparent bg-[#141414] px-8 py-4 text-[12px] font-black tracking-widest text-slate-400 uppercase transition-all hover:bg-[#1f1f1f]"
               }
             >
-              {getBranchLocationLabel(branch)}
+              {branch.location}
             </button>
           );
         })}
@@ -146,12 +116,12 @@ export default function BranchScheduleSection() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                className="mt-10 w-full bg-[#d62929] py-4 text-[12px] font-black tracking-widest text-white uppercase transition-all group-hover:scale-[1.02] active:scale-95"
+              <Link
+                href={activeBranch?.slug ? `/branches/${activeBranch.slug}` : "/branches"}
+                className="mt-10 inline-flex w-full items-center justify-center bg-[#d62929] py-4 text-[12px] font-black tracking-widest text-white uppercase transition-all group-hover:scale-[1.02] active:scale-95"
               >
-                Enlist Now
-              </button>
+                Enroll Now
+              </Link>
             </div>
           </div>
         ))}
