@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const LEFT_BG = "/logos/kun-fu.png";
 const RIGHT_IMAGE = "/hero-about.jpg";
 
 export default function AboutPageHero() {
+  const t = useTranslations("AboutPage");
+
   return (
     <section
       className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[70vh] lg:grid-cols-2"
@@ -12,7 +17,7 @@ export default function AboutPageHero() {
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={RIGHT_IMAGE}
-          alt="Martial arts academy training environment"
+          alt={t("heroRightAlt")}
           fill
           priority
           className="object-cover"
@@ -23,8 +28,8 @@ export default function AboutPageHero() {
 
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
-          src={ LEFT_BG}
-          alt="Martial arts coaches training with students"
+          src={LEFT_BG}
+          alt={t("heroLeftAlt")}
           fill
           priority
           className="object-cover"
@@ -34,25 +39,26 @@ export default function AboutPageHero() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
           <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-            Black Dragon
+            {t("heroKicker")}
           </p>
           <h1
             id="about-hero-heading"
             className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
           >
-            About Our <span className="text-primary">Academy</span>
+            {t.rich("heroTitle", {
+              accent: (chunks) => <span className="text-primary">{chunks}</span>,
+            })}
           </h1>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-            Building strength, discipline, and champions through professional
-            martial arts training since 2010.
+            {t("heroSubtitle")}
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <button className="rounded bg-primary px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-red-700 shadow-lg shadow-primary/20">
-              Our Instructors
+              {t("heroPrimaryCta")}
             </button>
             <button className="rounded border-2 border-[#1e3a8a] px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-[#1e3a8a]/10">
-              Equipments
+              {t("heroSecondaryCta")}
             </button>
           </div>
         </div>

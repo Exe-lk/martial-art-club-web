@@ -28,6 +28,13 @@ export default function NavigationBar() {
   const pathname = usePathname();
 
   const homeHref = `/${locale}`;
+  const aboutHref = `/${locale}/about`;
+  const galleryHref = `/${locale}/gallery`;
+  const facilitiesHref = `/${locale}/facilities`;
+  const membershipsHref = `/${locale}/memberships`;
+  const scheduleHref = `/${locale}/schedule`;
+  const eventsHref = `/${locale}/events`;
+  const blogHref = `/${locale}/blog`;
   const classesHref = `/${locale}/classes`;
   const kidsAcademyHref = `/${locale}/kids-academy`;
 
@@ -70,30 +77,30 @@ export default function NavigationBar() {
     () => [
       { href: homeHref, label: t("home") },
       {
-        href: "/about",
+        href: aboutHref,
         label: t("about"),
         children: [
-          { href: "/about", label: t("ourStory") },
-          { href: "/schedule", label: t("schedule") },
-          { href: "/gallery", label: t("gallery") },
-          { href: "/events", label: t("events") },
+          { href: aboutHref, label: t("ourStory") },
+          { href: galleryHref, label: t("gallery") },
+          { href: eventsHref, label: t("events") },
           { href: "/coaches", label: t("coaches") },
-          { href: "/facilities", label: t("facilities") },
+          { href: blogHref, label: t("blog") },
         ],
       },
-      { href: "/memberships", label: t("prices") },
+      { href: facilitiesHref, label: t("facilities") },
+      { href: membershipsHref, label: t("prices") },
       {
         href: classesHref,
         label: t("classes"),
         children: [
           { href: classesHref, label: t("classesOverview") },
+          { href: scheduleHref, label: t("schedule") },
           { href: kidsAcademyHref, label: t("kidsAcademy") },
         ],
       },
       { href: "/contact", label: t("contact") },
-      { href: "/blog", label: t("blog") },
     ],
-    [t, homeHref, classesHref, kidsAcademyHref],
+    [t, homeHref, aboutHref, galleryHref, facilitiesHref, membershipsHref, scheduleHref, eventsHref, blogHref, classesHref, kidsAcademyHref],
   );
 
   const isItemActive = (item: NavItem) => {

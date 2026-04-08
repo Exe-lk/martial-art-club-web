@@ -1,24 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type GalleryItem = {
   title: string;
-  label: string;
-  imageAlt: string;
   imageSrc: string;
   categories: string[];
 };
 
-const CATEGORIES: { id: string; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "kung-fu", label: "Kung Fu" },
-  { id: "jeet-kune-do", label: "Jeet Kune Do" },
-  { id: "wushu", label: "Wushu" },
-  { id: "training", label: "Training" },
-  { id: "events", label: "Events" },
-];
+const CATEGORY_IDS = ["all", "kung-fu", "jeet-kune-do", "wushu", "training", "events"] as const;
 
 const LOCAL_IMAGE_PATHS = [
   "/gallery/486603328_2093109104489921_5617833811638459708_n.jpg",
@@ -59,10 +51,10 @@ const LOCAL_IMAGE_PATHS = [
   "/gym/WhatsApp Image 2026-03-18 at 17.24.02 (2).jpeg",
 ] as const;
 
-function titleFromPath(path: string) {
+function titleFromPath(path: string, snapshotTitle: string) {
   const filename = path.split("/").pop() ?? path;
   const base = filename.replace(/\.[^.]+$/, "");
-  if (/^\d/.test(base)) return "Training Snapshot";
+  if (/^\d/.test(base)) return snapshotTitle;
   return base.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
@@ -84,35 +76,78 @@ function getCategoriesForPath(path: string): string[] {
 }
 
 function labelForCategories(categories: string[]) {
-  if (categories.includes("events")) return "Events";
-  if (categories.includes("kung-fu")) return "Kung Fu";
-  if (categories.includes("jeet-kune-do")) return "Jeet Kune Do";
-  if (categories.includes("wushu")) return "Wushu";
-  return "Training";
+  if (categories.includes("events")) return "events";
+  if (categories.includes("kung-fu")) return "kung-fu";
+  if (categories.includes("jeet-kune-do")) return "jeet-kune-do";
+  if (categories.includes("wushu")) return "wushu";
+  return "training";
 }
 
-const GALLERY_ITEMS: GalleryItem[] = LOCAL_IMAGE_PATHS.map((path) => {
-  const categories = getCategoriesForPath(path);
-  return {
-    label: labelForCategories(categories),
-    title: titleFromPath(path),
-    imageAlt: labelForCategories(categories),
-    imageSrc: encodeURI(path),
-    categories,
-  };
-});
-
 export default function TrainingGallerySection() {
+  const t = useTranslations("Gallery");
   const sectionRef = useRef<HTMLElement | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [expanded, setExpanded] = useState(false);
   const [columns, setColumns] = useState(4);
   const [reveal, setReveal] = useState(false);
 
+  const categories = useMemo(() => {
+    const labelForId = (id: (typeof CATEGORY_IDS)[number]) => {
+      switch (id) {
+        case "all":
+          return t("categories.all");
+        case "kung-fu":
+          return t("categories.kungFu");
+        case "jeet-kune-do":
+          return t("categories.jeetKuneDo");
+        case "wushu":
+          return t("categories.wushu");
+        case "training":
+          return t("categories.training");
+        case "events":
+          return t("categories.events");
+      }
+    };
+
+    return CATEGORY_IDS.map((id) => ({ id, label: labelForId(id) }));
+  }, [t]);
+
+  const galleryItems = useMemo<GalleryItem[]>(() => {
+    const snapshotTitle = t("snapshotTitle");
+
+    return LOCAL_IMAGE_PATHS.map((path) => {
+      const categories = getCategoriesForPath(path);
+      return {
+        title: titleFromPath(path, snapshotTitle),
+        imageSrc: encodeURI(path),
+        categories,
+      };
+    });
+  }, [t]);
+
+  const getLabelForItem = useCallback(
+    (item: GalleryItem) => {
+      const cat = labelForCategories(item.categories);
+      switch (cat) {
+        case "events":
+          return t("categories.events");
+        case "kung-fu":
+          return t("categories.kungFu");
+        case "jeet-kune-do":
+          return t("categories.jeetKuneDo");
+        case "wushu":
+          return t("categories.wushu");
+        default:
+          return t("categories.training");
+      }
+    },
+    [t],
+  );
+
   const visibleItems = useMemo(() => {
-    if (activeCategory === "all") return GALLERY_ITEMS;
-    return GALLERY_ITEMS.filter((item) => item.categories.includes(activeCategory));
-  }, [activeCategory]);
+    if (activeCategory === "all") return galleryItems;
+    return galleryItems.filter((item) => item.categories.includes(activeCategory));
+  }, [activeCategory, galleryItems]);
 
   useEffect(() => {
     const updateColumns = () => {
@@ -169,15 +204,15 @@ export default function TrainingGallerySection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-black tracking-tighter text-slate-100 uppercase md:text-6xl">
-            Training Gallery
+            {t("title")}
           </h2>
           <p className="mx-auto max-w-2xl font-medium text-slate-400">
-            Explore moments from our training sessions, classes, and events.
+            {t("subtitle")}
           </p>
         </div>
 
         <div className="mb-16 flex flex-wrap justify-center gap-3">
-          {CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const isActive = cat.id === activeCategory;
             return (
               <button
@@ -207,7 +242,7 @@ export default function TrainingGallerySection() {
               className="relative aspect-square overflow-hidden rounded-lg bg-white/5"
             >
               <Image
-                alt={item.imageAlt}
+                alt={getLabelForItem(item)}
                 src={item.imageSrc}
                 fill
                 priority={idx < columns}
@@ -218,7 +253,7 @@ export default function TrainingGallerySection() {
               />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-6">
                 <span className="text-[10px] font-black tracking-widest text-primary uppercase">
-                  {item.label}
+                  {getLabelForItem(item)}
                 </span>
                 <h4 className="text-lg font-bold leading-tight text-white uppercase">
                   {item.title}
@@ -235,7 +270,7 @@ export default function TrainingGallerySection() {
               onClick={() => setExpanded((v) => !v)}
               className="border border-white/20 bg-white/5 px-10 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-white/10"
             >
-              {expanded ? "See less" : "See more"}
+              {expanded ? t("seeLess") : t("seeMore")}
             </button>
           </div>
         ) : null}

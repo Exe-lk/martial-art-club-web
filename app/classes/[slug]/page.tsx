@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { classesData, getClassBySlug, getOtherClasses } from "@/lib/classesData";
+import ClassDetailTrainingScheduleSection from "@/components/ClassDetailTrainingScheduleSection";
 
 function isPromiseLike<T = unknown>(value: unknown): value is PromiseLike<T> {
   return (
@@ -20,20 +21,20 @@ export function generateStaticParams() {
 function getGalleryHeroImages(slug: string): { leftSrc: string; rightSrc: string } {
   if (slug === "kung-fu") {
     return {
-      leftSrc: "/gallery/kun-fu/480784630_604272952510633_7677364397842933082_n.jpg",
-      rightSrc: "/gallery/training/482002605_604272615844000_5475728776468286268_n.jpg",
+      leftSrc: "/gallery/kun-fu/kun-fu-class.jpg",
+      rightSrc: "/logos/kun-fu.png",
     };
   }
   if (slug === "jeet-kune-do") {
     return {
       leftSrc: "/gallery/jeet-kun-do/481216794_2068774033590095_6673438331088346098_n.jpg",
-      rightSrc: "/gallery/training/JKD.jpg",
+      rightSrc: "/logos/JeetKuneDo.svg",
     };
   }
   if (slug === "wushu") {
     return {
-      leftSrc: "/gallery/wushu/481262174_604273949177200_2820651480742250467_n.jpg",
-      rightSrc: "/gallery/wushu/wusuA.jpg",
+      leftSrc: "/gallery/wushu/wusuA.jpg",
+      rightSrc: "/logos/wushu.png",
     };
   }
 
@@ -236,33 +237,7 @@ export default async function ClassDetailPage({
       </section>
 
       {/* Schedule Section */}
-      <section id="schedule" className="bg-[#000000] py-24 px-6 md:px-20">
-        <div className="text-center mb-16">
-          <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
-            Timetable
-          </h2>
-          <h3 className="text-4xl font-black text-white uppercase">
-            Weekly Training Schedule
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {cls.schedule.map((slot) => (
-            <div
-              key={`${slot.day}-${slot.time}`}
-              className="bg-[#141414] p-6 rounded-lg border-l-4 border-secondary"
-            >
-              <p className="text-primary font-black mb-2 uppercase tracking-widest text-xs">
-                {slot.day}
-              </p>
-              <h4 className="text-xl font-bold text-white mb-4">{slot.time}</h4>
-              <p className="text-slate-300 text-sm font-medium">
-                {slot.title}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ClassDetailTrainingScheduleSection classSlug={cls.slug} />
 
       {/* Fees Section 
       <section className="bg-background-dark py-24 px-6 md:px-20 text-white">
@@ -326,8 +301,8 @@ export default async function ClassDetailPage({
         </div>
       </section>*/}
 
-      {/* Trainer Section */}
-      <section className="bg-[#000000] py-24 px-6 md:px-20">
+
+      {/* <section className="bg-[#000000] py-24 px-6 md:px-20">
         <div className="text-center mb-16">
           <h2 className="text-primary font-black uppercase tracking-[0.2em] mb-4 text-sm">
             Class Instructor
@@ -364,7 +339,7 @@ export default async function ClassDetailPage({
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Other Classes Section */}
       <section className="bg-[#000000] py-24 px-6 md:px-20">

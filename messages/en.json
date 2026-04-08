@@ -96,6 +96,200 @@
       "sunday": "Sunday"
     }
   },
+  "SchedulePage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "Class <accent>Schedule</accent>",
+    "heroSubtitle": "Plan your training sessions by branch and find the class times that fit you.",
+    "heroLeftAlt": "Martial arts training at the academy",
+    "heroRightAlt": "Martial arts training session"
+  },
+  "AboutPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "About Our <accent>Academy</accent>",
+    "heroSubtitle": "Building strength, discipline, and champions through professional martial arts training since 2010.",
+    "heroPrimaryCta": "Our Instructors",
+    "heroSecondaryCta": "Equipments",
+    "heroRightAlt": "Martial arts academy training environment",
+    "heroLeftAlt": "Martial arts coaches training with students",
+    "legacyImageAlt": "Martial arts coaches training with students",
+    "legacyKicker": "The Legacy",
+    "legacyTitle": "Our Academy",
+    "legacyBody1": "Founded in 2010 by Grandmaster Elias Thorne, Apex Martial Arts Academy was built on a singular philosophy: discipline equals freedom. What started as a small garage dojo has evolved into a premier training center for future champions.",
+    "legacyBody2": "Our growth is rooted in our commitment to authentic technique and mental fortitude. We don't just teach combat; we cultivate character, resilience, and a warrior's spirit in every student who walks through our doors.",
+    "legacyStats": {
+      "foundedTitle": "Founded in 2010",
+      "foundedText": "Over a decade of martial excellence.",
+      "studentsTitle": "500+ Students Trained",
+      "studentsText": "A growing community of dedicated practitioners.",
+      "winnersTitle": "National Winners",
+      "winnersText": "Elite competitive achievements on the world stage."
+    },
+    "proGearKicker": "Pro Gear",
+    "proGearTitle": "Explore our gym",
+    "proGearCards": {
+      "locationTopic": "Location",
+      "locationAlt": "Gym location and training space",
+      "locationDesc": "Find us easily and step into a focused training environment built for progress.",
+      "facilitiesTopic": "Facilities",
+      "facilitiesAlt": "Fighting safety training",
+      "facilitiesDesc": "Train with clear rules, proper supervision, and protective standards every session.",
+      "teamTopic": "Team",
+      "teamAlt": "Gym accessories and equipment",
+      "teamDesc": "Gloves, pads, and essential gear to support your training and protect your body.",
+      "classesTopic": "Classes",
+      "classesAlt": "Gym training standard and facility",
+      "classesDesc": "Clean facilities, structured coaching, and disciplined routines that set the bar high."
+    },
+    "learnMore": "Learn more"
+  },
+  "GalleryPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "Training <accent>Gallery</accent>",
+    "heroSubtitle": "Explore moments from our classes, events, and training sessions.",
+    "heroLeftAlt": "Martial arts training at the academy",
+    "heroRightAlt": "Martial arts training session"
+  },
+  "Gallery": {
+    "title": "Training Gallery",
+    "subtitle": "Explore moments from our training sessions, classes, and events.",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "snapshotTitle": "Training Snapshot",
+    "categories": {
+      "all": "All",
+      "kungFu": "Kung Fu",
+      "jeetKuneDo": "Jeet Kune Do",
+      "wushu": "Wushu",
+      "training": "Training",
+      "events": "Events"
+    }
+  },
+  "EventsPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "Events <accent>&amp; Activities</accent>",
+    "heroSubtitle": "Discover upcoming seminars, championships, and milestones from our academy.",
+    "heroLeftAlt": "Martial arts training at the academy",
+    "heroRightAlt": "Martial arts event highlights",
+    "statusActive": "Operational Status: Active",
+    "sectionTitle": "Events",
+    "sectionTitleAfter": "Activities",
+    "sectionSubtitle": "Explore our recent achievements and upcoming experiences. Designed for those who seek technical mastery and disciplined growth."
+  },
+  "EventDetails": {
+    "backToEvents": "Back to Events",
+    "upcomingEvent": "Upcoming event",
+    "pastEvent": "Past event",
+    "highlights": "Highlights",
+    "contactUs": "Contact Us",
+    "exploreMore": "Explore More Events",
+    "noImages": "No images available for this event yet."
+  },
+  "FacilitiesPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitleBefore": "World Class",
+    "heroTitleAccent": "Facilities",
+    "heroSubtitle": "Train in a professional environment built for performance, safety, and comfort.",
+    "heroLeftAlt": "Martial arts academy facilities",
+    "heroRightAlt": "Modern training space",
+    "introKicker": "Facilities",
+    "introTitle": "WORLD CLASS GYM FACILITIES in Sri Lanka",
+    "introBody": "Experience a professional training environment designed to support every level of martial artist. Our facilities are equipped with modern training spaces, high-quality equipment, and dedicated areas for Jeet Kune Do, Kung Fu, and Wushu practice. From spacious training halls to safe and well-maintained equipment zones, every detail is built to enhance performance, safety, and comfort.",
+    "introImageAlt": "Academy facilities",
+    "gallery1Alt": "Fighting safety equipment",
+    "gallery2Alt": "Gym accessories",
+    "gallery3Alt": "Gym training area",
+    "benefitsKicker": "Training benefits",
+    "benefits1Title": "FITNESS",
+    "benefits1Body": "Enhance your strength, endurance, and overall fitness through dynamic martial arts training. Our programs combine techniques from Jeet Kune Do, Kung Fu, and Wushu to deliver full-body workouts that improve flexibility, speed, and coordination. Every session is designed to build both physical power and mental focus, helping you achieve a healthier and more disciplined lifestyle.",
+    "benefits1ImageAlt": "Boost confidence through training",
+    "benefits2Title": "SAFETY",
+    "benefits2Body": "Train with clear rules, qualified supervision, and safe equipment standards. Our structured sessions prioritize control, awareness, and correct technique—so you can improve with confidence in a disciplined environment.",
+    "benefits2ImageAlt": "Safe training environment",
+    "benefits3Title": "WEAPONS TRAINING",
+    "benefits3Body": "Develop precision, discipline, and control through traditional weapons training. Students learn the fundamentals and advanced techniques of classical martial arts weapons, improving coordination, focus, and combat awareness in a safe and structured environment.",
+    "benefits3ImageAlt": "Traditional weapons training"
+  },
+  "MembershipPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "Membership <accent>Plans</accent>",
+    "heroSubtitle": "Choose the plan that matches your training rhythm. Compare pricing, benefits, and access for each option.",
+    "heroLeftAlt": "Martial arts training at the academy",
+    "heroRightAlt": "Martial arts training session",
+    "viewPlans": "View plans",
+    "contactUs": "Contact us",
+    "plansTitle": "Pick your plan",
+    "plansSubtitle": "Three options — from essential access to full academy experience.",
+    "explore": "Explore",
+    "bestForTitle": "Best for",
+    "joinNow": "Join now",
+    "backToTop": "Back to top",
+    "benefitsTitle": "Benefits",
+    "accessTitle": "Access",
+    "logos": {
+      "jkdAlt": "Jeet Kune Do logo",
+      "kungfuAlt": "Kung Fu logo",
+      "wushuAlt": "Wushu logo"
+    },
+    "plans": {
+      "basic": {
+        "name": "Basic Plan",
+        "price": "LKR 6,500 / month",
+        "bestFor": "Beginners who want to start martial arts training with essential access.",
+        "benefits": [
+          "3 training sessions per week",
+          "Access to beginner classes",
+          "Basic fitness training support",
+          "Instructor guidance",
+          "Standard academy facility access"
+        ],
+        "access": [
+          "Jeet Kune Do beginner sessions",
+          "Selected Kung Fu classes",
+          "Shared training area access"
+        ]
+      },
+      "standard": {
+        "name": "Standard Plan",
+        "price": "LKR 9,500 / month",
+        "bestFor": "Students who want regular training and better flexibility.",
+        "benefits": [
+          "5 training sessions per week",
+          "Access to beginner and intermediate classes",
+          "Martial arts fitness sessions",
+          "Technique improvement support",
+          "Priority class booking",
+          "Standard equipment area access"
+        ],
+        "access": [
+          "Jeet Kune Do classes",
+          "Kung Fu classes",
+          "Wushu foundation sessions",
+          "Fitness and conditioning area"
+        ]
+      },
+      "elite": {
+        "name": "Elite Plan",
+        "price": "LKR 14,500 / month",
+        "bestFor": "Dedicated members who want full access and faster progress.",
+        "benefits": [
+          "Unlimited weekly training sessions",
+          "Access to all class levels",
+          "Advanced coaching support",
+          "Strength and conditioning sessions",
+          "Priority access to workshops",
+          "Full facility access",
+          "Special member event access"
+        ],
+        "access": [
+          "Jeet Kune Do full program",
+          "Kung Fu full program",
+          "Wushu full program",
+          "Conditioning and fitness area",
+          "Selected academy special training sessions"
+        ]
+      }
+    }
+  },
   "KidsAcademy": {
     "title": "Explore our kids academy",
     "description": "Build confidence, focus, and discipline in a fun and structured environment.",

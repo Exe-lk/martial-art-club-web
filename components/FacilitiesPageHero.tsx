@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const LEFT_BG = "/gym/contact-martial-art-academy.jpg";
 const RIGHT_IMAGE = "/logos/JeetKuneDo.svg";
 
 export default function FacilitiesPageHero() {
+  const t = useTranslations("FacilitiesPage");
+
   return (
     <section
       className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
@@ -12,7 +17,7 @@ export default function FacilitiesPageHero() {
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={LEFT_BG}
-          alt="Martial arts academy facilities"
+          alt={t("heroLeftAlt")}
           fill
           priority
           className="object-cover"
@@ -24,7 +29,7 @@ export default function FacilitiesPageHero() {
       <div className="relative min-h-[320px] lg:min-h-0">
         <Image
           src={RIGHT_IMAGE}
-          alt="Modern training space"
+          alt={t("heroRightAlt")}
           fill
           priority
           className="object-cover"
@@ -33,16 +38,16 @@ export default function FacilitiesPageHero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
           <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-            Black Dragon
+            {t("heroKicker")}
           </p>
           <h1
             id="facilities-hero-heading"
             className="mt-2 max-w-3xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
           >
-            World Class <span className="text-primary">Facilities</span>
+            {t("heroTitleBefore")} <span className="text-primary">{t("heroTitleAccent")}</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-            Train in a professional environment built for performance, safety, and comfort.
+            {t("heroSubtitle")}
           </p>
         </div>
       </div>

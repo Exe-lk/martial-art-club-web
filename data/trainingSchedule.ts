@@ -48,6 +48,42 @@ export const trainingBranches: TrainingBranch[] = [
     location: "Beliatta",
     label: "Jeet Kune Do - Beliatta",
   },
+  {
+    id: "kung-fu-urubokka",
+    art: "Kung Fu",
+    location: "Urubokka",
+    label: "Kung Fu - Urubokka",
+  },
+  {
+    id: "kung-fu-walasmulla",
+    art: "Kung Fu",
+    location: "Walasmulla",
+    label: "Kung Fu - Walasmulla",
+  },
+  {
+    id: "kung-fu-beliatta",
+    art: "Kung Fu",
+    location: "Beliatta",
+    label: "Kung Fu - Beliatta",
+  },
+  {
+    id: "wushu-urubokka",
+    art: "Wushu",
+    location: "Urubokka",
+    label: "Wushu - Urubokka",
+  },
+  {
+    id: "wushu-walasmulla",
+    art: "Wushu",
+    location: "Walasmulla",
+    label: "Wushu - Walasmulla",
+  },
+  {
+    id: "wushu-beliatta",
+    art: "Wushu",
+    location: "Beliatta",
+    label: "Wushu - Beliatta",
+  },
 ];
 
 export const WEEKDAYS_ORDER: Weekday[] = [
@@ -77,8 +113,8 @@ export const WEEKLY_SCHEDULE_SLOT_START_HOURS = [
 /** All classes — six rows total. */
 export const trainingClasses: TrainingClassDetail[] = [
   {
-    id: "jkd-urubokka-beginner",
-    branchId: "KunFu-urubokka",
+    id: "kung-fu-urubokka-beginner",
+    branchId: "kung-fu-urubokka",
     title: "Beginner Class",
     startTime: "08:00",
     imageUrl: "/Boost-Confidence.PNG",
@@ -87,8 +123,8 @@ export const trainingClasses: TrainingClassDetail[] = [
     tone: "primary",
   },
   {
-    id: "jkd-urubokka-intermediate",
-    branchId: "jkd-urubokka",
+    id: "kung-fu-urubokka-intermediate",
+    branchId: "kung-fu-urubokka",
     title: "Intermediate Class",
     startTime: "10:30",
     imageUrl: "/facilities/taining-time3.jpg",
@@ -97,8 +133,8 @@ export const trainingClasses: TrainingClassDetail[] = [
     tone: "secondary",
   },
   {
-    id: "jkd-walasmulla-beginner",
-    branchId: "WUSU-walasmulla",
+    id: "wushu-walasmulla-beginner",
+    branchId: "wushu-walasmulla",
     title: "Beginner Class",
     startTime: "17:30",
     imageUrl: "/kun-fu.PNG",
@@ -107,8 +143,8 @@ export const trainingClasses: TrainingClassDetail[] = [
     tone: "neutral",
   },
   {
-    id: "jkd-beliatta-beginner",
-    branchId: "KunFu-beliatta",
+    id: "kung-fu-beliatta-beginner",
+    branchId: "kung-fu-beliatta",
     title: "Beginner Class",
     startTime: "09:00",
     imageUrl: "/wusu.PNG",
@@ -127,8 +163,8 @@ export const trainingClasses: TrainingClassDetail[] = [
     tone: "primary",
   },
   {
-    id: "jkd-beliatta-intermediate",
-    branchId: "WUSU-beliatta",
+    id: "wushu-beliatta-intermediate",
+    branchId: "wushu-beliatta",
     title: "Intermediate Class",
     startTime: "16:00",
     imageUrl: "/JKD.PNG",

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { EVENTS, type ClubEvent } from "@/data/events";
@@ -32,6 +33,7 @@ function EventTitle({
 }
 
 function StateBadge({ state }: { state: ClubEvent["state"] }) {
+  const t = useTranslations("EventDetails");
   const isUpcoming = state === "upcoming";
   return (
     <span
@@ -44,7 +46,7 @@ function StateBadge({ state }: { state: ClubEvent["state"] }) {
       {isUpcoming ? (
         <span className="inline-flex h-2 w-2 rounded-full bg-primary shadow-[0_0_0_4px_rgba(245,158,11,0.20)]" />
       ) : null}
-      {isUpcoming ? "Upcoming event" : "Past event"}
+      {isUpcoming ? t("upcomingEvent") : t("pastEvent")}
     </span>
   );
 }
@@ -58,6 +60,8 @@ function EventBlock({
   index: number;
   reveal: boolean;
 }) {
+  const t = useTranslations("Events");
+  const locale = useLocale();
   const isEven = index % 2 === 0;
   const imageClipPath = isEven
     ? "polygon(10% 0, 100% 0, 90% 100%, 0% 100%)"
@@ -68,7 +72,7 @@ function EventBlock({
   const eyebrowText =
     accentColor === "primary" ? "text-primary" : "text-secondary";
 
-  const detailsHref = `/events/${event.id}`;
+  const detailsHref = `/${locale}/events/${event.id}`;
 
   return (
     <div
@@ -82,7 +86,7 @@ function EventBlock({
             <StateBadge state={event.state} />
           </div>
           <Link
-            aria-label={`View details for ${event.title}`}
+            aria-label={t("viewDetailsAria", { title: event.title })}
             href={detailsHref}
             className="block"
           >
@@ -138,7 +142,7 @@ function EventBlock({
             }`}
             href={detailsHref}
           >
-            View Details
+            {t("viewDetails")}
             <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
               arrow_forward
             </span>
@@ -150,6 +154,7 @@ function EventBlock({
 }
 
 export default function EventsSection() {
+  const t = useTranslations("EventsPage");
   const upcoming = EVENTS.filter((e) => e.state === "upcoming");
   const past = EVENTS.filter((e) => e.state === "past");
   const ordered = [...upcoming, ...past];
@@ -187,15 +192,15 @@ export default function EventsSection() {
         <header className="mb-14 text-center">
           <div className="mb-5 inline-flex">
             <span className="inline-flex items-center rounded-sm bg-primary/20 px-4 py-1 text-[10px] font-black tracking-[0.3em] text-primary uppercase border-l-4 border-primary">
-              Operational Status: Active
+              {t("statusActive")}
             </span>
           </div>
           <h2 className="text-4xl font-black tracking-tight uppercase md:text-6xl">
-            Events <span className="text-primary">&amp;</span> Activities
+            {t("sectionTitle")} <span className="text-primary">&amp;</span>{" "}
+            {t("sectionTitleAfter")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-400 md:text-lg">
-            Explore our recent achievements and upcoming experiences. Designed for those who seek
-            technical mastery and disciplined growth.
+            {t("sectionSubtitle")}
           </p>
         </header>
 

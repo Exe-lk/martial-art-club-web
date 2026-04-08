@@ -1,12 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import {
   WEEKDAYS_ORDER,
   trainingBranches,
   trainingClasses,
-  weekdayLabels,
   type TrainingClassDetail,
   type Weekday,
   type WeeklyClassTone,
@@ -30,8 +30,22 @@ function branchLabel(branchId: string): string {
 }
 
 export default function WeeklyTrainingScheduleSection() {
+  const t = useTranslations("Weekly");
   const [activeDay, setActiveDay] = useState<Weekday>("monday");
   const dayIndex = WEEKDAYS_ORDER.indexOf(activeDay);
+
+  const weekdayLabels = useMemo<Record<Weekday, string>>(
+    () => ({
+      monday: t("weekday.monday"),
+      tuesday: t("weekday.tuesday"),
+      wednesday: t("weekday.wednesday"),
+      thursday: t("weekday.thursday"),
+      friday: t("weekday.friday"),
+      saturday: t("weekday.saturday"),
+      sunday: t("weekday.sunday"),
+    }),
+    [t],
+  );
 
   const goNextDay = useCallback(() => {
     const next = (dayIndex + 1) % WEEKDAYS_ORDER.length;
@@ -70,23 +84,24 @@ export default function WeeklyTrainingScheduleSection() {
       <div className="mx-auto max-w-7xl px-6">
         <header className="mb-10 text-center md:mb-12">
           <p className="mb-3 text-xs font-black tracking-[0.3em] text-primary uppercase">
-            Branch timetable
+            {t("eyebrow")}
           </p>
           <h2
             id="weekly-training-heading"
             className="text-4xl font-black tracking-tight uppercase md:text-5xl"
           >
-            Weekly <span className="text-primary">Training</span> Schedule
+            {t("titleBefore")} <span className="text-primary">{t("titleAccent")}</span>{" "}
+            {t("titleAfter")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-400 md:text-lg">
-            Sessions from your class list for each weekday.
+            {t("subtitle")}
           </p>
         </header>
 
         <div
           className="mb-6 flex flex-wrap justify-center gap-2 md:gap-2.5"
           role="tablist"
-          aria-label="Weekday"
+          aria-label={t("weekdayTabs")}
         >
           {WEEKDAYS_ORDER.map((day) => {
             const isActive = day === activeDay;
@@ -121,9 +136,7 @@ export default function WeeklyTrainingScheduleSection() {
                 {weekdayLabels[activeDay]}
               </h3>
               <p className="mt-1 text-sm font-medium text-slate-500">
-                {dayClasses.length === 0
-                  ? "No sessions scheduled"
-                  : `${dayClasses.length} session${dayClasses.length === 1 ? "" : "s"} scheduled`}
+                {dayClasses.length === 0 ? t("noSessions") : t("sessionsLine", { count: dayClasses.length })}
               </p>
             </div>
           </div>
@@ -133,14 +146,14 @@ export default function WeeklyTrainingScheduleSection() {
               type="button"
               onClick={goPrevDay}
               className="flex h-10 w-10 shrink-0 items-center justify-center self-center rounded-full border border-white/10 bg-[#1a1a1a] text-slate-300 transition-colors hover:border-primary/40 hover:text-primary"
-              aria-label="Previous day"
+              aria-label={t("previousDay")}
             >
               <span className="material-symbols-outlined text-xl">chevron_left</span>
             </button>
 
             {dayClasses.length === 0 ? (
               <p className="min-w-0 flex-1 self-center py-10 text-center text-slate-500">
-                No classes on this day.
+                {t("noClassesDay")}
               </p>
             ) : (
               <ul className="min-w-0 flex-1 divide-y divide-white/5">
@@ -175,7 +188,7 @@ export default function WeeklyTrainingScheduleSection() {
               type="button"
               onClick={goNextDay}
               className="flex h-10 w-10 shrink-0 items-center justify-center self-center rounded-full border border-white/10 bg-[#1a1a1a] text-slate-300 transition-colors hover:border-primary/40 hover:text-primary"
-              aria-label="Next day"
+              aria-label={t("nextDay")}
             >
               <span className="material-symbols-outlined text-xl">chevron_right</span>
             </button>
@@ -185,7 +198,7 @@ export default function WeeklyTrainingScheduleSection() {
         <div
           className="mt-8 flex justify-center gap-2.5"
           role="tablist"
-          aria-label="Select weekday"
+          aria-label={t("dotTabs")}
         >
           {WEEKDAYS_ORDER.map((day) => {
             const isActive = day === activeDay;

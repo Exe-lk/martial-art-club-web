@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { EVENTS, type ClubEvent } from "@/data/events";
@@ -17,6 +17,7 @@ function EventCard({
   reveal: boolean;
 }) {
   const t = useTranslations("Events");
+  const locale = useLocale();
   const isUpcoming = event.state === "upcoming";
 
   return (
@@ -73,7 +74,7 @@ function EventCard({
 
         <Link
           className="inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-5 py-4 text-sm font-black tracking-widest uppercase text-white shadow-lg transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
-          href={`/events/${event.id}`}
+          href={`/${locale}/events/${event.id}`}
           aria-label={t("viewDetailsAria", { title: event.title })}
         >
           {t("viewDetails")}
@@ -85,6 +86,7 @@ function EventCard({
 
 export default function EventsCardsSection() {
   const t = useTranslations("Events");
+  const locale = useLocale();
   const ordered = useMemo(() => {
     const upcoming = EVENTS.filter((e) => e.state === "upcoming");
     const past = EVENTS.filter((e) => e.state === "past");
@@ -135,7 +137,7 @@ export default function EventsCardsSection() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            href="/events"
+            href={`/${locale}/events`}
             className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
           >
             {t("seeMore")}

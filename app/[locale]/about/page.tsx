@@ -1,8 +1,13 @@
+"use client";
+
 import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
 import AboutPageHero from "@/components/AboutPageHero";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useTranslations } from "next-intl";
 
 export default function AboutPage() {
+  const t = useTranslations("AboutPage");
+
   return (
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
       {/* Hero Section */}
@@ -17,7 +22,7 @@ export default function AboutPage() {
               <img
                 className="relative z-10 h-[500px] w-full rounded object-cover shadow-2xl"
                 src="/contact-martial-art-academy.jpg"
-                alt="Martial arts coaches training with students"
+                alt={t("legacyImageAlt")}
               />
               <div className="absolute -bottom-4 -right-4 h-24 w-24 border-b-4 border-r-4 border-[#1e3a8a]" />
             </div>
@@ -25,42 +30,36 @@ export default function AboutPage() {
             <div className="flex flex-col gap-8">
               <div>
                 <span className="mb-2 block text-sm font-black tracking-widest text-primary uppercase">
-                  The Legacy
+                  {t("legacyKicker")}
                 </span>
                 <h2 className="text-4xl font-black uppercase  text-white">
-                  Our Academy
+                  {t("legacyTitle")}
                 </h2>
               </div>
 
               <p className="text-lg leading-relaxed text-slate-200">
-                Founded in 2010 by Grandmaster Elias Thorne, Apex Martial Arts
-                Academy was built on a singular philosophy: discipline equals
-                freedom. What started as a small garage dojo has evolved into a
-                premier training center for future champions.
+                {t("legacyBody1")}
               </p>
               <p className="text-lg leading-relaxed text-slate-200">
-                Our growth is rooted in our commitment to authentic technique and
-                mental fortitude. We don&apos;t just teach combat; we cultivate
-                character, resilience, and a warrior&apos;s spirit in every student
-                who walks through our doors.
+                {t("legacyBody2")}
               </p>
 
               <div className="mt-4 grid gap-6">
                 {[
                   {
                     icon: "calendar_today",
-                    title: "Founded in 2010",
-                    text: "Over a decade of martial excellence.",
+                    title: t("legacyStats.foundedTitle"),
+                    text: t("legacyStats.foundedText"),
                   },
                   {
                     icon: "groups",
-                    title: "500+ Students Trained",
-                    text: "A growing community of dedicated practitioners.",
+                    title: t("legacyStats.studentsTitle"),
+                    text: t("legacyStats.studentsText"),
                   },
                   {
                     icon: "emoji_events",
-                    title: "National Winners",
-                    text: "Elite competitive achievements on the world stage.",
+                    title: t("legacyStats.winnersTitle"),
+                    text: t("legacyStats.winnersText"),
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
@@ -93,10 +92,10 @@ export default function AboutPage() {
             <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <span className="mb-2 block text-sm font-black tracking-widest text-[#1e3a8a] uppercase">
-                  Pro Gear
+                  {t("proGearKicker")}
                 </span>
                 <h2 className="text-4xl font-black text-slate-900 uppercase dark:text-white">
-                  Explore our gym
+                  {t("proGearTitle")}
                 </h2>
               </div>
             </div>
@@ -104,32 +103,32 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  topic: "Location",
+                  topic: t("proGearCards.locationTopic"),
                   border: "border-primary",
                   img: "/gym/gym.jpeg",
-                  alt: "Gym location and training space",
-                  desc: "Find us easily and step into a focused training environment built for progress.",
+                  alt: t("proGearCards.locationAlt"),
+                  desc: t("proGearCards.locationDesc"),
                 },
                 {
-                  topic: "Facilities",
+                  topic: t("proGearCards.facilitiesTopic"),
                   border: "border-[#1e3a8a]",
                   img: "/gym/fighting-safety.jpeg",
-                  alt: "Fighting safety training",
-                  desc: "Train with clear rules, proper supervision, and protective standards every session.",
+                  alt: t("proGearCards.facilitiesAlt"),
+                  desc: t("proGearCards.facilitiesDesc"),
                 },
                 {
-                  topic: "Team",
+                  topic: t("proGearCards.teamTopic"),
                   border: "border-primary",
                   img: "/gym/gym%20accesories.jpeg",
-                  alt: "Gym accessories and equipment",
-                  desc: "Gloves, pads, and essential gear to support your training and protect your body.",
+                  alt: t("proGearCards.teamAlt"),
+                  desc: t("proGearCards.teamDesc"),
                 },
                 {
-                  topic: "Classes",
+                  topic: t("proGearCards.classesTopic"),
                   border: "border-[#1e3a8a]",
                   img: "/gym/gym3.jpeg",
-                  alt: "Gym training standard and facility",
-                  desc: "Clean facilities, structured coaching, and disciplined routines that set the bar high.",
+                  alt: t("proGearCards.classesAlt"),
+                  desc: t("proGearCards.classesDesc"),
                 },
               ].map((item) => (
                 <div
@@ -154,7 +153,7 @@ export default function AboutPage() {
                           <div className="pt-3 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                             <p className="text-sm text-slate-200">{item.desc}</p>
                             <button className="mt-4 inline-flex items-center gap-2 rounded bg-white/10 px-4 py-2 text-xs font-black tracking-widest text-white uppercase transition-colors hover:bg-white/20">
-                              Learn more
+                              {t("learnMore")}
                               <span className="material-symbols-outlined text-base">
                                 arrow_forward
                               </span>
