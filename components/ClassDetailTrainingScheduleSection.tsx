@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Link from "next/link";
 
 import {
   trainingBranches,
@@ -11,6 +12,7 @@ import {
   type TrainingClassDetail,
   type Weekday,
 } from "@/data/trainingSchedule";
+import { branches as clubBranches } from "@/data/branches";
 
 function formatClassTime(startTime: string): string {
   const [hStr, mStr] = startTime.split(":");
@@ -23,6 +25,13 @@ function formatClassTime(startTime: string): string {
     minute: "2-digit",
     hour12: true,
   });
+}
+
+function formatClassDate(date: string): string {
+  // Stored as YYYY-MM-DD in data; render a readable date.
+  const d = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return date;
+  return d.toLocaleDateString("en-LK", { year: "numeric", month: "short", day: "2-digit" });
 }
 
 function humanizeBranchId(branchId: string): string {
@@ -46,6 +55,20 @@ function parseTimeToMinutes(time: string): number {
   const [h, m] = time.split(":").map((x) => Number.parseInt(x, 10));
   if (Number.isNaN(h) || Number.isNaN(m)) return 0;
   return h * 60 + m;
+}
+
+function locationSlugFromTrainingBranchId(branchId: string): string {
+  // Examples:
+  // - "kung-fu-urubokka" -> "urubokka"
+  // - "jkd-walasmulla" -> "walasmulla"
+  const parts = branchId.split("-").filter(Boolean);
+  return (parts.at(-1) ?? "").toLowerCase();
+}
+
+function branchHrefFromTrainingBranchId(branchId: string): string {
+  const locationSlug = locationSlugFromTrainingBranchId(branchId);
+  const exists = clubBranches.some((b) => b.slug.toLowerCase() === locationSlug);
+  return exists ? `/branches/${locationSlug}` : "/branches";
 }
 
 function normalizeArtFromSlug(slug: string): "Kung Fu" | "Jeet Kune Do" | "Wushu" | null {
@@ -164,6 +187,17 @@ export default function ClassDetailTrainingScheduleSection({ classSlug }: Props)
                         {formatClassTime(s.startTime)}
                       </span>
                     </div>
+
+                    <p className="mt-2 text-xs font-bold tracking-wide text-slate-400 uppercase">
+                      {formatClassDate(s.date)}
+                    </p>
+
+                    <Link
+                      href={branchHrefFromTrainingBranchId(s.branchId)}
+                      className="mt-4 inline-flex w-full items-center justify-center rounded-md border border-white/10 bg-[#1a1a1a] px-4 py-2.5 text-[11px] font-black tracking-widest text-slate-200 uppercase transition-colors hover:border-primary/40 hover:text-primary"
+                    >
+                      Contact academy
+                    </Link>
                   </div>
                 ))}
               </div>
