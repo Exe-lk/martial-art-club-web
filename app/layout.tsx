@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import DocumentLangSync from "@/components/DocumentLangSync";
 import NavigationIntlProvider from "@/components/NavigationIntlProvider";
 import Footer from "@/components/Footer";
+import FloatingBackToTop from "@/components/FloatingBackToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default function RootLayout({
         <DocumentLangSync />
         <NavigationIntlProvider />
         <div className="flex-1 pt-20">{children}</div>
+        <FloatingBackToTop />
         <Footer />
       </body>
     </html>

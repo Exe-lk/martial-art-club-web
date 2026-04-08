@@ -6,7 +6,6 @@ import AboutClubSection from "@/components/AboutClubSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionLoadFallback from "@/components/SectionLoadFallback";
 import LandingFloatingButtons from "@/components/LandingFloatingButtons";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const EventsSection = dynamic(() => import("@/components/EventsCardsSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
@@ -47,12 +46,6 @@ const CtaLandingSection = dynamic(() => import("@/components/CtaLandingSection")
 export default function Home() {
   return (
     <main className="relative flex-1 overflow-x-hidden bg-[#000000]">
-      <div className="pointer-events-none fixed right-4 top-24 z-[61] md:right-8">
-        <div className="pointer-events-auto">
-          <LanguageSwitcher/>
-        </div>
-      </div>
-
       <HeroSection />
 
       <ScrollReveal>

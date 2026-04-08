@@ -42,9 +42,7 @@ export default function NewsTicker({
                   key={`${row}-${i}`}
                   className="inline-flex items-center gap-3 px-3 py-[14.5px] text-[11px] font-black tracking-[0.22em] text-white uppercase sm:text-2xl"
                 >
-                  <span className="transition-colors group-hover:text-primary">
-                    {displayText}
-                  </span>
+                  <span className="text-white">{displayText}</span>
                   <span className="text-primary/95">•</span>
                 </span>
               ))}

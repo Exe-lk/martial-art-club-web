@@ -24,8 +24,8 @@
     "label": "Language"
   },
   "Hero": {
-    "title": "Real training. Real discipline. Real fighters.",
-    "subtitle": "Black Dragon Jeet Kun Do",
+    "title": "Black Dragon Jeet Kun Do",
+    "subtitle": "Sri Lanka premier martial art academy",
     "joinClub": "Join the Club",
     "viewClasses": "View Classes"
   },
@@ -37,7 +37,7 @@
     "title": "Discover our Classes",
     "description": "Three core martial arts, one academy — train with purpose.",
     "branchBrand": "Black Dragon Jeet Kune Do",
-    "viewBranch": "View branch",
+    "viewBranch": "Explore more",
     "allClasses": "All Classes"
   },
   "About": {
@@ -52,7 +52,8 @@
     "medals": "Tournament Medals",
     "champions": "National Champions",
     "students": "Students Trained",
-    "years": "Years of Excellence"
+    "years": "Years of Excellence",
+    "branches": "Branches"
   },
   "Events": {
     "title": "Events",
@@ -140,7 +141,16 @@
       "classesAlt": "Gym training standard and facility",
       "classesDesc": "Clean facilities, structured coaching, and disciplined routines that set the bar high."
     },
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "founder": {
+      "kicker": "Main Coach",
+      "title": "Meet the <accent>Founder</accent>",
+      "name": "Grandmaster Elias Thorne",
+      "qualification": "Founder • Head Coach • Martial Arts Instructor",
+      "description": "With decades of experience and a disciplined coaching style, our founder built this academy to help students train with purpose, develop confidence, and master real technique—step by step.",
+      "imageSrc": "/gallery/martial-art-coaches.jpg",
+      "imageAlt": "Founder and head coach"
+    }
   },
   "GalleryPage": {
     "heroKicker": "Black Dragon",

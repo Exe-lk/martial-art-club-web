@@ -48,20 +48,20 @@ export default function MembershipPlansShowcaseSection() {
           </p>
         </header>
 
-        <div className="flex flex-col gap-16 md:gap-24">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
           {MEMBERSHIP_PLANS_SHOWCASE.map((plan, idx) => (
             <article
               key={plan.title}
-              className="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-0"
+              className="flex h-full flex-col overflow-hidden border border-white/10 bg-white/5"
             >
-              <div className="relative w-full md:w-1/2">
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#141414] md:aspect-auto md:min-h-[280px] md:h-full">
+              <div className="relative w-full">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#141414]">
                   <Image
                     src={plan.imageSrc}
                     alt={plan.imageAlt}
                     fill
                     className={`object-cover image-wipe ${reveal ? "image-wipe--show" : ""}`}
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 420px"
                     loading="lazy"
                     quality={80}
                     style={{ ["--image-wipe-delay" as any]: `${idx * 140}ms` }}
@@ -69,19 +69,17 @@ export default function MembershipPlansShowcaseSection() {
                 </div>
               </div>
 
-              <div className="flex w-full flex-col justify-center px-0 md:w-1/2 md:pl-12 md:pr-4 lg:pl-16 lg:pr-8">
-                <h3
-                  className="text-2xl font-black uppercase tracking-tight text-primary md:text-4xl lg:text-[2.25rem] [text-shadow:0_0_24px_rgba(214,41,41,0.45)]"
-                >
+              <div className="flex flex-1 flex-col px-6 pb-7 pt-6">
+                <h3 className="text-xl font-black uppercase tracking-tight text-primary md:text-2xl [text-shadow:0_0_24px_rgba(214,41,41,0.45)]">
                   {plan.title}
                 </h3>
-                <p className="mt-5 max-w-xl text-sm leading-relaxed text-white md:text-base">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-white/90 md:text-sm">
                   {plan.description}
                 </p>
-                <div className="mt-8">
+                <div className="mt-6">
                   <Link
                     href={plan.ctaHref}
-                    className="inline-flex items-center justify-center border border-primary px-8 py-3 text-xs font-black uppercase tracking-[0.28em] text-primary transition-colors hover:bg-primary/10"
+                    className="inline-flex w-full items-center justify-center border border-primary px-8 py-3 text-xs font-black uppercase tracking-[0.28em] text-primary transition-colors hover:bg-primary/10"
                   >
                     {plan.ctaLabel}
                   </Link>

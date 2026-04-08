@@ -26,9 +26,6 @@ export default function MeetOurInstructorsSection() {
 
         <div className="space-y-6">
           <div className="space-y-3">
-            <span className="block text-sm font-black tracking-widest text-primary uppercase">
-              The Vanguard
-            </span>
             <h2 className="text-4xl font-black tracking-tight uppercase md:text-5xl">
               Meet Our Instructors
             </h2>
@@ -40,17 +37,6 @@ export default function MeetOurInstructorsSection() {
             competition.
           </p>
 
-          <div className="pt-2">
-            <Link
-              href="/coaches"
-              className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
-            >
-              Meet the Team
-              <span className="material-symbols-outlined text-xl">
-                arrow_forward
-              </span>
-            </Link>
-          </div>
         </div>
       </div>
     </section>

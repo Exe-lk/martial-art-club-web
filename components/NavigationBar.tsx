@@ -6,6 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+
 const notoSinhala = Noto_Sans_Sinhala({
   subsets: ["sinhala"],
   display: "swap",
@@ -32,7 +34,6 @@ export default function NavigationBar() {
   const galleryHref = `/${locale}/gallery`;
   const facilitiesHref = `/${locale}/facilities`;
   const membershipsHref = `/${locale}/memberships`;
-  const scheduleHref = `/${locale}/schedule`;
   const eventsHref = `/${locale}/events`;
   const blogHref = `/${locale}/blog`;
   const classesHref = `/${locale}/classes`;
@@ -83,7 +84,6 @@ export default function NavigationBar() {
           { href: aboutHref, label: t("ourStory") },
           { href: galleryHref, label: t("gallery") },
           { href: eventsHref, label: t("events") },
-          { href: "/coaches", label: t("coaches") },
           { href: blogHref, label: t("blog") },
         ],
       },
@@ -94,13 +94,12 @@ export default function NavigationBar() {
         label: t("classes"),
         children: [
           { href: classesHref, label: t("classesOverview") },
-          { href: scheduleHref, label: t("schedule") },
           { href: kidsAcademyHref, label: t("kidsAcademy") },
         ],
       },
       { href: "/contact", label: t("contact") },
     ],
-    [t, homeHref, aboutHref, galleryHref, facilitiesHref, membershipsHref, scheduleHref, eventsHref, blogHref, classesHref, kidsAcademyHref],
+    [t, homeHref, aboutHref, galleryHref, facilitiesHref, membershipsHref, eventsHref, blogHref, classesHref, kidsAcademyHref],
   );
 
   const isItemActive = (item: NavItem) => {
@@ -205,12 +204,15 @@ export default function NavigationBar() {
             );
           })}
 
-          <button
-            type="button"
-            className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
-          >
-            {t("joinClub")}
-          </button>
+          <div className="ml-2 flex items-center gap-3">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
+            >
+              {t("joinClub")}
+            </button>
+          </div>
         </div>
 
         <button
@@ -236,6 +238,9 @@ export default function NavigationBar() {
         ].join(" ")}
       >
         <div className="flex flex-col gap-3">
+          <div className="px-3 pb-2">
+            <LanguageSwitcher />
+          </div>
           {navItems.map((item) => {
             const active = isItemActive(item);
 

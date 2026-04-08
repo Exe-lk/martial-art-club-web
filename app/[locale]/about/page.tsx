@@ -2,6 +2,8 @@
 
 import MeetOurInstructorsSection from "@/components/MeetOurInstructorsSection";
 import AboutPageHero from "@/components/AboutPageHero";
+import CoachesCardsSection from "@/components/CoachesCardsSection";
+import FounderCoachSection from "@/components/FounderCoachSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useTranslations } from "next-intl";
 
@@ -12,6 +14,24 @@ export default function AboutPage() {
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
       {/* Hero Section */}
       <AboutPageHero />
+
+
+      
+      {/* Meet Our Instructors */}
+      <ScrollReveal>
+        <MeetOurInstructorsSection />
+      </ScrollReveal>
+
+
+      {/* Coach & Team */}
+      <ScrollReveal>
+        <CoachesCardsSection />
+      </ScrollReveal>
+
+      {/* Founder / Main Coach */}
+      <ScrollReveal>
+        <FounderCoachSection />
+      </ScrollReveal>
 
       {/* Why Us */}
       <ScrollReveal>
@@ -78,11 +98,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      </ScrollReveal>
-
-      {/* Meet Our Instructors */}
-      <ScrollReveal>
-        <MeetOurInstructorsSection />
       </ScrollReveal>
 
       {/* Accessories & Equipment */}

@@ -17,19 +17,6 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black/55" />
 
-      <div className="pointer-events-none absolute inset-0 z-[1] bottom-20" aria-hidden>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image
-            src="/dragon-hero-dark.png"
-            alt=""
-            width={900}
-            height={900}
-            priority
-            className="hero-dragon-fade h-auto w-[72vw] max-w-[560px] select-none object-cover sm:max-w-[560px] md:max-w-[680px] lg:max-w-[760px]"
-          />
-        </div>
-      </div>
-
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center gap-6 px-6 text-center bottom-10">
         <div className="space-y-4">
           <h1 className="text-4xl font-black leading-tight tracking-tight uppercase sm:text-5xl md:text-6xl">
@@ -44,16 +31,10 @@ export default function HeroSection() {
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
           <div className="w-full rounded-lg sm:inline-flex sm:w-auto">
             <button
-              className="flex w-full items-center justify-center gap-2 rounded-md px-10 py-4 text-base font-black text-white uppercase transition-all sm:w-auto hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-              style={{
-                backgroundImage: "url('/button.PNG')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
+              className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-10 py-4 text-base font-black text-white uppercase transition-all sm:w-auto hover:bg-[url('/button.PNG')] hover:bg-cover hover:bg-center hover:bg-no-repeat hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               {t("joinClub")}{" "}
-              <span className="material-symbols-outlined">arrow_forward</span>
+              
             </button>
           </div>
           <Link

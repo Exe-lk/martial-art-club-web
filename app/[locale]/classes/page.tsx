@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 
 import BranchScheduleSection from "@/components/BranchScheduleSection";
 import ClassesSection from "@/components/ClassesSection";
+import CoachesCardsSection from "@/components/CoachesCardsSection";
+import Ssubscriptions from "@/components/Ssubscriptions";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const classSlugByTitle: Record<string, string> = {
@@ -59,6 +61,7 @@ export default function LocalizedClassesPage() {
   return (
     <div className="bg-[#0D0D0D] text-gray-100 selection:bg-[#d62929] selection:text-white">
       <main>
+        
         <section
           className="relative grid min-h-[480px] grid-cols-1 overflow-hidden lg:min-h-[76vh] lg:grid-cols-2"
           aria-labelledby="classes-hero-heading"
@@ -104,6 +107,24 @@ export default function LocalizedClassesPage() {
             </div>
           </div>
         </section>
+
+
+        
+        <ScrollReveal>
+          <ClassesSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <BranchScheduleSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <CoachesCardsSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <Ssubscriptions />
+        </ScrollReveal>
 
         <ScrollReveal>
           <section className="mx-auto max-w-7xl bg-[#000000] py-24 text-white">
@@ -171,13 +192,8 @@ export default function LocalizedClassesPage() {
           </section>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <BranchScheduleSection />
-        </ScrollReveal>
 
-        <ScrollReveal>
-          <ClassesSection />
-        </ScrollReveal>
+
 
         <ScrollReveal>
           <section className="bg-[#d62929] py-20">

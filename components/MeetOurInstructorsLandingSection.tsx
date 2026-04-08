@@ -45,7 +45,6 @@ export default async function MeetOurInstructorsLandingSection() {
               className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
               {t("meetTeam")}
-              <span className="material-symbols-outlined text-xl">arrow_forward</span>
             </Link>
           </div>
         </div>

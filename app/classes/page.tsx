@@ -7,6 +7,7 @@ import ClassesSection from "@/components/ClassesSection";
 import ScrollReveal from "@/components/ScrollReveal";
 
 import en from "@/messages/en.json";
+import CoachesCardsSection from "@/components/CoachesCardsSection";
 
 const styleCards = [
   {
@@ -167,6 +168,10 @@ export default function ClassesPage() {
 
         <ScrollReveal>
           <BranchScheduleSection />
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <CoachesCardsSection />
         </ScrollReveal>
 
         <ScrollReveal>

@@ -48,7 +48,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black/80 px-6 py-16">
       {/* Top strip (icons + menu) */}
-      <div className="mx-auto mb-10 max-w-7xl border-b border-white/10 pb-8">
+      <div className="mx-auto mb-10 max-w-7xl pb-8">
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-center gap-2.5">
             <TopSocialIcon href="https://instagram.com" label="Instagram">

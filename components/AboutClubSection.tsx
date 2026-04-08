@@ -36,9 +36,7 @@ export default function AboutClubSection() {
     >
       <div className="flex flex-col justify-center bg-[#000000] px-6 py-10 md:pl-10 md:pr-[10px] md:py-12 lg:pl-16 lg:pr-[10px] lg:py-14 mt-10">
         <div className="ml-auto max-w-2xl text-right">
-          <span className="mb-4 inline-block text-xs font-black tracking-[0.3em] text-secondary uppercase">
-            {t("eyebrow")}
-          </span>
+
           <h2 className=" text-2xl font-black uppercase tracking-tight leading-tight md:text-3xl lg:text-4xl">
             {t("titleLine1")} <br />
             <span className="">{t("titleLine2")}</span> {t("titleLine3")}
