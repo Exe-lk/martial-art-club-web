@@ -27,7 +27,7 @@ export default function ClassesSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {branches.map((branch) => (
             <article
-              key={branch.name}
+              key={branch.slug}
               className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] shadow-lg"
             >
               <Image

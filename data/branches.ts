@@ -1,6 +1,16 @@
+export type BranchHeadCoach = {
+  name: string;
+  title: string;
+  bio: string;
+  imageUrl: string;
+};
+
 export type Branch = {
   name: string;
+  /** URL segment for `/branches/[slug]`. */
+  slug: string;
   subtitle: string;
+  headCoach: BranchHeadCoach;
   /** Short locality label (used in cards and hero). */
   location: string;
   heroImageUrl: string;
@@ -17,9 +27,13 @@ export type Branch = {
   mapEmbedUrl: string;
 };
 
+const coachBio =
+  "Leads training at this branch. Contact us by phone or email for class times and enrollment.";
+
 export const branches: Branch[] = [
   {
     name: "Jeet Kun Do - Urubokka",
+    slug: "urubokka",
     subtitle: "Jeet Kun Do",
     location: "Urubokka",
     heroImageUrl:
@@ -32,9 +46,16 @@ export const branches: Branch[] = [
     districtLabel: "Matara District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Urubokka%2C+Matara%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Urubokka",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/kun-fu/JKDA.jpg",
+    },
   },
   {
     name: "Jeet Kun Do - Walasmulla",
+    slug: "walasmulla",
     subtitle: "High-Performance Training • Strength & Conditioning",
     location: "Walasmulla",
     heroImageUrl:
@@ -47,9 +68,16 @@ export const branches: Branch[] = [
     districtLabel: "Hambantota District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Walasmulla%2C+Hambantota%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Walasmulla",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/wushu/wusuA.jpg",
+    },
   },
   {
     name: "Jeet Kun Do - Beliatta",
+    slug: "beliatta",
     subtitle: "Family Programs • Kids & Beginners Friendly",
     location: "Beliatta",
     heroImageUrl:
@@ -62,9 +90,16 @@ export const branches: Branch[] = [
     districtLabel: "Matara District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Beliatta%2C+Matara%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Beliatta",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
+    },
   },
   {
     name: "Jeet Kun Do - Weligama",
+    slug: "weligama",
     subtitle: "Family Programs • Kids & Beginners Friendly",
     location: "Weligama",
     heroImageUrl:
@@ -77,9 +112,16 @@ export const branches: Branch[] = [
     districtLabel: "Matara District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Weligama%2C+Matara%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Weligama",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
+    },
   },
   {
     name: "Jeet Kun Do - Hakmana",
+    slug: "hakmana",
     subtitle: "Family Programs • Kids & Beginners Friendly",
     location: "Hakmana",
     heroImageUrl:
@@ -92,9 +134,16 @@ export const branches: Branch[] = [
     districtLabel: "Matara District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Hakmana%2C+Matara%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Hakmana",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
+    },
   },
   {
     name: "Jeet Kun Do - Weerakatiya",
+    slug: "weerakatiya",
     subtitle: "Family Programs • Kids & Beginners Friendly",
     location: "Weerakatiya",
     heroImageUrl:
@@ -107,5 +156,11 @@ export const branches: Branch[] = [
     districtLabel: "Hambantota District",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Weerakatiya%2C+Hambantota%2C+Sri+Lanka&output=embed",
+    headCoach: {
+      name: "Lead Instructor — Weerakatiya",
+      title: "Head Coach",
+      bio: coachBio,
+      imageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
+    },
   },
 ];
