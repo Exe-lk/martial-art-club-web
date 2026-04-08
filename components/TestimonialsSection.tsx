@@ -1,57 +1,22 @@
- "use client";
+"use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+type TestimonialId = "marcus" | "sarah" | "david" | "amina" | "ravi";
+
 type Testimonial = {
-  name: string;
-  quote: string;
-  ratingLabel: string;
-  role: string;
+  id: TestimonialId;
   accent: "primary" | "secondary";
 };
 
 const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Marcus Sterling",
-    ratingLabel: "5 out of 5 stars",
-    quote:
-      "Joining Apex was the best decision for my fitness and focus. The coaches are world-class and really push you to your limits.",
-    role: "Working Professional",
-    accent: "primary",
-  },
-  {
-    name: "Sarah Jenkins",
-    ratingLabel: "5 out of 5 stars",
-    quote:
-      "As a woman, the self-defense classes here gave me so much confidence. It’s a very supportive and respectful environment.",
-    role: "Self-Defense Student",
-    accent: "secondary",
-  },
-  {
-    name: "David Chen",
-    ratingLabel: "5 out of 5 stars",
-    quote:
-      "The BJJ program is incredible. Technique focus is high, and the community is like a second family to me now.",
-    role: "Grappling Enthusiast",
-    accent: "primary",
-  },
-  {
-    name: "Amina Perera",
-    ratingLabel: "5 out of 5 stars",
-    quote:
-      "The coaching style is detailed and patient. My stamina, timing, and confidence improved within weeks—especially during pad work.",
-    role: "Beginner to Intermediate",
-    accent: "secondary",
-  },
-  {
-    name: "Ravi Dissanayake",
-    ratingLabel: "5 out of 5 stars",
-    quote:
-      "Great energy, disciplined training, and a welcoming community. The classes feel structured and safe while still pushing you to grow.",
-    role: "Fitness & Technique",
-    accent: "primary",
-  },
+  { id: "marcus", accent: "primary" },
+  { id: "sarah", accent: "secondary" },
+  { id: "david", accent: "primary" },
+  { id: "amina", accent: "secondary" },
+  { id: "ravi", accent: "primary" },
 ];
 
 function svgAvatarDataUri({
@@ -92,6 +57,8 @@ function svgAvatarDataUri({
 }
 
 export default function TestimonialsSection() {
+  const t = useTranslations("Testimonials");
+  const tItem = useTranslations("Testimonials.items");
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
     return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
@@ -106,12 +73,11 @@ export default function TestimonialsSection() {
     return [...tail, ...TESTIMONIALS, ...head];
   }, [perView]);
 
-  // Position in trackItems. Start at the first "real" item (after the prepended tail).
   const [pos, setPos] = useState(perView);
   const [isAnimating, setIsAnimating] = useState(true);
   const autoplayRef = useRef<number | null>(null);
 
-  const activeIndex = ((pos - perView) % n + n) % n;
+  const activeIndex = (((pos - perView) % n) + n) % n;
 
   const goTo = (nextIndex: number) => {
     const normalized = ((nextIndex % n) + n) % n;
@@ -155,7 +121,7 @@ export default function TestimonialsSection() {
     <section className="bg-background-dark py-24 px-6 text-white">
       <div className="mx-auto max-w-7xl text-center">
         <h2 className="pb-10 text-4xl font-black uppercase tracking-tighter leading-none text-slate-100 md:text-5xl">
-          The Warrior&apos;s Voice
+          {t("title")}
         </h2>
 
         <div
@@ -170,7 +136,7 @@ export default function TestimonialsSection() {
               prev();
               startAutoplay();
             }}
-            aria-label="Previous review"
+            aria-label={t("previous")}
             className="absolute -left-12 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/5 p-3 text-white ring-1 ring-white/10 backdrop-blur-sm transition hover:bg-white/10 lg:inline-flex"
           >
             <span className="material-symbols-outlined">chevron_left</span>
@@ -183,7 +149,7 @@ export default function TestimonialsSection() {
               next();
               startAutoplay();
             }}
-            aria-label="Next review"
+            aria-label={t("next")}
             className="absolute -right-12 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/5 p-3 text-white ring-1 ring-white/10 backdrop-blur-sm transition hover:bg-white/10 lg:inline-flex"
           >
             <span className="material-symbols-outlined">chevron_right</span>
@@ -197,7 +163,6 @@ export default function TestimonialsSection() {
                 transition: isAnimating ? "transform 700ms ease-out" : "none",
               }}
               onTransitionEnd={() => {
-                // Seamless wrap: when we slide into cloned edges, jump back to the real track.
                 if (pos >= n + perView) {
                   setIsAnimating(false);
                   setPos(perView);
@@ -208,8 +173,13 @@ export default function TestimonialsSection() {
               }}
             >
               {trackItems.map((testimonial, idx) => {
+                const id = testimonial.id;
+                const name = tItem(`${id}.name`);
+                const quote = tItem(`${id}.quote`);
+                const role = tItem(`${id}.role`);
+                const ratingLabel = tItem(`${id}.ratingLabel`);
                 const avatarSrc = svgAvatarDataUri({
-                  name: testimonial.name,
+                  name,
                   accent: testimonial.accent,
                 });
                 const accentText =
@@ -217,34 +187,36 @@ export default function TestimonialsSection() {
 
                 return (
                   <div
-                    key={`${testimonial.name}-${idx}`}
+                    key={`${testimonial.id}-${idx}`}
                     className="shrink-0 px-2"
                     style={{ flexBasis: `${100 / perView}%` }}
                   >
                     <article
                       className="rounded bg-[#0f172a] p-8 text-left ring-1 ring-white/10"
-                      aria-label={`Testimonial from ${testimonial.name}`}
+                      aria-label={t("ariaFrom", { name })}
                     >
                       <header className="mb-5 flex items-center gap-4">
                         <Image
                           src={avatarSrc}
-                          alt={`Profile picture of ${testimonial.name}`}
+                          alt={t("profileAlt", { name })}
                           width={48}
                           height={48}
                           className="h-12 w-12 rounded-full ring-2 ring-white/10"
                         />
                         <div className="min-w-0">
                           <h4 className="truncate text-sm font-black tracking-wide text-white uppercase">
-                            {testimonial.name}
+                            {name}
                           </h4>
                           <div className="mt-1 flex flex-wrap items-center gap-3">
-                            <span className={`text-[10px] font-black tracking-widest uppercase ${accentText}`}>
-                              {testimonial.role}
+                            <span
+                              className={`text-[10px] font-black tracking-widest uppercase ${accentText}`}
+                            >
+                              {role}
                             </span>
                             <div
                               className="text-sm text-primary"
-                              aria-label={testimonial.ratingLabel}
-                              title={testimonial.ratingLabel}
+                              aria-label={ratingLabel}
+                              title={ratingLabel}
                             >
                               ★★★★★
                             </div>
@@ -253,7 +225,7 @@ export default function TestimonialsSection() {
                       </header>
 
                       <p className="text-base leading-relaxed text-slate-300 italic">
-                        &quot;{testimonial.quote}&quot;
+                        &quot;{quote}&quot;
                       </p>
                     </article>
                   </div>
@@ -263,11 +235,11 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="mt-6 flex items-center justify-center gap-2">
-            {TESTIMONIALS.map((t, idx) => (
+            {TESTIMONIALS.map((item, idx) => (
               <button
-                key={t.name}
+                key={item.id}
                 type="button"
-                aria-label={`Go to review ${idx + 1}`}
+                aria-label={t("goTo", { n: idx + 1 })}
                 onClick={() => {
                   stopAutoplay();
                   goTo(idx);
@@ -284,4 +256,3 @@ export default function TestimonialsSection() {
     </section>
   );
 }
-

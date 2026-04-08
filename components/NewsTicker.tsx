@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 type NewsTickerProps = {
   text?: string;
   repeat?: number;
@@ -8,17 +10,20 @@ type NewsTickerProps = {
 };
 
 export default function NewsTicker({
-  text = "🇱🇰 Sri Lanka’s Premier Martial Arts Academy — Excellence in Every Move BLACK DRAGON JEET KUNE DO",
+  text,
   repeat = 10,
   durationSeconds = 200,
   className = "",
 }: NewsTickerProps) {
+  const t = useTranslations("NewsTicker");
+  const tSection = useTranslations("NewsTickerSection");
+  const displayText = text ?? t("text");
   const items = Array.from({ length: repeat }, (_, i) => i);
-  const rows = [0, 1]; // duplicate for seamless loop
+  const rows = [0, 1];
 
   return (
     <section
-      aria-label="News ticker"
+      aria-label={tSection("ariaLabel")}
       className={`w-full bg-[#0B0B0B] ${className}`}
     >
       <div className="group relative w-full overflow-hidden">
@@ -38,7 +43,7 @@ export default function NewsTicker({
                   className="inline-flex items-center gap-3 px-3 py-[14.5px] text-[11px] font-black tracking-[0.22em] text-white uppercase sm:text-2xl"
                 >
                   <span className="transition-colors group-hover:text-primary">
-                    {text}
+                    {displayText}
                   </span>
                   <span className="text-primary/95">•</span>
                 </span>
@@ -64,4 +69,3 @@ export default function NewsTicker({
     </section>
   );
 }
-

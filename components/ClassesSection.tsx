@@ -1,27 +1,25 @@
- "use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { branches } from "@/data/branches";
 
 export default function ClassesSection() {
+  const t = useTranslations("Classes");
+
   return (
-    <section
-      className="bg-[#000000] py-24 text-white"
-      id="programs"
-    >
+    <section className="bg-[#000000] py-24 text-white" id="programs">
       <div className="mx-auto max-w-7xl px-6">
         <header className="mb-16 space-y-4 text-center">
           <h2 className="text-primary text-sm font-black tracking-widest uppercase">
-            Choose Your Path
+            {t("eyebrow")}
           </h2>
           <h3 className="text-4xl font-black tracking-tight uppercase md:text-5xl">
-            Discover our Classes
+            {t("title")}
           </h3>
-          <p className="mx-auto max-w-2xl text-slate-400">
-            Three core martial arts, one academy — train with purpose.
-          </p>
+          <p className="mx-auto max-w-2xl text-slate-400">{t("description")}</p>
         </header>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -48,7 +46,7 @@ export default function ClassesSection() {
               <div className="absolute inset-x-0 bottom-0 z-10">
                 <div className="p-6 md:p-8">
                   <p className="text-sm font-bold tracking-wide text-white/90">
-                    Black Dragon Jeet Kune Do
+                    {t("branchBrand")}
                   </p>
                   <h4 className="mt-1 truncate text-3xl font-black uppercase leading-tight tracking-tight md:text-4xl">
                     {branch.location}
@@ -59,7 +57,7 @@ export default function ClassesSection() {
                       href={`/branches/${branch.slug}`}
                       className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-7 py-3.5 text-sm font-black tracking-[0.2em] text-white uppercase shadow-lg transition-transform hover:scale-[1.02] hover:bg-red-700 active:scale-[0.98]"
                     >
-                      View branch
+                      {t("viewBranch")}
                       <span className="material-symbols-outlined text-xl">
                         arrow_forward
                       </span>
@@ -76,7 +74,7 @@ export default function ClassesSection() {
             href="/classes"
             className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
           >
-            All Classes
+            {t("allClasses")}
             <span className="material-symbols-outlined text-xl">arrow_forward</span>
           </Link>
         </div>

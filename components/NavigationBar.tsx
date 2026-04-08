@@ -1,8 +1,15 @@
 "use client";
 
+import { Noto_Sans_Sinhala } from "next/font/google";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+
+const notoSinhala = Noto_Sans_Sinhala({
+  subsets: ["sinhala"],
+  display: "swap",
+});
 
 type NavItem = {
   href: string;
@@ -11,6 +18,8 @@ type NavItem = {
 };
 
 export default function NavigationBar() {
+  const t = useTranslations("Nav");
+  const locale = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(
     null,
@@ -18,18 +27,16 @@ export default function NavigationBar() {
   const [hiddenOnScroll, setHiddenOnScroll] = useState(false);
   const pathname = usePathname();
 
+  const homeHref = `/${locale}`;
+  const classesHref = `/${locale}/classes`;
+  const kidsAcademyHref = `/${locale}/kids-academy`;
+
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpenDesktopDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
-    // Auto-hide on scroll down, show on scroll up.
-    // Keep visible when mobile menu is open to avoid trapping navigation.
-    if (mobileOpen) {
-      setHiddenOnScroll(false);
-      return;
-    }
-
     let lastY = window.scrollY;
     let ticking = false;
     const delta = 8;
@@ -61,36 +68,38 @@ export default function NavigationBar() {
 
   const navItems: NavItem[] = useMemo(
     () => [
-      { href: "/", label: "Home" },
+      { href: homeHref, label: t("home") },
       {
         href: "/about",
-        label: "About",
+        label: t("about"),
         children: [
-          { href: "/about", label: "Our Story" },
-          { href: "/schedule", label: "Schedule" },
-          { href: "/gallery", label: "Gallery" },
-          { href: "/events", label: "Events" },
-          { href: "/coaches", label: "Coach & Team" },
-          { href: "/facilities", label: "Facilities" },
+          { href: "/about", label: t("ourStory") },
+          { href: "/schedule", label: t("schedule") },
+          { href: "/gallery", label: t("gallery") },
+          { href: "/events", label: t("events") },
+          { href: "/coaches", label: t("coaches") },
+          { href: "/facilities", label: t("facilities") },
         ],
       },
-      { href: "/memberships", label: "Prices" },
+      { href: "/memberships", label: t("prices") },
       {
-        href: "/classes",
-        label: "Classes",
+        href: classesHref,
+        label: t("classes"),
         children: [
-          { href: "/classes", label: "Classes overview" },
-          { href: "/kids-academy", label: "Kids Academy" },
+          { href: classesHref, label: t("classesOverview") },
+          { href: kidsAcademyHref, label: t("kidsAcademy") },
         ],
       },
-      { href: "/contact", label: "Contact us" },
-      { href: "/blog", label: "Blog" },
+      { href: "/contact", label: t("contact") },
+      { href: "/blog", label: t("blog") },
     ],
-    [],
+    [t, homeHref, classesHref, kidsAcademyHref],
   );
 
   const isItemActive = (item: NavItem) => {
-    if (item.href === "/") return pathname === "/";
+    if (item.href === homeHref) {
+      return pathname === homeHref || pathname === "/";
+    }
     return pathname === item.href || pathname.startsWith(`${item.href}/`);
   };
 
@@ -98,11 +107,12 @@ export default function NavigationBar() {
     <header
       className={[
         "fixed top-0 z-50 w-full border-b border-white/10 bg-[#000000] px-6 py-5 backdrop-blur-md transition-transform duration-300 will-change-transform lg:px-20",
-        hiddenOnScroll ? "-translate-y-full" : "translate-y-0",
+        locale === "si" ? notoSinhala.className : "",
+        hiddenOnScroll && !mobileOpen ? "-translate-y-full" : "translate-y-0",
       ].join(" ")}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href={homeHref} className="flex items-center gap-3">
           <span className="material-symbols-outlined text-3xl text-primary">
             sports_martial_arts
           </span>
@@ -188,15 +198,18 @@ export default function NavigationBar() {
             );
           })}
 
-          <button className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700">
-            Join the Club
+          <button
+            type="button"
+            className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
+          >
+            {t("joinClub")}
           </button>
         </div>
 
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-md p-2 text-white/90 transition-colors hover:bg-white/10 hover:text-white md:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           onClick={() => setMobileOpen((v) => !v)}
@@ -286,11 +299,10 @@ export default function NavigationBar() {
             className="mt-2 rounded bg-primary px-6 py-3 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
             onClick={() => setMobileOpen(false)}
           >
-            Join the Club
+            {t("joinClub")}
           </button>
         </div>
       </div>
     </header>
   );
 }
-

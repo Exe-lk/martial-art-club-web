@@ -6,6 +6,7 @@ import AboutClubSection from "@/components/AboutClubSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionLoadFallback from "@/components/SectionLoadFallback";
 import LandingFloatingButtons from "@/components/LandingFloatingButtons";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const EventsSection = dynamic(() => import("@/components/EventsCardsSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
@@ -14,11 +15,6 @@ const EventsSection = dynamic(() => import("@/components/EventsCardsSection"), {
 const BlogArticlesSection = dynamic(() => import("@/components/BlogArticlesSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[420px]" />,
 });
-
-const WeeklyTrainingScheduleSection = dynamic(
-  () => import("@/components/WeeklyTrainingScheduleSection"),
-  { loading: () => <SectionLoadFallback minHeight="min-h-[380px]" /> },
-);
 
 const KidsAcademyHighlightSection = dynamic(
   () => import("@/components/KidsAcademyHighlightSection"),
@@ -30,8 +26,8 @@ const MembershipPlansShowcaseSection = dynamic(
   { loading: () => <SectionLoadFallback minHeight="min-h-[520px]" /> },
 );
 
-const MeetOurInstructorsSection = dynamic(
-  () => import("@/components/MeetOurInstructorsSection"),
+const MeetOurInstructorsLandingSection = dynamic(
+  () => import("@/components/MeetOurInstructorsLandingSection"),
   { loading: () => <SectionLoadFallback minHeight="min-h-[380px]" /> },
 );
 
@@ -44,13 +40,19 @@ const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSecti
   loading: () => <SectionLoadFallback minHeight="min-h-[320px]" />,
 });
 
-const CtaSection = dynamic(() => import("@/components/CtaSection"), {
+const CtaLandingSection = dynamic(() => import("@/components/CtaLandingSection"), {
   loading: () => <SectionLoadFallback minHeight="min-h-[240px]" />,
 });
 
 export default function Home() {
   return (
-    <main className="flex-1 overflow-x-hidden bg-[#000000]">
+    <main className="relative flex-1 overflow-x-hidden bg-[#000000]">
+      <div className="pointer-events-none fixed right-4 top-24 z-[61] md:right-8">
+        <div className="pointer-events-auto">
+          <LanguageSwitcher/>
+        </div>
+      </div>
+
       <HeroSection />
 
       <ScrollReveal>
@@ -67,20 +69,19 @@ export default function Home() {
 
       <ScrollReveal>
         <EventsSection />
-      </ScrollReveal> 
-      
+      </ScrollReveal>
+
       <ScrollReveal>
         <KidsAcademyHighlightSection />
       </ScrollReveal>
 
       <ScrollReveal>
-        <MeetOurInstructorsSection />
+        <MeetOurInstructorsLandingSection />
       </ScrollReveal>
 
       <ScrollReveal>
         <MembershipPlansShowcaseSection />
       </ScrollReveal>
-
 
       <ScrollReveal>
         <BlogArticlesSection />
@@ -89,7 +90,7 @@ export default function Home() {
         <TestimonialsSection />
       </ScrollReveal>
       <ScrollReveal>
-        <CtaSection />
+        <CtaLandingSection />
       </ScrollReveal>
       <LandingFloatingButtons />
     </main>

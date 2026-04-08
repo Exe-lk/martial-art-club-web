@@ -1,8 +1,16 @@
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
+
 import HeroDeferredVideo from "@/components/HeroDeferredVideo";
 import NewsTicker from "@/components/NewsTicker";
-import Image from "next/image";
 
 export default function HeroSection() {
+  const t = useTranslations("Hero");
+  const locale = useLocale();
+
   return (
     <section className="relative min-h-[80svh] max-h-[90svh] overflow-hidden bg-black text-white">
       <HeroDeferredVideo />
@@ -25,13 +33,12 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center gap-6 px-6 text-center bottom-10">
         <div className="space-y-4">
           <h1 className="text-4xl font-black leading-tight tracking-tight uppercase sm:text-5xl md:text-6xl">
-          Real training. Real discipline. Real fighters.
-            
+            {t("title")}
           </h1>
 
           <span className="mb-4 block text-xs font-bold tracking-[0.3em] text-primary uppercase">
-          Black Dragon Jeet Kun Do
-            </span>
+            {t("subtitle")}
+          </span>
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
@@ -45,12 +52,16 @@ export default function HeroSection() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              Join the Club <span className="material-symbols-outlined">arrow_forward</span>
+              {t("joinClub")}{" "}
+              <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </div>
-          <button className="w-full  border-2 border-accent-blue px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto">
-            View Classes
-          </button>
+          <Link
+            href={`/${locale}/classes`}
+            className="w-full border-2 border-accent-blue px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto text-center"
+          >
+            {t("viewClasses")}
+          </Link>
         </div>
       </div>
 
@@ -62,4 +73,3 @@ export default function HeroSection() {
     </section>
   );
 }
-

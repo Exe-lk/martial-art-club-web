@@ -1,21 +1,23 @@
- "use client";
+"use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type CounterItem = {
   icon: string;
   value: string;
-  label: string;
+  labelKey: "medals" | "champions" | "students" | "years";
 };
 
 const COUNTERS: CounterItem[] = [
-  { icon: "military_tech", value: "50+", label: "Tournament Medals" },
-  { icon: "rewarded_ads", value: "20+", label: "National Champions" },
-  { icon: "person_celebrate", value: "1000+", label: "Students Trained" },
-  { icon: "history_edu", value: "15+", label: "Years of Excellence" },
+  { icon: "military_tech", value: "50+", labelKey: "medals" },
+  { icon: "rewarded_ads", value: "20+", labelKey: "champions" },
+  { icon: "person_celebrate", value: "1000+", labelKey: "students" },
+  { icon: "history_edu", value: "15+", labelKey: "years" },
 ];
 
 export default function AchievementsCounterSection() {
+  const t = useTranslations("Achievements");
   const sectionRef = useRef<HTMLElement | null>(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
@@ -30,7 +32,7 @@ export default function AchievementsCounterSection() {
   }, []);
 
   const [displayed, setDisplayed] = useState<number[]>(() =>
-    parsed.map(() => 0)
+    parsed.map(() => 0),
   );
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function AchievementsCounterSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.22 }
+      { threshold: 0.22 },
     );
 
     observer.observe(el);
@@ -61,12 +63,12 @@ export default function AchievementsCounterSection() {
     let raf = 0;
 
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / durationMs);
-      const eased = 1 - Math.pow(1 - t, 3);
+      const tEase = Math.min(1, (now - start) / durationMs);
+      const eased = 1 - Math.pow(1 - tEase, 3);
 
       setDisplayed(parsed.map((p) => Math.round(p.target * eased)));
 
-      if (t < 1) raf = requestAnimationFrame(tick);
+      if (tEase < 1) raf = requestAnimationFrame(tick);
     };
 
     raf = requestAnimationFrame(tick);
@@ -74,14 +76,11 @@ export default function AchievementsCounterSection() {
   }, [parsed, shouldAnimate]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-black py-16 md:py-20"
-    >
+    <section ref={sectionRef} className="bg-black py-16 md:py-20">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 text-center">
           {parsed.map((item, idx) => (
-            <div key={item.label} className="flex flex-col items-center gap-4">
+            <div key={item.labelKey} className="flex flex-col items-center gap-4">
               <span className="material-symbols-outlined text-white text-5xl">
                 {item.icon}
               </span>
@@ -90,7 +89,7 @@ export default function AchievementsCounterSection() {
                 {item.suffix}
               </div>
               <p className="text-white uppercase tracking-widest text-xs font-bold">
-                {item.label}
+                {t(item.labelKey)}
               </p>
             </div>
           ))}
@@ -99,4 +98,3 @@ export default function AchievementsCounterSection() {
     </section>
   );
 }
-

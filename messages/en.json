@@ -1,0 +1,226 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "ourStory": "Our Story",
+    "schedule": "Schedule",
+    "gallery": "Gallery",
+    "events": "Events",
+    "coaches": "Coach & Team",
+    "facilities": "Facilities",
+    "prices": "Prices",
+    "classes": "Classes",
+    "classesOverview": "Classes overview",
+    "kidsAcademy": "Kids Academy",
+    "contact": "Contact us",
+    "blog": "Blog",
+    "joinClub": "Join the Club",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "LanguageSwitcher": {
+    "en": "EN",
+    "si": "SI",
+    "label": "Language"
+  },
+  "Hero": {
+    "title": "Real training. Real discipline. Real fighters.",
+    "subtitle": "Black Dragon Jeet Kun Do",
+    "joinClub": "Join the Club",
+    "viewClasses": "View Classes"
+  },
+  "NewsTicker": {
+    "text": "🇱🇰 Sri Lanka’s Premier Martial Arts Academy — Excellence in Every Move BLACK DRAGON JEET KUNE DO"
+  },
+  "Classes": {
+    "eyebrow": "Choose Your Path",
+    "title": "Discover our Classes",
+    "description": "Three core martial arts, one academy — train with purpose.",
+    "branchBrand": "Black Dragon Jeet Kune Do",
+    "viewBranch": "View branch",
+    "allClasses": "All Classes"
+  },
+  "About": {
+    "eyebrow": "About us",
+    "titleLine1": "BLACK DRAGON JEET KUNE DO",
+    "titleLine2": "Sri Lanka’s #1 Martial Arts",
+    "titleLine3": "Training Academy",
+    "body": "Black Dragon Jeet Kune Do is Sri Lanka’s #1 martial arts training academy, dedicated to developing strength, discipline, and confidence through world-class training. Specializing in Jeet Kune Do, Kung Fu, and Wushu, the academy blends traditional techniques with modern combat principles.",
+    "kungFuAlt": "Kung Fu logo"
+  },
+  "Achievements": {
+    "medals": "Tournament Medals",
+    "champions": "National Champions",
+    "students": "Students Trained",
+    "years": "Years of Excellence"
+  },
+  "Events": {
+    "title": "Events",
+    "titleAccent": "&",
+    "titleSuffix": "Activities",
+    "subtitle": "Latest highlights and what’s coming next.",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "viewDetails": "View Details",
+    "seeMore": "See more",
+    "viewDetailsAria": "View details for {title}"
+  },
+  "Blog": {
+    "eyebrow": "Insights",
+    "titleAccent": "Warriors",
+    "titleSuffix": "Path",
+    "description": "Training tips, mindset, and martial arts wisdom from our coaches.",
+    "read": "Read",
+    "viewAll": "View all articles"
+  },
+  "Weekly": {
+    "eyebrow": "Branch timetable",
+    "titleBefore": "Weekly",
+    "titleAccent": "Training",
+    "titleAfter": "Schedule",
+    "subtitle": "Sessions from your class list for each weekday.",
+    "weekdayTabs": "Weekday",
+    "noSessions": "No sessions scheduled",
+    "sessionsLine": "{count, plural, one {# session scheduled} other {# sessions scheduled}}",
+    "noClassesDay": "No classes on this day.",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "dotTabs": "Select weekday",
+    "weekday": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  },
+  "KidsAcademy": {
+    "title": "Explore our kids academy",
+    "description": "Build confidence, focus, and discipline in a fun and structured environment.",
+    "learnMore": "Learn more"
+  },
+  "Instructors": {
+    "eyebrow": "The Vanguard",
+    "title": "Meet Our Instructors",
+    "description": "Train under experienced coaches who build real skill, discipline, and confidence—whether you’re starting from zero or sharpening for competition.",
+    "meetTeam": "Meet the Team",
+    "imageAlt": "Martial arts coaches training with students"
+  },
+  "Membership": {
+    "title": "Membership plans",
+    "subtitle": "Flexible options tailored to your commitment and goals."
+  },
+  "Testimonials": {
+    "title": "The Warrior's Voice",
+    "previous": "Previous review",
+    "next": "Next review",
+    "goTo": "Go to review {n}",
+    "profileAlt": "Profile picture of {name}",
+    "ariaFrom": "Testimonial from {name}",
+    "items": {
+      "marcus": {
+        "name": "Marcus Sterling",
+        "role": "Working Professional",
+        "ratingLabel": "5 out of 5 stars",
+        "quote": "Joining Apex was the best decision for my fitness and focus. The coaches are world-class and really push you to your limits."
+      },
+      "sarah": {
+        "name": "Sarah Jenkins",
+        "role": "Self-Defense Student",
+        "ratingLabel": "5 out of 5 stars",
+        "quote": "As a woman, the self-defense classes here gave me so much confidence. It’s a very supportive and respectful environment."
+      },
+      "david": {
+        "name": "David Chen",
+        "role": "Grappling Enthusiast",
+        "ratingLabel": "5 out of 5 stars",
+        "quote": "The BJJ program is incredible. Technique focus is high, and the community is like a second family to me now."
+      },
+      "amina": {
+        "name": "Amina Perera",
+        "role": "Beginner to Intermediate",
+        "ratingLabel": "5 out of 5 stars",
+        "quote": "The coaching style is detailed and patient. My stamina, timing, and confidence improved within weeks—especially during pad work."
+      },
+      "ravi": {
+        "name": "Ravi Dissanayake",
+        "role": "Fitness & Technique",
+        "ratingLabel": "5 out of 5 stars",
+        "quote": "Great energy, disciplined training, and a welcoming community. The classes feel structured and safe while still pushing you to grow."
+      }
+    }
+  },
+  "ClassesPage": {
+    "heroKicker": "Black Dragon",
+    "heroTitle": "Our Martial Arts <accent>Classes</accent>",
+    "heroSubtitle": "Choose your path, train with purpose, and master your discipline.",
+    "stylesTitle": "Explore Our Fighting <accent>Styles</accent>",
+    "stylesKicker": "Refine Your Combat DNA",
+    "viewDetails": "View details",
+    "styles": {
+      "kungfu": {
+        "tag": "Traditional",
+        "description": "The original art of discipline. Focuses on fluid movements, internal energy, and ancient technical mastery.",
+        "focus": "Focus: Precision & Balance",
+        "bestFor": "Best For: Technical Growth",
+        "alt": "Traditional Kung Fu practitioner performing a precise movement in a bright minimal studio"
+      },
+      "jkd": {
+        "tag": "Efficiency",
+        "description": "Founded by Bruce Lee. The way of the intercepting fist prioritizes directness and adaptability.",
+        "focus": "Focus: Speed & Reflexes",
+        "bestFor": "Best For: Self-Defense",
+        "alt": "Close up of mixed martial arts training with heavy bags and dynamic lighting"
+      },
+      "wushu": {
+        "tag": "Performance",
+        "description": "High-intensity Chinese martial arts combining explosive power with extreme acrobatic aesthetics.",
+        "focus": "Focus: Athleticism & Power",
+        "bestFor": "Best For: Total Fitness",
+        "alt": "Acrobatic Wushu performer mid-air against a high-contrast dark background"
+      }
+    },
+    "ctaTitle": "Start Your Martial Arts Journey Today",
+    "ctaJoin": "Join the Club",
+    "ctaTrial": "Book Free Trial"
+  },
+  "KidsAcademyPage": {
+    "heroKicker": "Kids academy",
+    "heroTitle": "Martial arts that helps students thrive",
+    "heroSubtitle": "Our kids program builds focus, discipline, confidence, and respect—skills that support learning, friendships, and a strong mindset at school.",
+    "viewClasses": "View classes",
+    "contactUs": "Contact us",
+    "whyTitle": "Why martial arts matters for students",
+    "whyBody": "Martial arts isn’t only about fighting. It teaches self-control, goal setting, and positive habits that support education and personal growth.",
+    "benefits": {
+      "disciplineTitle": "Build Discipline",
+      "disciplineBody": "Students learn to follow instructions, respect rules, and stay consistent. These habits carry into school work, homework, and daily routines.",
+      "disciplineAlt": "Building discipline through martial arts",
+      "confidenceTitle": "Boost Confidence",
+      "confidenceBody": "Every small improvement—stance, balance, technique—helps kids believe in themselves. Confidence grows through effort, not comparison.",
+      "confidenceAlt": "Boosting confidence through martial arts",
+      "stressTitle": "Reduce Stress",
+      "stressBody": "Training is a healthy outlet for energy and emotions. Breathing, movement, and focus help students feel calmer and more in control.",
+      "stressAlt": "Reducing stress through martial arts"
+    },
+    "safeTitle": "A safe, structured, and fun environment",
+    "safeBody": "Students practice with age-appropriate drills, clear boundaries, and supportive coaching. They learn respect, teamwork, and how to handle challenges with a calm mind.",
+    "bookTrial": "Book a trial",
+    "seeSchedule": "See schedule"
+  },
+  "Cta": {
+    "title": "Start Your Martial Arts Journey Today",
+    "joinNow": "Join Now",
+    "viewPrograms": "View Programs"
+  },
+  "Floating": {
+    "whatsappAria": "Chat on WhatsApp",
+    "whatsappText": "Hello! I’d like to know more.",
+    "backToTop": "Back to top"
+  },
+  "NewsTickerSection": {
+    "ariaLabel": "News ticker"
+  }
+}

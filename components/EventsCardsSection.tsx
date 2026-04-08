@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { EVENTS, type ClubEvent } from "@/data/events";
@@ -15,6 +16,7 @@ function EventCard({
   index: number;
   reveal: boolean;
 }) {
+  const t = useTranslations("Events");
   const isUpcoming = event.state === "upcoming";
 
   return (
@@ -42,7 +44,7 @@ function EventCard({
               fill
               loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              style={{ ["--event-wipe-delay" as any]: `${index * 90}ms` }}
+              style={{ ["--event-wipe-delay" as string]: `${index * 90}ms` }}
             />
           ) : (
             <div className="h-full w-full bg-gradient-to-br from-primary/20 via-black to-secondary/15" />
@@ -51,9 +53,7 @@ function EventCard({
       </div>
 
       <div className="space-y-4 p-6">
-        <h3 className="text-2xl font-black tracking-tight text-white">
-          {event.title}
-        </h3>
+        <h3 className="text-2xl font-black tracking-tight text-white">{event.title}</h3>
 
         <div className="flex flex-wrap items-center gap-3">
           {event.timeLabel ? (
@@ -67,16 +67,16 @@ function EventCard({
               isUpcoming ? "bg-white text-black" : "bg-white/10 text-white"
             }`}
           >
-            {isUpcoming ? "Upcoming" : "Past"}
+            {isUpcoming ? t("upcoming") : t("past")}
           </span>
         </div>
 
         <Link
           className="inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-5 py-4 text-sm font-black tracking-widest uppercase text-white shadow-lg transition-colors hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
           href={`/events/${event.id}`}
-          aria-label={`View details for ${event.title}`}
+          aria-label={t("viewDetailsAria", { title: event.title })}
         >
-          View Details
+          {t("viewDetails")}
         </Link>
       </div>
     </article>
@@ -84,6 +84,7 @@ function EventCard({
 }
 
 export default function EventsCardsSection() {
+  const t = useTranslations("Events");
   const ordered = useMemo(() => {
     const upcoming = EVENTS.filter((e) => e.state === "upcoming");
     const past = EVENTS.filter((e) => e.state === "past");
@@ -106,7 +107,7 @@ export default function EventsCardsSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.18 }
+      { threshold: 0.18 },
     );
 
     observer.observe(el);
@@ -114,18 +115,15 @@ export default function EventsCardsSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-[#000000] text-white py-16"
-      id="events"
-    >
+    <section ref={sectionRef} className="bg-[#000000] text-white py-16" id="events">
       <div className="mx-auto max-w-7xl px-6">
         <header className="mb-10 text-center">
           <h2 className="text-3xl font-black tracking-tight uppercase md:text-5xl">
-            Events <span className="text-primary">&amp;</span> Activities
+            {t("title")} <span className="text-primary">{t("titleAccent")}</span>{" "}
+            {t("titleSuffix")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-relaxed text-slate-400 md:text-base">
-            Latest highlights and what’s coming next.
+            {t("subtitle")}
           </p>
         </header>
 
@@ -137,10 +135,10 @@ export default function EventsCardsSection() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            href="/blog"
+            href="/events"
             className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
           >
-            See more
+            {t("seeMore")}
             <span className="material-symbols-outlined text-xl">arrow_forward</span>
           </Link>
         </div>
@@ -148,4 +146,3 @@ export default function EventsCardsSection() {
     </section>
   );
 }
-

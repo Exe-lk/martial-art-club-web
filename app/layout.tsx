@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import NavigationBar from "@/components/NavigationBar";
+import DocumentLangSync from "@/components/DocumentLangSync";
+import NavigationIntlProvider from "@/components/NavigationIntlProvider";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -33,7 +34,8 @@ export default function RootLayout({
         className={`${inter.className} min-h-full flex flex-col bg-[#000000]`}
         suppressHydrationWarning
       >
-        <NavigationBar />
+        <DocumentLangSync />
+        <NavigationIntlProvider />
         <div className="flex-1 pt-20">{children}</div>
         <Footer />
       </body>

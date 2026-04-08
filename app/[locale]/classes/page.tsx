@@ -1,48 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { NextIntlClientProvider } from "next-intl";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+
 import BranchScheduleSection from "@/components/BranchScheduleSection";
 import ClassesSection from "@/components/ClassesSection";
 import ScrollReveal from "@/components/ScrollReveal";
-
-import en from "@/messages/en.json";
-
-const styleCards = [
-  {
-    title: "Kung Fu",
-    tag: "Traditional",
-    description:
-      "The original art of discipline. Focuses on fluid movements, internal energy, and ancient technical mastery.",
-    focus: "Focus: Precision & Balance",
-    bestFor: "Best For: Technical Growth",
-    icon: "target",
-    image: "/kun-fu.PNG",
-    alt: "Traditional Kung Fu practitioner performing a precise movement in a bright minimal studio",
-  },
-  {
-    title: "Jeet Kune Do",
-    tag: "Efficiency",
-    description:
-      "Founded by Bruce Lee. The way of the intercepting fist prioritizes directness and adaptability.",
-    focus: "Focus: Speed & Reflexes",
-    bestFor: "Best For: Self-Defense",
-    icon: "bolt",
-    image: "/JKD.PNG",
-    alt: "Close up of mixed martial arts training with heavy bags and dynamic lighting",
-  },
-  {
-    title: "Wushu",
-    tag: "Performance",
-    description:
-      "High-intensity Chinese martial arts combining explosive power with extreme acrobatic aesthetics.",
-    focus: "Focus: Athleticism & Power",
-    bestFor: "Best For: Total Fitness",
-    icon: "fitness_center",
-    image: "/wusu.PNG",
-    alt: "Acrobatic Wushu performer mid-air against a high-contrast dark background",
-  },
-];
 
 const classSlugByTitle: Record<string, string> = {
   "Kung Fu": "kung-fu",
@@ -50,11 +14,47 @@ const classSlugByTitle: Record<string, string> = {
   Wushu: "wushu",
 };
 
-export default function ClassesPage() {
+export default function LocalizedClassesPage() {
+  const t = useTranslations("ClassesPage");
+  const tStyles = useTranslations("ClassesPage.styles");
+
   const mainSectionHeaderClass =
     "mx-auto mb-4 w-fit text-center text-4xl font-black tracking-tight uppercase md:text-5xl";
   const mainSectionKickerClass =
     "text-xs font-bold tracking-widest text-slate-300 uppercase text-center";
+
+  const styleCards = [
+    {
+      title: "Kung Fu",
+      tag: tStyles("kungfu.tag"),
+      description: tStyles("kungfu.description"),
+      focus: tStyles("kungfu.focus"),
+      bestFor: tStyles("kungfu.bestFor"),
+      icon: "target",
+      image: "/kun-fu.PNG",
+      alt: tStyles("kungfu.alt"),
+    },
+    {
+      title: "Jeet Kune Do",
+      tag: tStyles("jkd.tag"),
+      description: tStyles("jkd.description"),
+      focus: tStyles("jkd.focus"),
+      bestFor: tStyles("jkd.bestFor"),
+      icon: "bolt",
+      image: "/JKD.PNG",
+      alt: tStyles("jkd.alt"),
+    },
+    {
+      title: "Wushu",
+      tag: tStyles("wushu.tag"),
+      description: tStyles("wushu.description"),
+      focus: tStyles("wushu.focus"),
+      bestFor: tStyles("wushu.bestFor"),
+      icon: "fitness_center",
+      image: "/wusu.PNG",
+      alt: tStyles("wushu.alt"),
+    },
+  ] as const;
 
   return (
     <div className="bg-[#0D0D0D] text-gray-100 selection:bg-[#d62929] selection:text-white">
@@ -88,16 +88,18 @@ export default function ClassesPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
               <p className="text-xs font-black tracking-[0.35em] text-[#d62929] uppercase">
-                Black Dragon
+                {t("heroKicker")}
               </p>
               <h1
                 id="classes-hero-heading"
                 className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
               >
-                Our Martial Arts <span className="text-[#d62929]">Classes</span>
+                {t.rich("heroTitle", {
+                  accent: (chunks) => <span className="text-[#d62929]">{chunks}</span>,
+                })}
               </h1>
               <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-slate-200 md:text-base">
-                Choose your path, train with purpose, and master your discipline.
+                {t("heroSubtitle")}
               </p>
             </div>
           </div>
@@ -108,9 +110,11 @@ export default function ClassesPage() {
             <div className="container mx-auto px-6">
               <div className="mb-16">
                 <h2 className={mainSectionHeaderClass}>
-                  Explore Our Fighting <span className="text-[#d62929]">Styles</span>
+                  {t.rich("stylesTitle", {
+                    accent: (chunks) => <span className="text-[#d62929]">{chunks}</span>,
+                  })}
                 </h2>
-                <p className={mainSectionKickerClass}>Refine Your Combat DNA</p>
+                <p className={mainSectionKickerClass}>{t("stylesKicker")}</p>
               </div>
 
               <div className="grid grid-cols-1 gap-8 text-black md:grid-cols-3">
@@ -131,7 +135,9 @@ export default function ClassesPage() {
                       />
                     </div>
                     <div className="mb-4 flex items-start justify-between">
-                      <h3 className="text-2xl font-black tracking-tight uppercase">{card.title}</h3>
+                      <h3 className="text-2xl font-black tracking-tight uppercase">
+                        {card.title}
+                      </h3>
                       <span className="bg-[#d62929]/10 px-2 py-1 text-[10px] font-bold tracking-widest text-[#d62929] uppercase">
                         {card.tag}
                       </span>
@@ -151,13 +157,13 @@ export default function ClassesPage() {
                         <span className="text-[#1E3A8A]">{card.bestFor}</span>
                       </div>
                     </div>
-                    <a
+                    <Link
                       href={`/classes/${classSlugByTitle[card.title]}`}
                       className="mt-8 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#d62929] transition-transform group-hover:translate-x-1"
                     >
-                      View details{" "}
+                      {t("viewDetails")}{" "}
                       <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -170,23 +176,21 @@ export default function ClassesPage() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <NextIntlClientProvider locale="en" messages={en}>
-            <ClassesSection />
-          </NextIntlClientProvider>
+          <ClassesSection />
         </ScrollReveal>
 
         <ScrollReveal>
           <section className="bg-[#d62929] py-20">
             <div className="container mx-auto px-6 text-center">
               <h2 className="mb-10 text-4xl font-black tracking-tight text-white uppercase md:text-6xl">
-                Start Your Martial Arts <br className="hidden md:block" /> Journey Today
+                {t("ctaTitle")}
               </h2>
               <div className="flex flex-wrap justify-center gap-6">
                 <button className="scale-100 bg-white px-10 py-5 font-black tracking-widest text-[#d62929] uppercase transition-all hover:scale-105 hover:bg-neutral-100 active:scale-95">
-                  Join the Club
+                  {t("ctaJoin")}
                 </button>
                 <button className="scale-100 bg-neutral-900 px-10 py-5 font-black tracking-widest text-white uppercase transition-all hover:scale-105 hover:bg-black active:scale-95">
-                  Book Free Trial
+                  {t("ctaTrial")}
                 </button>
               </div>
             </div>
@@ -196,3 +200,4 @@ export default function ClassesPage() {
     </div>
   );
 }
+

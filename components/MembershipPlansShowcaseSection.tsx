@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { MEMBERSHIP_PLANS_SHOWCASE } from "@/data/membershipPlansShowcase";
 
 export default function MembershipPlansShowcaseSection() {
+  const t = useTranslations("Membership");
   const sectionRef = useRef<HTMLElement | null>(null);
   const [reveal, setReveal] = useState(false);
 
@@ -39,10 +41,10 @@ export default function MembershipPlansShowcaseSection() {
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
         <header className="mb-16 text-center md:mb-20">
           <h2 className="text-3xl font-black uppercase tracking-tighter text-white md:text-5xl">
-            Membership plans
+            {t("title")}
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-sm text-slate-400 md:text-base">
-            Flexible options tailored to your commitment and goals.
+            {t("subtitle")}
           </p>
         </header>
 

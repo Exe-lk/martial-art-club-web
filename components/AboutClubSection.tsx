@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutClubSection() {
+  const t = useTranslations("About");
   const imageAreaRef = useRef<HTMLDivElement | null>(null);
   const [revealImage, setRevealImage] = useState(false);
 
@@ -20,7 +22,7 @@ export default function AboutClubSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.22 }
+      { threshold: 0.22 },
     );
 
     observer.observe(el);
@@ -30,25 +32,18 @@ export default function AboutClubSection() {
   return (
     <section
       id="about"
-      className="grid grid-cols-1 overflow-hidden bg-[#000000] text-white md:grid-cols-2 md:max-h-[85svh] ml-30">
+      className="grid grid-cols-1 overflow-hidden bg-[#000000] text-white md:grid-cols-2 md:max-h-[85svh] ml-30"
+    >
       <div className="flex flex-col justify-center bg-[#000000] px-6 py-10 md:pl-10 md:pr-[10px] md:py-12 lg:pl-16 lg:pr-[10px] lg:py-14 mt-10">
         <div className="ml-auto max-w-2xl text-right">
           <span className="mb-4 inline-block text-xs font-black tracking-[0.3em] text-secondary uppercase">
-            About us
+            {t("eyebrow")}
           </span>
           <h2 className=" text-2xl font-black uppercase tracking-tight leading-tight md:text-3xl lg:text-4xl">
-            BLACK DRAGON JEET KUNE DO{" "}
-            <br />
-            <span className="">Sri Lanka’s #1 Martial Arts</span>{" "}
-            Training Academy
+            {t("titleLine1")} <br />
+            <span className="">{t("titleLine2")}</span> {t("titleLine3")}
           </h2>
-          <p className="mt-5 leading-relaxed text-slate-300 md:text-lg">
-            Black Dragon Jeet Kune Do is Sri Lanka’s #1 martial arts training
-            academy, dedicated to developing strength, discipline, and confidence
-            through world-class training. Specializing in Jeet Kune Do, Kung Fu,
-            and Wushu, the academy blends traditional techniques with modern
-            combat principles.
-          </p>
+          <p className="mt-5 leading-relaxed text-slate-300 md:text-lg">{t("body")}</p>
         </div>
       </div>
 
@@ -58,17 +53,16 @@ export default function AboutClubSection() {
       >
         <div className="relative w-full max-w-md">
           <Image
-            alt="Kung Fu logo"
+            alt={t("kungFuAlt")}
             className={`h-auto w-full object-contain about-image-slide ${revealImage ? "about-image-slide--show" : ""}`}
             src="/logos/kun-fu.png"
             width={520}
             height={520}
             priority
-            style={{ ["--about-slide-delay" as any]: "140ms" }}
+            style={{ ["--about-slide-delay" as string]: "140ms" }}
           />
         </div>
       </div>
     </section>
   );
 }
-

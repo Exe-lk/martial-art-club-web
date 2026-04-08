@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { getFeaturedArticlesForIndex } from "@/lib/blogArticles";
 
-export default function BlogArticlesSection() {
+export default async function BlogArticlesSection() {
+  const t = await getTranslations("Blog");
   const featuredArticles = getFeaturedArticlesForIndex().slice(0, 3);
 
   return (
@@ -12,17 +14,15 @@ export default function BlogArticlesSection() {
         <header className="mb-10 text-center">
           <div className="mx-auto max-w-3xl">
             <span className="mb-2 inline-block text-[11px] font-black tracking-[0.28em] text-primary uppercase">
-              Insights
+              {t("eyebrow")}
             </span>
             <h2 className="text-3xl font-black tracking-tight uppercase md:text-5xl">
-               <span className="text-primary"> Warrios</span> Path
+              <span className="text-primary"> {t("titleAccent")}</span> {t("titleSuffix")}
             </h2>
             <p className="mt-4 text-sm font-medium leading-relaxed text-slate-400 md:text-base">
-              Training tips, mindset, and martial arts wisdom from our coaches.
+              {t("description")}
             </p>
           </div>
-
-          
         </header>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -69,13 +69,11 @@ export default function BlogArticlesSection() {
                       {article.author.name} • {article.publishedDate}
                     </div>
                     <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-widest text-primary uppercase transition-transform group-hover:translate-x-1">
-                      Read
-                      
+                      {t("read")}
                     </span>
                   </div>
                 </div>
               </Link>
-              
             </article>
           ))}
         </div>
@@ -85,12 +83,10 @@ export default function BlogArticlesSection() {
             href="/blog"
             className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
           >
-            View all articles
+            {t("viewAll")}
           </Link>
         </div>
-        
       </div>
     </section>
   );
 }
-

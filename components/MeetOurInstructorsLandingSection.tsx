@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
-export default function MeetOurInstructorsSection() {
+export default async function MeetOurInstructorsLandingSection() {
+  const t = await getTranslations("Instructors");
+
   return (
     <section
       className="bg-[#000000] px-6 py-16 text-white md:py-20"
@@ -13,7 +16,7 @@ export default function MeetOurInstructorsSection() {
           <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#141414] shadow-2xl">
             <Image
               src="/gallery/martial-art-coaches.jpg"
-              alt="Martial arts coaches training with students"
+              alt={t("imageAlt")}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -27,17 +30,13 @@ export default function MeetOurInstructorsSection() {
         <div className="space-y-6">
           <div className="space-y-3">
             <span className="block text-sm font-black tracking-widest text-primary uppercase">
-              The Vanguard
+              {t("eyebrow")}
             </span>
-            <h2 className="text-4xl font-black tracking-tight uppercase md:text-5xl">
-              Meet Our Instructors
-            </h2>
+            <h2 className="text-4xl font-black tracking-tight uppercase md:text-5xl">{t("title")}</h2>
           </div>
 
           <p className="text-base font-medium leading-relaxed text-slate-400 md:text-lg">
-            Train under experienced coaches who build real skill, discipline, and
-            confidence—whether you’re starting from zero or sharpening for
-            competition.
+            {t("description")}
           </p>
 
           <div className="pt-2">
@@ -45,10 +44,8 @@ export default function MeetOurInstructorsSection() {
               href="/coaches"
               className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
-              Meet the Team
-              <span className="material-symbols-outlined text-xl">
-                arrow_forward
-              </span>
+              {t("meetTeam")}
+              <span className="material-symbols-outlined text-xl">arrow_forward</span>
             </Link>
           </div>
         </div>

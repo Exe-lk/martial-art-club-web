@@ -49,7 +49,6 @@ export default function WeeklyTrainingScheduleSection() {
       .sort((a, b) => parseTimeToMinutes(a.startTime) - parseTimeToMinutes(b.startTime));
   }, [activeDay]);
 
-  /** One row per start time; multiple classes at the same time share a row. */
   const timeSlots = useMemo(() => {
     const map = new Map<string, TrainingClassDetail[]>();
     for (const c of dayClasses) {
