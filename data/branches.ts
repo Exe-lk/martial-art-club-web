@@ -1,6 +1,7 @@
 export type Branch = {
   name: string;
   subtitle: string;
+  /** Short locality label (used in cards and hero). */
   location: string;
   heroImageUrl: string;
   cardImageUrl: string;
@@ -9,7 +10,11 @@ export type Branch = {
   phone: string;
   email: string;
   districtLabel: string;
-  mapImageUrl: string;
+  /**
+   * Google Maps embed `iframe` src. Prefer Share → Embed map from Google Maps, or
+   * `https://www.google.com/maps?q=…&output=embed` for a place query.
+   */
+  mapEmbedUrl: string;
 };
 
 export const branches: Branch[] = [
@@ -21,12 +26,12 @@ export const branches: Branch[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/kun-fu/JKDA.jpg",
     headquartersLabel: "Headquarters",
-    address: "123 Warrior Way, Combat City",
-    phone: "+1 (555) 123-4567",
-    email: "info@apexmartialarts.com",
-    districtLabel: "Downtown District",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Main Rd, Urubokka, Matara 81074, Sri Lanka",
+    phone: "+94 71 234 5678",
+    email: "urubokka@apexmartialarts.lk",
+    districtLabel: "Matara District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Urubokka%2C+Matara%2C+Sri+Lanka&output=embed",
   },
   {
     name: "Jeet Kun Do - Walasmulla",
@@ -36,42 +41,42 @@ export const branches: Branch[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/wushu/wusuA.jpg",
     headquartersLabel: "Performance Desk",
-    address: "88 Victory Rd, Sports District",
-    phone: "+1 (555) 909-IRON",
-    email: "elite@apexmartialarts.com",
-    districtLabel: "Sports District",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Town Centre, Walasmulla, Hambantota 82450, Sri Lanka",
+    phone: "+94 71 345 6789",
+    email: "walasmulla@apexmartialarts.lk",
+    districtLabel: "Hambantota District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Walasmulla%2C+Hambantota%2C+Sri+Lanka&output=embed",
   },
   {
     name: "Jeet Kun Do - Beliatta",
     subtitle: "Family Programs • Kids & Beginners Friendly",
-    location: "Beliaththa",
+    location: "Beliatta",
     heroImageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
     headquartersLabel: "Front Desk",
-    address: "45 Titan St, Westside",
-    phone: "+1 (555) 000-2222",
-    email: "westside@apexmartialarts.com",
-    districtLabel: "Westside",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Beliatta Junction, Beliatta, Matara 82100, Sri Lanka",
+    phone: "+94 71 456 7890",
+    email: "beliatta@apexmartialarts.lk",
+    districtLabel: "Matara District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Beliatta%2C+Matara%2C+Sri+Lanka&output=embed",
   },
   {
-    name: "Jeet Kun Do - Waligama",
+    name: "Jeet Kun Do - Weligama",
     subtitle: "Family Programs • Kids & Beginners Friendly",
-    location: "Waligama",
+    location: "Weligama",
     heroImageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
     headquartersLabel: "Front Desk",
-    address: "45 Titan St, Westside",
-    phone: "+1 (555) 000-2222",
-    email: "westside@apexmartialarts.com",
-    districtLabel: "Westside",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Matara Rd, Weligama, Matara 81700, Sri Lanka",
+    phone: "+94 71 567 8901",
+    email: "weligama@apexmartialarts.lk",
+    districtLabel: "Matara District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Weligama%2C+Matara%2C+Sri+Lanka&output=embed",
   },
   {
     name: "Jeet Kun Do - Hakmana",
@@ -81,12 +86,12 @@ export const branches: Branch[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
     headquartersLabel: "Front Desk",
-    address: "45 Titan St, Westside",
-    phone: "+1 (555) 000-2222",
-    email: "westside@apexmartialarts.com",
-    districtLabel: "Westside",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Hakmana Town, Hakmana, Matara 81300, Sri Lanka",
+    phone: "+94 71 678 9012",
+    email: "hakmana@apexmartialarts.lk",
+    districtLabel: "Matara District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Hakmana%2C+Matara%2C+Sri+Lanka&output=embed",
   },
   {
     name: "Jeet Kun Do - Weerakatiya",
@@ -96,12 +101,11 @@ export const branches: Branch[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAR0oOwi9rXv8msd57wzdxeGK231KI0psuacq0mUVisn3Her54OklCuEVsNY4gxXJUhuquPz7j6eJOVHX0SB5Vuto1Yd9HMz6ueK6YQwtf3XMBIHhVq-G3RjNb9K70EBF46vY7oN8Hc1zM-e5n_a9ynPt8jQ-os9ZYQ8qwBL-gWSSG2AVwvX1SwslAV5oS5_kdQzJq3POyHZ_4HWtPYp_ejVvRxsjoBgRTqyGYlncaoMl5K5BkPDoPoJFEnonnJ1GU3YzUG7bUSc40",
     cardImageUrl: "/gallery/jeet-kun-do/kun-fu.jpg",
     headquartersLabel: "Front Desk",
-    address: "45 Titan St, Westside",
-    phone: "+1 (555) 000-2222",
-    email: "westside@apexmartialarts.com",
-    districtLabel: "Westside",
-    mapImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDZcAZJQTElEbRNaA1CZ67wkMBqxppaut2YNTHnTrGXNr_3vdJ6sUzwtmt9bVxnM7JzXyoEPjaVJr96ejdl8Lf512rqGwPQr5liUn5eZfw7m9EJIezZbordVFw2JeQmLPgJ6nwQ7dP6HsHV1MVp3nmQkLIiB_LVEiQcJ9L-7CunUaCWrpaCDc6RStJhH173XHvzJYAAh76KKrjtGbCg-xQoyHLjI_2XrQFQja5U66VRmAaYlqDdAn_577zSjqRWQ-3ELI6go7MfZJg",
+    address: "Weerakatiya Rd, Weerakatiya, Hambantota 82200, Sri Lanka",
+    phone: "+94 71 789 0123",
+    email: "weerakatiya@apexmartialarts.lk",
+    districtLabel: "Hambantota District",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=Weerakatiya%2C+Hambantota%2C+Sri+Lanka&output=embed",
   },
 ];
-

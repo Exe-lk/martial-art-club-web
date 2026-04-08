@@ -53,10 +53,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <button className="bg-primary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
-                Book Free Trial
-              </button>
-              <button className="border-2 border-secondary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-secondary">
-                View Classes
+              View Classes
               </button>
             </div>
           </div>

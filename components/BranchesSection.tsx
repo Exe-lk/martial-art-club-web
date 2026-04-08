@@ -5,12 +5,21 @@ import Link from "next/link";
 import { useId, useState } from "react";
 
 import { branches } from "@/data/branches";
+import { googleMapsDirectionsUrl, googleMapsSearchUrl } from "@/lib/mapsUrls";
+
+/** Tab label: show place/branch only (drop leading style prefix like "Jeet Kun Do - "). */
+function branchNavLabel(fullName: string): string {
+  const parts = fullName.split(" - ");
+  return parts.length > 1 ? parts.slice(1).join(" - ").trim() : fullName;
+}
 
 export default function BranchesSection() {
   const tabsId = useId();
 
   const [activeIdx, setActiveIdx] = useState(0);
   const active = branches[activeIdx]!;
+  const directionsHref = googleMapsDirectionsUrl(active.address);
+  const openMapHref = googleMapsSearchUrl(active.address);
 
   return (
     <>
@@ -48,7 +57,7 @@ export default function BranchesSection() {
                       : "text-slate-400 hover:text-white hover:bg-white/5",
                   ].join(" ")}
                 >
-                  {b.name}
+                  {branchNavLabel(b.name)}
                 </button>
               );
             })}
@@ -66,7 +75,7 @@ export default function BranchesSection() {
               <div className="group relative h-[280px] overflow-hidden rounded-xl bg-white/5 lg:h-full lg:max-h-[52vh]">
                 <Image
                   src={active.heroImageUrl}
-                  alt={`${active.name} training image`}
+                  alt={`${active.location} branch training image`}
                   fill
                   className="bg-slate-800 object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 58vw"
@@ -78,8 +87,11 @@ export default function BranchesSection() {
                     {active.subtitle}
                   </p>
                   <h3 className="mt-2 text-3xl font-black tracking-tighter text-white uppercase md:text-4xl">
-                    {active.name}
+                    {active.location}
                   </h3>
+                  <p className="mt-1 max-w-md text-xs font-medium text-slate-300">
+                    {active.name}
+                  </p>
                 </div>
               </div>
 
@@ -127,12 +139,14 @@ export default function BranchesSection() {
                   </div>
 
                   <div className="space-y-4">
-                    <button
-                      type="button"
-                      className="w-full rounded bg-primary px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:bg-red-700"
+                    <a
+                      href={directionsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex w-full items-center justify-center rounded bg-primary px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:bg-red-700"
                     >
                       Get Directions
-                    </button>
+                    </a>
                     <Link
                       href="/schedule"
                       className="flex w-full items-center justify-center rounded border-2 border-white/15 bg-black/30 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-white/5"
@@ -144,46 +158,49 @@ export default function BranchesSection() {
               </div>
             </div>
 
-            {/* Right: map */}
-            <div className="relative min-h-[320px] overflow-hidden rounded-xl bg-white/5 lg:col-span-5 lg:min-h-0 lg:h-full lg:max-h-[calc(52vh+12.5rem)]">
-              <Image
-                src={active.mapImageUrl}
-                alt={`Map preview for ${active.name}`}
-                fill
-                className="object-cover grayscale brightness-75 contrast-125"
-                sizes="(max-width: 1024px) 100vw, 42vw"
+            {/* Right: Google Map (embed URL from data/branches.ts) */}
+            <div className="relative flex min-h-[320px] flex-col overflow-hidden rounded-xl bg-white/5 lg:col-span-5 lg:min-h-0 lg:h-full lg:max-h-[calc(52vh+12.5rem)]">
+              <iframe
+                title={`Google Map — ${active.location}`}
+                className="min-h-[280px] flex-1 border-0 lg:min-h-0"
+                src={active.mapEmbedUrl}
                 loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/15" />
 
-              <div className="absolute left-6 right-6 top-6 flex items-center justify-between border-l-2 border-primary bg-black/50 p-4 backdrop-blur">
+              <div className="absolute left-6 right-6 top-6 flex items-center justify-between border-l-2 border-primary bg-black/60 p-4 backdrop-blur pointer-events-auto">
                 <div>
                   <p className="text-[10px] font-black tracking-widest text-primary uppercase">
-                    Live Location
+                    Location
                   </p>
                   <p className="text-sm font-bold text-white">
                     {active.districtLabel}
                   </p>
+                  <p className="mt-0.5 text-xs text-slate-300">{active.location}</p>
                 </div>
-                <button
-                  type="button"
-                  className="rounded bg-primary p-2 text-white hover:bg-red-700"
+                <a
+                  href={directionsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded bg-primary p-2 text-white transition-colors hover:bg-red-700"
+                  aria-label="Open directions in Google Maps"
                 >
                   <span className="material-symbols-outlined">directions</span>
-                </button>
+                </a>
               </div>
 
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/20">
-                  <div className="h-4 w-4 rounded-full bg-primary shadow-[0_0_20px_rgba(214,41,41,0.9)]" />
-                </div>
-              </div>
-
-              <div className="absolute bottom-6 left-6 right-6">
-                <button className="w-full rounded border-2 border-white/15 bg-black/40 py-4 text-xs font-black tracking-widest text-white uppercase transition-all hover:border-primary hover:bg-primary">
-                  View Full Screen Map
-                </button>
+              <div className="absolute bottom-6 left-6 right-6 pointer-events-auto">
+                <a
+                  href={openMapHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center rounded border-2 border-white/15 bg-black/50 py-4 text-xs font-black tracking-widest text-white uppercase backdrop-blur transition-all hover:border-primary hover:bg-primary"
+                >
+                  Open in Google Maps
+                </a>
               </div>
             </div>
           </div>
