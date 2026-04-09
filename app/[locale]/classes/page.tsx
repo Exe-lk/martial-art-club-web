@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import BranchScheduleSection from "@/components/BranchScheduleSection";
 import ClassesSection from "@/components/ClassesSection";
 import CoachesCardsSection from "@/components/CoachesCardsSection";
+import CtaLandingSection from "@/components/CtaLandingSection";
 import Ssubscriptions from "@/components/Ssubscriptions";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -196,21 +197,7 @@ export default function LocalizedClassesPage() {
 
 
         <ScrollReveal>
-          <section className="bg-[#d62929] py-20">
-            <div className="container mx-auto px-6 text-center">
-              <h2 className="mb-10 text-4xl font-black tracking-tight text-white uppercase md:text-6xl">
-                {t("ctaTitle")}
-              </h2>
-              <div className="flex flex-wrap justify-center gap-6">
-                <button className="scale-100 bg-white px-10 py-5 font-black tracking-widest text-[#d62929] uppercase transition-all hover:scale-105 hover:bg-neutral-100 active:scale-95">
-                  {t("ctaJoin")}
-                </button>
-                <button className="scale-100 bg-neutral-900 px-10 py-5 font-black tracking-widest text-white uppercase transition-all hover:scale-105 hover:bg-black active:scale-95">
-                  {t("ctaTrial")}
-                </button>
-              </div>
-            </div>
-          </section>
+          <CtaLandingSection />
         </ScrollReveal>
       </main>
     </div>

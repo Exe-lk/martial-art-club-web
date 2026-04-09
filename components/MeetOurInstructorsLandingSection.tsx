@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export default async function MeetOurInstructorsLandingSection() {
   const t = await getTranslations("Instructors");
+  const locale = await getLocale();
 
   return (
     <section
@@ -41,7 +42,7 @@ export default async function MeetOurInstructorsLandingSection() {
 
           <div className="pt-2">
             <Link
-              href="/coaches"
+              href={`/${locale}/about`}
               className="animated-gradient-border inline-flex items-center justify-center gap-2 rounded-2xl px-10 py-4 text-sm font-black tracking-[0.22em] text-white uppercase shadow-lg transition-transform active:scale-[0.98]"
             >
               {t("meetTeam")}

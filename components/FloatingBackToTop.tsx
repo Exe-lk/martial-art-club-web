@@ -1,8 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+/** Home route renders `LandingFloatingButtons` with combined back-to-top + WhatsApp. */
+function isLocaleHomePath(pathname: string | null) {
+  if (!pathname) return false;
+  return /^\/(en|si)\/?$/.test(pathname);
+}
+
 export default function FloatingBackToTop() {
+  const pathname = usePathname();
   const [showToTop, setShowToTop] = useState(false);
 
   useEffect(() => {
@@ -12,6 +20,7 @@ export default function FloatingBackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (isLocaleHomePath(pathname)) return null;
   if (!showToTop) return null;
 
   return (

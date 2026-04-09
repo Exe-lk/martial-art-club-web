@@ -37,12 +37,9 @@ export default function LocalizedBlogPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-              The Frontline
-            </p>
             <h1
               id="blog-hero-heading"
-              className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase italic sm:text-5xl md:text-6xl"
+              className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
             >
               Martial Arts <span className="text-primary">Blog &amp; Insights</span>
             </h1>

@@ -149,7 +149,17 @@
       "qualification": "Founder • Head Coach • Martial Arts Instructor",
       "description": "With decades of experience and a disciplined coaching style, our founder built this academy to help students train with purpose, develop confidence, and master real technique—step by step.",
       "imageSrc": "/gallery/martial-art-coaches.jpg",
-      "imageAlt": "Founder and head coach"
+      "imageAlt": "Founder and head coach",
+      "certificationsKicker": "Credentials",
+      "certificationsTitle": "Coach Certifications",
+      "cert1Src": "/gallery/events/480326514_596697989934796_4121116657036155314_n.jpg",
+      "cert1Alt": "Coach certification 1",
+      "cert2Src": "/gallery/events/480520780_596698106601451_2159366204510021519_n.jpg",
+      "cert2Alt": "Coach certification 2",
+      "cert3Src": "/gallery/events/480591409_596698273268101_8914357148270084608_n.jpg",
+      "cert3Alt": "Coach certification 3",
+      "cert4Src": "/gallery/events/480674438_596698093268119_2920696599622067516_n.jpg",
+      "cert4Alt": "Coach certification 4"
     }
   },
   "GalleryPage": {
