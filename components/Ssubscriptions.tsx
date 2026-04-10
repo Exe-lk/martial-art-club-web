@@ -17,28 +17,80 @@ type MembershipPlan = {
 
 function PlanCard({ plan }: { plan: MembershipPlan }) {
   const t = useTranslations("MembershipPage");
+  const isRecommended = plan.id === "standard";
+  const features = useMemo(
+    () => [...plan.benefits, ...plan.access].slice(0, 7),
+    [plan.benefits, plan.access],
+  );
 
   return (
-    <div className="relative overflow-hidden border border-white/10 bg-[#141414] p-10 shadow-2xl transition-all duration-300 hover:bg-[#1f1f1f]">
-      <span className="text-xs font-black uppercase tracking-[0.28em] text-slate-400">
-        {plan.name}
-      </span>
-      <div className="mt-4 flex items-baseline gap-2">
+    <article
+      className={[
+        "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-[#0f0f0f]/80 p-8 shadow-2xl transition-transform duration-300 ease-out will-change-transform",
+        "border-white/10 hover:-translate-y-1 hover:scale-[1.03] focus-within:-translate-y-1 focus-within:scale-[1.03]",
+        "hover:bg-[#141414]",
+        isRecommended ? "ring-1 ring-primary/40" : "",
+      ].join(" ")}
+    >
+      {isRecommended ? (
+        <div className="absolute right-5 top-5 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.28em] text-primary">
+          Recommended
+        </div>
+      ) : null}
+
+      <header className="flex items-center justify-between gap-4">
+        <span className="text-xs font-black uppercase tracking-[0.28em] text-slate-400">
+          {plan.name}
+        </span>
+      </header>
+
+      <div className="mt-5 flex items-end gap-2">
         <span className={`text-4xl font-black tracking-tight ${plan.accentClass}`}>
           {plan.price}
         </span>
       </div>
-      <p className="mt-5 text-sm leading-relaxed text-slate-300">{plan.bestFor}</p>
 
-      <div className="mt-10">
+      <p className="mt-4 text-sm leading-relaxed text-slate-300">{plan.bestFor}</p>
+
+      <div className="mt-7">
         <Link
-          href={`#${plan.id}`}
-          className="inline-flex w-full items-center justify-center border border-primary px-8 py-4 text-xs font-black uppercase tracking-[0.28em] text-primary transition-colors hover:bg-primary/10"
+          href="/contact"
+          className={[
+            "inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-xs font-black uppercase tracking-[0.28em] transition-colors",
+            isRecommended
+              ? "bg-primary text-white hover:bg-primary/90"
+              : "border border-white/15 text-white hover:bg-white/5",
+          ].join(" ")}
         >
-          {t("explore")}
+          {t("subscribeNow")}
         </Link>
       </div>
-    </div>
+
+      <div className="mt-8 border-t border-white/10 pt-6">
+        <ul className="space-y-3 text-sm text-slate-200/95">
+          {features.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span
+                className={[
+                  "mt-[2px] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border",
+                  isRecommended ? "border-primary/35 text-primary" : "border-white/15 text-white/80",
+                ].join(" ")}
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
+                  <path
+                    fillRule="evenodd"
+                    d="M16.704 5.296a1 1 0 0 1 0 1.414l-7.1 7.1a1 1 0 0 1-1.414 0l-3.5-3.5a1 1 0 1 1 1.414-1.414l2.793 2.793 6.393-6.393a1 1 0 0 1 1.414 0Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
   );
 }
 
@@ -186,12 +238,6 @@ export default function Ssubscriptions() {
             <PlanCard key={p.id} plan={p} />
           ))}
         </div>
-      </section>
-
-      <section className="mx-auto max-w-[1400px] px-4 pb-20 md:px-8 md:pb-28">
-        {plans.map((p) => (
-          <PlanDetail key={p.id} plan={p} />
-        ))}
       </section>
     </section>
   );
