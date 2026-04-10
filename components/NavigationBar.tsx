@@ -205,13 +205,13 @@ export default function NavigationBar() {
           })}
 
           <div className="ml-2 flex items-center gap-3">
-            <LanguageSwitcher />
             <button
               type="button"
               className="rounded bg-primary px-6 py-2 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
             >
               {t("joinClub")}
             </button>
+            <LanguageSwitcher />
           </div>
         </div>
 
@@ -306,13 +306,16 @@ export default function NavigationBar() {
             );
           })}
 
-          <button
-            type="button"
-            className="mt-2 rounded bg-primary px-6 py-3 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("joinClub")}
-          </button>
+          <div className="mt-2 flex items-center gap-3 px-3">
+            <button
+              type="button"
+              className="flex-1 rounded bg-primary px-6 py-3 text-base font-bold tracking-wider text-white uppercase transition-all hover:bg-red-700"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("joinClub")}
+            </button>
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </header>

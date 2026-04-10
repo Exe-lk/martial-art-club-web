@@ -38,9 +38,7 @@ export default function AboutPageHero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-            {t("heroKicker")}
-          </p>
+
           <h1
             id="about-hero-heading"
             className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
@@ -54,12 +52,7 @@ export default function AboutPageHero() {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <button className="rounded bg-primary px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-red-700 shadow-lg shadow-primary/20">
-              {t("heroPrimaryCta")}
-            </button>
-            <button className="rounded border-2 border-[#1e3a8a] px-10 py-4 text-sm font-black tracking-widest text-white uppercase transition-all hover:bg-[#1e3a8a]/10">
-              {t("heroSecondaryCta")}
-            </button>
+
           </div>
         </div>
       </div>

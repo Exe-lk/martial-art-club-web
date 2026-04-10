@@ -194,9 +194,7 @@ export default function LocalizedMembershipsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-              {t("heroKicker")}
-            </p>
+
             <h1
               id="memberships-hero-heading"
               className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
@@ -209,18 +207,7 @@ export default function LocalizedMembershipsPage() {
               {t("heroSubtitle")}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 md:flex-row">
-              <Link
-                href="#plans"
-                className="transform border-2 border-primary bg-primary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform active:scale-95"
-              >
-                {t("viewPlans")}
-              </Link>
-              <Link
-                href="/contact"
-                className="transform border-2 border-secondary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform hover:bg-secondary/10 active:scale-95"
-              >
-                {t("contactUs")}
-              </Link>
+
             </div>
           </div>
         </div>

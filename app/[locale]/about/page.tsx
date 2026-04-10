@@ -13,25 +13,11 @@ export default function AboutPage() {
   return (
     <main className="overflow-x-hidden bg-[#f3f4f6] text-slate-900 dark:bg-[#0d0d0d] dark:text-slate-100">
       {/* Hero Section */}
+
+    
+
       <AboutPageHero />
 
-
-      
-      {/* Meet Our Instructors */}
-      <ScrollReveal>
-        <MeetOurInstructorsSection />
-      </ScrollReveal>
-
-
-      {/* Coach & Team */}
-      <ScrollReveal>
-        <CoachesCardsSection />
-      </ScrollReveal>
-
-      {/* Founder / Main Coach */}
-      <ScrollReveal>
-        <FounderCoachSection />
-      </ScrollReveal>
 
       {/* Why Us */}
       <ScrollReveal>
@@ -99,6 +85,25 @@ export default function AboutPage() {
           </div>
         </section>
       </ScrollReveal>
+
+            {/* Founder / Main Coach */}
+            <ScrollReveal>
+        <FounderCoachSection />
+      </ScrollReveal>
+
+
+      {/* Meet Our Instructors */}
+      <ScrollReveal>
+        <MeetOurInstructorsSection />
+      </ScrollReveal>
+
+
+      {/* Coach & Team */}
+      <ScrollReveal>
+        <CoachesCardsSection />
+      </ScrollReveal>
+
+
 
       {/* Accessories & Equipment */}
       <ScrollReveal>

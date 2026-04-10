@@ -31,7 +31,7 @@ export default function HeroSection() {
         <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
           <div className="w-full rounded-lg sm:inline-flex sm:w-auto">
             <button
-              className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-10 py-4 text-base font-black text-white uppercase transition-all sm:w-auto hover:bg-[url('/button.PNG')] hover:bg-cover hover:bg-center hover:bg-no-repeat hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-10 py-4 text-base font-black text-white uppercase transition-all sm:w-auto hover:bg-[url('/button2.PNG')] hover:bg-cover hover:bg-center hover:bg-no-repeat hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               {t("joinClub")}{" "}
               
@@ -39,7 +39,7 @@ export default function HeroSection() {
           </div>
           <Link
             href={`/${locale}/classes`}
-            className="w-full border-2 border-accent-blue px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto text-center"
+            className="rounded-md w-full hover-border-2  px-8 py-4 text-base font-black text-white uppercase transition-all hover:bg-accent-blue/10 sm:w-auto text-center bg-white/50"
           >
             {t("viewClasses")}
           </Link>

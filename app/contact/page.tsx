@@ -38,9 +38,6 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <p className="text-xs font-black tracking-[0.35em] text-primary uppercase">
-              Black Dragon
-            </p>
             <h1
               id="contact-hero-heading"
               className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
@@ -52,9 +49,6 @@ export default function ContactPage() {
               journey today. Professional training for all levels.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <button className="bg-primary px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-red-700">
-              View Classes
-              </button>
             </div>
           </div>
         </div>

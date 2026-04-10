@@ -79,7 +79,7 @@ export default function MembershipPlansShowcaseSection() {
                 <div className="mt-6">
                   <Link
                     href={plan.ctaHref}
-                    className="inline-flex w-full items-center justify-center border border-primary px-8 py-3 text-xs font-black uppercase tracking-[0.28em] text-primary transition-colors hover:bg-primary/10"
+                    className="inline-flex w-full items-center justify-center border border-primary px-8 py-3 text-xs font-black uppercase tracking-[0.28em] text-white rounded-md transition-colors hover:bg-primary/10 bg-primary"
                   >
                     {plan.ctaLabel}
                   </Link>

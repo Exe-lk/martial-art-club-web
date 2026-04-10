@@ -60,9 +60,7 @@ export default function LocalizedKidsAcademyPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <p className="text-xs font-black tracking-[0.35em] uppercase text-white/80">
-              {t("heroKicker")}
-            </p>
+
             <h1
               id="kids-hero-heading"
               className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"
@@ -73,18 +71,6 @@ export default function LocalizedKidsAcademyPage() {
               {t("heroSubtitle")}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href={`/${locale}/classes`}
-                className="inline-flex items-center justify-center rounded-full bg-[#d62929] px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white transition-colors hover:brightness-110"
-              >
-                {t("viewClasses")}
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-3 text-xs font-black tracking-[0.3em] uppercase text-white/90 backdrop-blur transition-colors hover:bg-white/10 hover:text-white"
-              >
-                {t("contactUs")}
-              </Link>
             </div>
           </div>
         </div>

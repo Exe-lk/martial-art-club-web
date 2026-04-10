@@ -91,9 +91,7 @@ export default function LocalizedClassesPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/80 to-black/60" />
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-              <p className="text-xs font-black tracking-[0.35em] text-[#d62929] uppercase">
-                {t("heroKicker")}
-              </p>
+
               <h1
                 id="classes-hero-heading"
                 className="mt-2 max-w-2xl text-4xl font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl"

@@ -48,12 +48,6 @@ export default function LocalizedBlogPage() {
               stories.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 md:flex-row">
-              <button className="transform border-2 border-primary bg-primary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform active:scale-95">
-                Join the Club
-              </button>
-              <button className="transform border-2 border-secondary px-8 py-4 text-sm font-black tracking-widest text-white uppercase transition-transform hover:bg-secondary/10 active:scale-95">
-                Explore Articles
-              </button>
             </div>
           </div>
         </div>
@@ -117,11 +111,7 @@ export default function LocalizedBlogPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <TrainingGallerySection />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section className="bg-primary px-6 py-24">
+        <section className="bg-primary px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="mb-10 text-4xl leading-none font-black tracking-tighter text-white uppercase md:text-6xl">
               Start Your Martial Arts <br /> Journey Today
